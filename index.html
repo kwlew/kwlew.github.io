@@ -233,6 +233,11 @@
       transition: all 0.4s ease;
     }
 
+    .rocket {
+      -webkit-text-fill-color: initial;
+      background: none;
+    }
+
     .page-section.active {
       opacity: 1;
       transform: translateY(0);
@@ -254,7 +259,7 @@
 <header>
   <div id="cursor-glow"></div>
   <canvas id="particles-bg"></canvas>
-  <h1>kwlew.dev 🚀</h1>
+  <h1>kwlew.dev <span class="rocket">🚀</span></h1>
   <p class="subtitle">Developer • Robotics Programmer • RoboCup Participant</p>
   <p class="tagline">Building efficient software & robotics systems</p>
 
