@@ -84,6 +84,11 @@
       color: #c9d1d9;
     }
 
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
     /* ===== NAVBAR (GLASS) ===== */
     nav {
       margin-top: 40px;
@@ -421,7 +426,13 @@
   function createParticles() {
     particles = [];
 
-    for (let i = 0; i < 200; i++) {
+    // Base density (tweak this number)
+    const density = 0.00012;
+
+    const area = canvas.width * canvas.height;
+    const particleCount = Math.floor(area * density);
+
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -435,6 +446,7 @@
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     createParticles();
   }
 

@@ -248,16 +248,26 @@
     });
 
     // ===== CREATE PARTICLES =====
-    for (let i = 0; i < 120; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.7,
-            vy: (Math.random() - 0.5) * 0.7,
-            size: Math.random() * 2 + 1
-        });
-    }
+    function createParticles() {
+        particles = [];
 
+        // Base density (tweak this number)
+        const density = 0.00012;
+
+        const area = canvas.width * canvas.height;
+        const particleCount = Math.floor(area * density);
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6,
+                size: Math.random() * 2 + 1
+            });
+        }
+    }
+    createParticles();
     // ===== COLOR SHIFT =====
     let hue = 0;
 
