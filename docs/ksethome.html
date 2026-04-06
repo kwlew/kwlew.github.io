@@ -102,6 +102,33 @@
             padding: 20px;
         }
 
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+
+            padding: 10px 14px;
+            border-radius: 10px;
+
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(10px);
+
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition: all 0.2s ease;
+        }
+
+        /* Hover glow (matches your style) */
+        .home-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(44,234,37,0.5);
+        }
+
         .card {
             background: rgba(22, 27, 34, 0.7);
             backdrop-filter: blur(10px);
@@ -137,7 +164,7 @@
 </head>
 
 <body>
-
+<a href="/" class="home-btn">⌂</a>
 <canvas id="particles-bg"></canvas>
 
 <header>
@@ -212,63 +239,7 @@ cooldown: 5
 </footer>
 
 <!-- Reuse same particle script from main page -->
-<script>
-    const canvas = document.getElementById("particles-bg");
-    const ctx = canvas.getContext("2d");
-
-    let particles = [];
-    let mouse = { x: null, y: null };
-    let hue = 0;
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        particles = [];
-
-        for (let i = 0; i < 150; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.6,
-                vy: (Math.random() - 0.5) * 0.6,
-                size: Math.random() * 2 + 1
-            });
-        }
-    }
-
-    resize();
-    window.addEventListener("resize", resize);
-
-    window.addEventListener("mousemove", e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        hue += 0.5;
-
-        particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `hsl(${hue}, 100%, 70%)`;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = `hsl(${hue}, 100%, 70%)`;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-        });
-
-        requestAnimationFrame(draw);
-    }
-
-    draw();
-</script>
+<script src="/assets/js/particles.js"></script>
 
 </body>
 </html>

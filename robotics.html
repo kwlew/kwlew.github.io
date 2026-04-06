@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Robotics • kwlew.dev</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #e6edf3;
+            background: radial-gradient(circle at top, #0d1117, #020617);
+            overflow-x: hidden;
+        }
+
+        #particles-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
+            top: -200px;
+            left: -200px;
+            filter: blur(80px);
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            filter: blur(80px);
+            z-index: -2;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #2cea25, #58a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            transition: 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 40px rgba(44,234,37,0.2);
+        }
+
+        .socials {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .instagram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px 20px;
+            margin: 8px;
+
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+
+            background: #0d1117;
+            border: 1px solid #30363d;
+
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+
+            padding: 10px 14px;
+            border-radius: 10px;
+
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(10px);
+
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition: all 0.2s ease;
+        }
+
+        /* Hover glow (matches your style) */
+        .home-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(44,234,37,0.5);
+        }
+
+        .instagram-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* gradient border */
+        .instagram-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af, #515bd4);
+            -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* hover */
+        .instagram-btn:hover {
+            box-shadow: 0 0 25px rgba(221,42,123,0.5);
+            transform: scale(1.05);
+        }
+
+        ul {
+            text-align: left;
+            margin-top: 15px;
+            line-height: 1.8;
+            color: #c9d1d9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #2cea25, #1f9dff);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s ease;
+            box-shadow: 0 0 15px rgba(44,234,37,0.3);
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(44,234,37,0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="/" class="home-btn">⌂</a>
+<canvas id="particles-bg"></canvas>
+
+<header>
+    <h1>Robotics 🤖</h1>
+    <p class="subtitle">Competitive Robotics • Embedded Systems • AI</p>
+</header>
+
+<div class="container">
+
+    <!-- About -->
+    <div class="card">
+        <h2>About</h2>
+        <p>
+            Focused on robotics programming, autonomous systems, and competitive robotics.
+            Active in RoboCup-related competitions and team-based development.
+        </p>
+    </div>
+
+    <!-- Achievements -->
+    <div class="card">
+        <h2>Achievements</h2>
+        <ul>
+            <li>💻 Programmer at <b>ByteVoltaTeam</b></li>
+            <li>🏆 Champion — CBR 2025 (Competição Brasileira de Robótica / RoboCup Brazil)</li>
+            <li>🥉 3rd Place — LARI</li>
+            <li>🌍 Qualified for RoboCup Korea</li>
+        </ul>
+    </div>
+
+    <div class="socials">
+
+        <!-- Your Instagram -->
+        <a href="https://instagram.com/kaleo.sm" target="_blank" class="instagram-btn">
+            <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
+      0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
+      0 3 1.34 3 3v10c0 1.66-1.34 3-3
+      3H7c-1.66 0-3-1.34-3-3V7c0-1.66
+      1.34-3 3-3h10zm-5 3a5 5 0 100
+      10 5 5 0 000-10zm0 2a3 3 0 110
+      6 3 3 0 010-6zm4.5-2.75a1.25
+      1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+            </svg>
+
+            <span>kaleo.sm</span>
+        </a>
+
+        <!-- Team Instagram -->
+        <a href="https://instagram.com/bytevolta_team" target="_blank" class="instagram-btn">
+            <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
+      0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
+      0 3 1.34 3 3v10c0 1.66-1.34 3-3
+      3H7c-1.66 0-3-1.34-3-3V7c0-1.66
+      1.34-3 3-3h10zm-5 3a5 5 0 100
+      10 5 5 0 000-10zm0 2a3 3 0 110
+      6 3 3 0 010-6zm4.5-2.75a1.25
+      1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+            </svg>
+
+            <span>ByteVoltaTeam</span>
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 kwlew.dev</p>
+</footer>
+
+<script src="/assets/js/particles.js"></script>
+
+</body>
+</html>
