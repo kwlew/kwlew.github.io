@@ -1,13 +1,529 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>kwlew.dev</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kwlew.dev</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
 
-  </head>
-  <body>
-    <h1>kwlew.dev is live 🚀</h1>
-  </body>
+  <style>
+    /* ===== RESET (keep minimal) ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: Arial, sans-serif;
+      color: #e6edf3;
+      background: radial-gradient(circle at top, #0d1117, #020617);
+      overflow-x: hidden;
+    }
+
+    /* ===== PARTICLES BACKGROUND ===== */
+    #particles-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+    }
+
+    /* Glow blobs */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
+      top: -200px;
+      left: -200px;
+      filter: blur(80px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
+      bottom: -200px;
+      right: -200px;
+      filter: blur(80px);
+      z-index: -2;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(90deg, #2cea25, #58a6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: #8b949e;
+      margin-top: 10px;
+    }
+
+    .tagline {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #c9d1d9;
+    }
+
+    /* ===== NAVBAR (GLASS) ===== */
+    nav {
+      margin-top: 40px;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 12px;
+      background: rgba(22, 27, 34, 0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .nav-link {
+      margin: 0 15px;
+      color: #8b949e;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link.active {
+      color: #ffffff;
+    }
+
+    /* Animated underline */
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #2cea25, #58a6ff);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* ===== CARD (GLASS + GLOW) ===== */
+    .card {
+      background: rgba(22, 27, 34, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
+      margin-top: 30px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 0 40px rgba(44,234,37,0.2);
+    }
+
+    /* ===== DEFAULT BUTTONS ===== */
+    .btn {
+      display: inline-block;
+      margin: 10px 8px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #2cea25, #1f9dff);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(44,234,37,0.3);
+    }
+
+    .btn.secondary {
+      background: #30363d;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(44,234,37,0.6);
+    }
+
+    /* ===== GITHUB BUTTON (INSANE) ===== */
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      position: relative;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .github-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Gradient border */
+    .github-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 1px;
+      background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25);
+      -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    /* Hover glow */
+    .github-btn:hover {
+      box-shadow: 0 0 25px rgba(88,166,255,0.5);
+    }
+
+    /* ===== PAGE SWITCHING ===== */
+    .page-section {
+      opacity: 0;
+      transform: translateY(20px);
+      visibility: hidden;
+      position: absolute;
+      width: 100%;
+      transition: all 0.4s ease;
+    }
+
+    .page-section.active {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      position: relative;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #8b949e;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Hero -->
+<header>
+  <div id="cursor-glow"></div>
+  <canvas id="particles-bg"></canvas>
+  <h1>kwlew.dev 🚀</h1>
+  <p class="subtitle">Developer • Robotics Programmer • RoboCup Participant</p>
+  <p class="tagline">Building efficient software & robotics systems</p>
+
+  <nav>
+    <a href="javascript:void(0)" class="nav-link" onclick="showSection('projects', this)">Projects</a>
+    <a href="javascript:void(0)" class="nav-link" onclick="showSection('docs', this)">Docs</a>
+    <a href="javascript:void(0)" class="nav-link" onclick="showSection('contact', this)">Contact</a>
+  </nav>
+</header>
+
+<!-- Projects -->
+<section id="projects" class="page-section">
+  <div class="container">
+    <h2>Projects</h2>
+
+    <div class="card">
+      <h3>kSetHome</h3>
+      <p>
+        A high-performance home management plugin designed for flexibility,
+        speed, and clean architecture.
+      </p>
+
+      <a class="btn" href="/plugins/ksethome.html">Plugin Page</a>
+      <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
+    </div>
+  </div>
+</section>
+
+<!-- Documentation -->
+<section id="docs" class="page-section">
+  <div class="container">
+    <h2>Documentation</h2>
+    <p>Setup guides, configuration help, and troubleshooting.</p>
+
+    <div class="card">
+      <h3>kSetHome Docs</h3>
+      <a class="btn" href="/docs/ksethome.html">Open Docs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="page-section">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>
+      <a href="https://github.com/kwlew" class="github-btn" target="_blank">
+        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56
+    0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67
+    -1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25
+    3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66
+    0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31
+    3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39
+    2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17
+    .75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65
+    .41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11
+    0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12
+    C23.5 5.65 18.35.5 12 .5z"/>
+        </svg>
+
+        <span>GitHub</span>
+      </a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 kwlew.dev</p>
+</footer>
+
+<script>
+  function showSection(id, element) {
+    const sections = document.querySelectorAll('.page-section');
+    const links = document.querySelectorAll('.nav-link');
+
+    sections.forEach(section => {
+      section.classList.remove('active');
+    });
+
+    links.forEach(link => {
+      link.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    if (element) {
+      element.classList.add('active');
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const firstLink = document.querySelector('.nav-link');
+    showSection('projects', firstLink);
+  });
+</script>
+
+<script>
+  const glow = document.getElementById("cursor-glow");
+
+  document.addEventListener("mousemove", (e) => {
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+  });
+</script>
+
+<script>
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = (y / rect.height - 0.5) * 10;
+      const rotateY = (x / rect.width - 0.5) * -10;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0)";
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    header.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+  });
+</script>
+
+<script>
+  const githubBtn = document.querySelector(".github-btn");
+
+  githubBtn.addEventListener("mousemove", (e) => {
+    const rect = githubBtn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    githubBtn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+  });
+
+  githubBtn.addEventListener("mouseleave", () => {
+    githubBtn.style.transform = "translate(0, 0)";
+  });
+</script>
+
+<script>
+  const canvas = document.getElementById("particles-bg");
+  const ctx = canvas.getContext("2d");
+
+  let particles = [];
+  let hue = 0;
+
+  const mouse = {
+    x: null,
+    y: null,
+    radius: 120
+  };
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  function createParticles() {
+    particles = [];
+
+    for (let i = 0; i < 200; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        size: Math.random() * 2 + 1
+      });
+    }
+  }
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    createParticles();
+  }
+
+  window.addEventListener("resize", resize);
+  window.addEventListener("fullscreenchange", resize);
+
+  resize();
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    hue += 0.5;
+
+    particles.forEach(p => {
+      // Movement
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Bounce
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      // ✨ Glow strength near mouse
+      let glow = 10;
+      if (mouse.x && mouse.y) {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius) {
+          glow = 25 * (1 - dist / mouse.radius);
+        }
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
+
+      ctx.shadowBlur = glow;
+      ctx.shadowColor = `hsl(${hue}, 100%, 60%)`;
+
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+    });
+
+    // 🔗 Particle-to-particle connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+
+          ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${1 - distance / 120})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+
+// 👀 Mouse connections (NEW)
+    if (mouse.x && mouse.y) {
+      particles.forEach(p => {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+
+          ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${1 - dist / mouse.radius})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      });
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+
+</body>
 </html>

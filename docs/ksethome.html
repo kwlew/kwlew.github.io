@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>kSetHome Docs • kwlew.dev</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #e6edf3;
+            background: radial-gradient(circle at top, #0d1117, #020617);
+            overflow-x: hidden;
+        }
+
+        #particles-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
+            top: -200px;
+            left: -200px;
+            filter: blur(80px);
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            filter: blur(80px);
+            z-index: -2;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(90deg, #2cea25, #58a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            margin-top: 10px;
+        }
+
+        .actions {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 8px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #2cea25, #1f9dff);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        .btn.secondary {
+            background: #30363d;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(44,234,37,0.6);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            line-height: 1.8;
+            color: #c9d1d9;
+        }
+
+        pre {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+    </style>
+</head>
+
+<body>
+
+<canvas id="particles-bg"></canvas>
+
+<header>
+    <h1>kSetHome Docs 📘</h1>
+    <p class="subtitle">Everything you need to use and configure the plugin</p>
+</header>
+
+<div class="actions">
+    <a class="btn" href="/plugins/ksethome.html">Back to Plugin</a>
+    <a class="btn secondary" href="https://github.com/kwlew/kSetHome" target="_blank">GitHub</a>
+</div>
+
+<div class="container">
+
+    <!-- Installation -->
+    <div class="card">
+        <h2>Installation</h2>
+        <ul>
+            <li>1. Download the plugin from GitHub</li>
+            <li>2. Place the .jar file into your server's <b>/plugins</b> folder</li>
+            <li>3. Restart your server</li>
+            <li>4. Configure the plugin if needed</li>
+        </ul>
+    </div>
+
+    <!-- Commands -->
+    <div class="card">
+        <h2>Commands</h2>
+        <ul>
+            <li><b>/sethome [name]</b> — Set a home</li>
+            <li><b>/home [name]</b> — Teleport to a home</li>
+            <li><b>/delhome [name]</b> — Delete a home</li>
+            <li><b>/homes</b> — List all homes</li>
+        </ul>
+    </div>
+
+    <!-- Permissions -->
+    <div class="card">
+        <h2>Permissions</h2>
+        <ul>
+            <li><b>ksethome.sethome</b> — Allows setting homes</li>
+            <li><b>ksethome.home</b> — Allows teleporting</li>
+            <li><b>ksethome.delhome</b> — Allows deleting homes</li>
+            <li><b>ksethome.admin</b> — Full access</li>
+        </ul>
+    </div>
+
+    <!-- Config -->
+    <div class="card">
+        <h2>config.yml</h2>
+        <pre>
+max-homes: 3
+teleport-delay: 0
+cooldown: 5
+    </pre>
+    </div>
+
+    <!-- Notes -->
+    <div class="card">
+        <h2>Notes</h2>
+        <ul>
+            <li>Supports multiple homes per player</li>
+            <li>Designed for performance and scalability</li>
+            <li>Future updates will include database storage</li>
+        </ul>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 kwlew.dev</p>
+</footer>
+
+<!-- Reuse same particle script from main page -->
+<script>
+    const canvas = document.getElementById("particles-bg");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    let mouse = { x: null, y: null };
+    let hue = 0;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = [];
+
+        for (let i = 0; i < 150; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6,
+                size: Math.random() * 2 + 1
+            });
+        }
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    window.addEventListener("mousemove", e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hue += 0.5;
+
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `hsl(${hue}, 100%, 70%)`;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = `hsl(${hue}, 100%, 70%)`;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+        });
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+</script>
+
+</body>
+</html>
