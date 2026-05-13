@@ -97,8 +97,7 @@
     }
 
     html, body {
-      height: 100%;
-      overflow: hidden;
+      min-height: 100%;
     }
 
     /* ===== NAVBAR (GLASS) ===== */
@@ -113,10 +112,15 @@
     }
 
     .nav-link {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
       margin: 0 15px;
       color: #8b949e;
-      text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
+      font-family: inherit;
       position: relative;
       transition: all 0.2s ease;
     }
@@ -367,6 +371,16 @@
       box-shadow: 0 0 60px rgba(44,234,37,0.4);
     }
 
+    .project-card:focus-visible,
+    .nav-link:focus-visible,
+    .btn:focus-visible,
+    .github-btn:focus-visible,
+    .instagram-btn:focus-visible,
+    .home-btn:focus-visible {
+      outline: 2px solid #58a6ff;
+      outline-offset: 3px;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       text-align: center;
@@ -380,25 +394,24 @@
 <!-- Hero -->
 <a href="/" class="home-btn" onclick="goHome(event)">⌂</a>
 <header>
-  <div id="cursor-glow"></div>
   <canvas id="particles-bg"></canvas>
   <h1>kwlew.dev <span class="rocket">🚀</span></h1>
   <p class="subtitle">Developer • Robotics Programmer • RoboCup Participant</p>
   <p class="tagline">Building efficient software & robotics systems</p>
 
   <nav>
-    <a href="javascript:void(0)" class="nav-link" onclick="showSection('projects', this)">Projects</a>
-    <a href="javascript:void(0)" class="nav-link" onclick="showSection('docs', this)">Docs</a>
-    <a href="javascript:void(0)" class="nav-link" onclick="showSection('contact', this)">Contact</a>
+    <button type="button" class="nav-link" data-section="projects">Projects</button>
+    <button type="button" class="nav-link" data-section="docs">Docs</button>
+    <button type="button" class="nav-link" data-section="contact">Contact</button>
   </nav>
 </header>
 
 <!-- Projects -->
-<section id="projects" class="page-section">
+<section id="projects" class="page-section" aria-label="Projects">
   <div class="container">
     <h2>Projects</h2>
 
-    <div class="card project-card" onclick="toggleProject(this)">
+    <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
       <h3>kSetHome</h3>
       <p>
         A high-performance home management plugin designed for flexibility,
@@ -411,7 +424,7 @@
       </div>
     </div>
 
-    <div class="card project-card" onclick="toggleProject(this)">
+    <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
       <h3>Robotics</h3>
       <p>
         Robotics projects, RoboCup participation, and autonomous systems.
@@ -426,7 +439,7 @@
 </section>
 
 <!-- Documentation -->
-<section id="docs" class="page-section">
+<section id="docs" class="page-section" aria-label="Documentation">
   <div class="container">
     <h2>Documentation</h2>
     <p>Setup guides, configuration help, and troubleshooting.</p>
@@ -439,11 +452,11 @@
 </section>
 
 <!-- Contact -->
-<section id="contact" class="page-section">
+<section id="contact" class="page-section" aria-label="Contact">
   <div class="container">
     <h2>Contact</h2>
     <p>
-      <a href="https://github.com/kwlew" class="github-btn" target="_blank">
+      <a href="https://github.com/kwlew" class="github-btn" target="_blank" rel="noopener noreferrer">
         <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56
     0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67
@@ -460,7 +473,7 @@
 
         <span>GitHub</span>
       </a>
-      <a href="https://instagram.com/kaleo.sm" class="instagram-btn" target="_blank">
+      <a href="https://instagram.com/kaleo.sm" class="instagram-btn" target="_blank" rel="noopener noreferrer">
         <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
           <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
     0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
@@ -484,106 +497,72 @@
 </footer>
 
 <script>
-  function showSection(id, element) {
-    const sections = document.querySelectorAll('.page-section');
-    const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.page-section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const projectCards = document.querySelectorAll('[data-project-card]');
+
+  function showSection(id) {
+    const safeId = ["projects", "docs", "contact"].includes(id) ? id : "projects";
 
     sections.forEach(section => {
-      section.classList.remove('active');
+      section.classList.toggle('active', section.id === safeId);
     });
 
-    links.forEach(link => {
-      link.classList.remove('active');
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.section === safeId);
     });
 
-    document.getElementById(id).classList.add('active');
-
-    if (element) {
-      element.classList.add('active');
+    if (window.location.hash !== `#${safeId}`) {
+      history.replaceState(null, "", `#${safeId}`);
     }
-
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const firstLink = document.querySelector('.nav-link');
-    showSection('projects', firstLink);
-  });
-</script>
-
-<script>
-  const glow = document.getElementById("cursor-glow");
-
-  document.addEventListener("mousemove", (e) => {
-    glow.style.left = e.clientX + "px";
-    glow.style.top = e.clientY + "px";
-  });
-</script>
-
-<script>
   function toggleProject(card) {
-    const allCards = document.querySelectorAll(".project-card");
-
-    allCards.forEach(c => {
-      if (c !== card) {
-        c.classList.remove("active");
+    projectCards.forEach(otherCard => {
+      if (otherCard !== card) {
+        otherCard.classList.remove("active");
+        otherCard.setAttribute("aria-expanded", "false");
       }
     });
 
-    card.classList.toggle("active");
+    const isActive = card.classList.toggle("active");
+    card.setAttribute("aria-expanded", String(isActive));
   }
-</script>
 
-<script>
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const rotateX = (y / rect.height - 0.5) * 10;
-      const rotateY = (x / rect.width - 0.5) * -10;
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0) rotateY(0)";
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      showSection(link.dataset.section);
     });
   });
-</script>
 
-<script>
-  window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-    header.style.transform = `translateY(${window.scrollY * 0.2}px)`;
-  });
-</script>
+  projectCards.forEach(card => {
+    card.addEventListener("click", () => {
+      toggleProject(card);
+    });
 
-<script>
-  const githubBtn = document.querySelector(".github-btn");
-
-  githubBtn.addEventListener("mousemove", (e) => {
-    const rect = githubBtn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    githubBtn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    card.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleProject(card);
+      }
+    });
   });
 
-  githubBtn.addEventListener("mouseleave", () => {
-    githubBtn.style.transform = "translate(0, 0)";
+  document.querySelectorAll(".project-actions a").forEach(link => {
+    link.addEventListener("click", event => {
+      event.stopPropagation();
+    });
   });
-</script>
 
-<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const initialSection = window.location.hash.replace("#", "") || "projects";
+    showSection(initialSection);
+  });
+
   function goHome(e) {
     if (window.location.pathname === "/" || window.location.pathname.includes("index")) {
       e.preventDefault();
-
-      const firstLink = document.querySelector('.nav-link');
-      showSection('projects', firstLink);
+      showSection("projects");
     }
   }
 </script>

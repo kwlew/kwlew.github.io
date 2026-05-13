@@ -205,14 +205,14 @@
 </header>
 
 <div style="text-align: center; margin-bottom: 30px;">
-    <a class="btn" href="https://github.com/kwlew/kSetHome" target="_blank">Download</a>
+    <a class="btn" href="https://github.com/kwlew/kSetHome" target="_blank" rel="noopener noreferrer">Download</a>
     <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
 </div>
 
 <div class="repo-stats">
     <span id="stars">⭐ Loading...</span>
     <span id="version">🏷 Loading...</span>
-    <a id="release" href="#" target="_blank">📦 Loading...</a>
+    <a id="release" href="" target="_blank" rel="noopener noreferrer" hidden></a>
 </div>
 
 <div class="container">
@@ -281,13 +281,15 @@
             const release = document.getElementById("release");
             release.textContent = `📦 ${data.name || "Latest Release"}`;
             release.href = data.html_url;
+            release.hidden = false;
         })
         .catch(() => {
             document.getElementById("version").textContent = "🏷 No releases yet";
 
             const release = document.getElementById("release");
+            release.hidden = true;
             release.textContent = "";
-            release.removeAttribute("href");
+            release.href = "";
         });
 </script>
 
