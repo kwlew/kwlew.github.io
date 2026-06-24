@@ -1,245 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>kSetHome Docs • kwlew.dev</title>
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            color: #e6edf3;
-            background: radial-gradient(circle at top, #0d1117, #020617);
-            overflow-x: hidden;
-        }
-
-        #particles-bg {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
-            top: -200px;
-            left: -200px;
-            filter: blur(80px);
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
-            bottom: -200px;
-            right: -200px;
-            filter: blur(80px);
-            z-index: -2;
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, #2cea25, #58a6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: #8b949e;
-            margin-top: 10px;
-        }
-
-        .actions {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            margin: 10px 8px;
-            padding: 12px 20px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #2cea25, #1f9dff);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.2s ease;
-        }
-
-        .btn.secondary {
-            background: #30363d;
-        }
-
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px rgba(44,234,37,0.6);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .home-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-
-            padding: 10px 14px;
-            border-radius: 10px;
-
-            background: rgba(22, 27, 34, 0.6);
-            backdrop-filter: blur(10px);
-
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-
-            border: 1px solid rgba(255,255,255,0.08);
-
-            transition: all 0.2s ease;
-        }
-
-        /* Hover glow (matches your style) */
-        .home-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(44,234,37,0.5);
-        }
-
-        .card {
-            background: rgba(22, 27, 34, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 16px;
-            margin-top: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        h2 {
-            margin-bottom: 15px;
-        }
-
-        ul {
-            line-height: 1.8;
-            color: #c9d1d9;
-        }
-
-        pre {
-            background: #0d1117;
-            padding: 15px;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin-top: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #8b949e;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="kSetHome plugin documentation — installation, commands, permissions, and configuration for the Minecraft home management plugin." />
+  <title>kSetHome Docs &bull; kwlew.dev</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-
 <body>
-<a href="/" class="home-btn">⌂</a>
-<canvas id="particles-bg"></canvas>
+  <canvas id="particles-bg"></canvas>
+  <a href="/" class="home-btn" title="Home">&#8962;</a>
 
-<header>
-    <h1>kSetHome Docs 📘</h1>
+  <header>
+    <h1>kSetHome Docs <span class="emoji">📘</span></h1>
     <p class="subtitle">Everything you need to use and configure the plugin</p>
-</header>
+  </header>
 
-<div class="actions">
+  <div class="action-bar">
     <a class="btn" href="/plugins/ksethome.html">Back to Plugin</a>
     <a class="btn secondary" href="https://github.com/kwlew/kSetHome" target="_blank" rel="noopener noreferrer">GitHub</a>
-</div>
+  </div>
 
-<div class="container">
+  <main class="container" style="padding-bottom: 20px;">
 
-    <!-- Installation -->
     <div class="card">
-        <h2>Installation</h2>
-        <ul>
-            <li>1. Download the plugin from GitHub</li>
-            <li>2. Place the .jar file into your server's <b>/plugins</b> folder</li>
-            <li>3. Restart your server</li>
-            <li>4. Configure the plugin if needed</li>
-        </ul>
+      <h2>Installation</h2>
+      <ul>
+        <li>1. Download the plugin from GitHub</li>
+        <li>2. Place the <code>.jar</code> file into your server's <code>/plugins</code> folder</li>
+        <li>3. Restart your server</li>
+        <li>4. Configure the plugin if needed</li>
+      </ul>
     </div>
 
-    <!-- Commands -->
     <div class="card">
-        <h2>Commands</h2>
-        <ul>
-            <li><b>/sethome [name]</b> — Set a home</li>
-            <li><b>/home [name]</b> — Teleport to a home</li>
-            <li><b>/delhome [name]</b> — Delete a home</li>
-            <li><b>/homes</b> — List all homes</li>
-        </ul>
+      <h2>Commands</h2>
+      <ul>
+        <li><strong>/sethome [name]</strong> &mdash; Set a home</li>
+        <li><strong>/home [name]</strong> &mdash; Teleport to a home</li>
+        <li><strong>/delhome [name]</strong> &mdash; Delete a home</li>
+        <li><strong>/homes</strong> &mdash; List all homes</li>
+      </ul>
     </div>
 
-    <!-- Permissions -->
     <div class="card">
-        <h2>Permissions</h2>
-        <ul>
-            <li><b>ksethome.sethome</b> — Allows setting homes</li>
-            <li><b>ksethome.home</b> — Allows teleporting</li>
-            <li><b>ksethome.delhome</b> — Allows deleting homes</li>
-            <li><b>ksethome.admin</b> — Full access</li>
-        </ul>
+      <h2>Permissions</h2>
+      <ul>
+        <li><strong>ksethome.sethome</strong> &mdash; Allows setting homes</li>
+        <li><strong>ksethome.home</strong> &mdash; Allows teleporting</li>
+        <li><strong>ksethome.delhome</strong> &mdash; Allows deleting homes</li>
+        <li><strong>ksethome.admin</strong> &mdash; Full access</li>
+      </ul>
     </div>
 
-    <!-- Config -->
     <div class="card">
-        <h2>config.yml</h2>
-        <pre>
-max-homes: 3
+      <h2>config.yml</h2>
+      <pre>max-homes: 3
 teleport-delay: 0
-cooldown: 5
-    </pre>
+cooldown: 5</pre>
     </div>
 
-    <!-- Notes -->
     <div class="card">
-        <h2>Notes</h2>
-        <ul>
-            <li>Supports multiple homes per player</li>
-            <li>Designed for performance and scalability</li>
-            <li>Future updates will include database storage</li>
-        </ul>
+      <h2>Notes</h2>
+      <ul>
+        <li>Supports multiple homes per player</li>
+        <li>Designed for performance and scalability</li>
+        <li>Future updates will include database storage</li>
+      </ul>
     </div>
 
-</div>
+  </main>
 
-<footer>
-    <p>© 2026 kwlew.dev</p>
-</footer>
+  <footer>
+    <p>&copy; 2026 kwlew.dev</p>
+  </footer>
 
-<!-- Reuse same particle script from main page -->
-<script src="/assets/js/particles.js"></script>
-
+  <script src="/assets/js/particles.js"></script>
 </body>
 </html>

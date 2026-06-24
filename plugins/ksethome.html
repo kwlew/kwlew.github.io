@@ -1,300 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kSetHome • kwlew.dev</title>
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            color: #e6edf3;
-            background: radial-gradient(circle at top, #0d1117, #020617);
-            overflow-x: hidden;
-        }
-
-        /* ===== PARTICLES ===== */
-        #particles-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
-            top: -200px;
-            left: -200px;
-            filter: blur(80px);
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
-            bottom: -200px;
-            right: -200px;
-            filter: blur(80px);
-            z-index: -2;
-        }
-
-        .repo-stats {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #8b949e;
-            font-size: 0.95rem;
-        }
-
-        .repo-stats span,
-        .repo-stats a {
-            margin: 0 10px;
-            display: inline-block;
-        }
-
-        .repo-stats a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        .repo-stats a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(90deg, #2cea25, #58a6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: #8b949e;
-            margin-top: 10px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .card {
-            background: rgba(22, 27, 34, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 16px;
-            margin-top: 30px;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 0 30px rgba(0,0,0,0.4);
-            transition: 0.25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 0 40px rgba(44,234,37,0.2);
-        }
-
-        .home-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-
-            padding: 10px 14px;
-            border-radius: 10px;
-
-            background: rgba(22, 27, 34, 0.6);
-            backdrop-filter: blur(10px);
-
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-
-            border: 1px solid rgba(255,255,255,0.08);
-
-            transition: all 0.2s ease;
-        }
-
-        /* Hover glow (matches your style) */
-        .home-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(44,234,37,0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            margin: 10px 8px;
-            padding: 12px 20px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #2cea25, #1f9dff);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.2s ease;
-            box-shadow: 0 0 15px rgba(44,234,37,0.3);
-        }
-
-        .btn.secondary {
-            background: #30363d;
-            box-shadow: none;
-        }
-
-        .btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px rgba(44,234,37,0.6);
-        }
-
-        ul {
-            text-align: left;
-            margin-top: 15px;
-            line-height: 1.8;
-            color: #c9d1d9;
-        }
-
-        .badges img {
-            margin: 6px;
-            transition: 0.2s ease;
-        }
-
-        .badges img:hover {
-            transform: scale(1.08);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #8b949e;
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="kSetHome — a fast, lightweight Minecraft home management plugin with clean architecture and configurable homes per player." />
+  <title>kSetHome &bull; kwlew.dev</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-
 <body>
+  <canvas id="particles-bg"></canvas>
+  <a href="/" class="home-btn" title="Home">&#8962;</a>
 
-<a href="/" class="home-btn">⌂</a>
-<canvas id="particles-bg"></canvas>
+  <header>
+    <h1>kSetHome <span class="emoji">⚡</span></h1>
+    <p class="subtitle">Fast &bull; Lightweight &bull; Clean Architecture</p>
+  </header>
 
-<header>
-    <h1>kSetHome ⚡</h1>
-
-    <p class="subtitle">Fast • Lightweight • Clean Architecture</p>
-</header>
-
-<div style="text-align: center; margin-bottom: 30px;">
+  <div class="action-bar">
     <a class="btn" href="https://github.com/kwlew/kSetHome" target="_blank" rel="noopener noreferrer">Download</a>
     <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
-</div>
+  </div>
 
-<div class="repo-stats">
+  <div class="repo-stats">
     <span id="stars">⭐ Loading...</span>
     <span id="version">🏷 Loading...</span>
     <a id="release" href="" target="_blank" rel="noopener noreferrer" hidden></a>
-</div>
+  </div>
 
-<div class="container">
+  <main class="container" style="padding-bottom: 20px;">
 
     <div class="card">
-        <h2>Features</h2>
-        <ul>
-            <li>⚡ Ultra fast home storage</li>
-            <li>🧠 Clean service-based architecture</li>
-            <li>📦 Lightweight & optimized</li>
-            <li>🔧 Easy to extend</li>
-            <li>💾 Multiple homes per player (configurable)</li>
-        </ul>
+      <h2>Features</h2>
+      <ul>
+        <li>⚡ Ultra fast home storage</li>
+        <li>🧠 Clean service-based architecture</li>
+        <li>📦 Lightweight &amp; optimized</li>
+        <li>🔧 Easy to extend</li>
+        <li>💾 Multiple homes per player (configurable)</li>
+      </ul>
     </div>
 
     <div class="card">
-        <h2>Commands</h2>
-        <ul>
-            <li><b>/sethome</b> — Set a home</li>
-            <li><b>/home</b> — Teleport to home</li>
-            <li><b>/delhome</b> — Delete a home</li>
-            <li><b>/homes</b> — WIP</li>
-        </ul>
+      <h2>Commands</h2>
+      <ul>
+        <li><strong>/sethome [name]</strong> &mdash; Set a home</li>
+        <li><strong>/home [name]</strong> &mdash; Teleport to home</li>
+        <li><strong>/delhome [name]</strong> &mdash; Delete a home</li>
+        <li><strong>/homes</strong> &mdash; List all homes</li>
+      </ul>
     </div>
 
     <div class="card">
-        <h2>Architecture</h2>
-        <ul>
-            <li>HomeService</li>
-            <li>Storage abstraction</li>
-            <li>Command separation</li>
-            <li>Future-proof design</li>
-        </ul>
+      <h2>Architecture</h2>
+      <ul>
+        <li>HomeService</li>
+        <li>Storage abstraction</li>
+        <li>Command separation</li>
+        <li>Future-proof design</li>
+      </ul>
     </div>
 
-</div>
+  </main>
 
-<footer>
-    <p>© 2026 kwlew.dev</p>
-</footer>
+  <footer>
+    <p>&copy; 2026 kwlew.dev</p>
+  </footer>
 
-<script>
+  <script>
     const repo = "kwlew/kSetHome";
 
-    // ===== FETCH REPO DATA =====
     fetch(`https://api.github.com/repos/${repo}`)
-        .then(res => res.ok ? res.json() : Promise.reject(res))
-        .then(data => {
-            document.getElementById("stars").textContent =
-                `⭐ ${data.stargazers_count.toLocaleString()}`;
-        })
-        .catch(() => {
-            document.getElementById("stars").textContent = "⭐ N/A";
-        });
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(data => {
+        document.getElementById("stars").textContent = `⭐ ${data.stargazers_count.toLocaleString()}`;
+      })
+      .catch(() => {
+        document.getElementById("stars").textContent = "⭐ N/A";
+      });
 
-    // ===== FETCH LATEST RELEASE =====
     fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-        .then(res => {
-            if (!res.ok) throw new Error("No release");
-            return res.json();
-        })
-        .then(data => {
-            document.getElementById("version").textContent =
-                `🏷 ${data.tag_name ?? "No version"}`;
+      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
+      .then(data => {
+        document.getElementById("version").textContent = `🏷 ${data.tag_name ?? "No version"}`;
+        const release = document.getElementById("release");
+        release.textContent = `📦 ${data.name || "Latest Release"}`;
+        release.href = data.html_url;
+        release.hidden = false;
+      })
+      .catch(() => {
+        document.getElementById("version").textContent = "🏷 No releases yet";
+      });
+  </script>
 
-            const release = document.getElementById("release");
-            release.textContent = `📦 ${data.name || "Latest Release"}`;
-            release.href = data.html_url;
-            release.hidden = false;
-        })
-        .catch(() => {
-            document.getElementById("version").textContent = "🏷 No releases yet";
-
-            const release = document.getElementById("release");
-            release.hidden = true;
-            release.textContent = "";
-            release.href = "";
-        });
-</script>
-
-<!-- ===== PARTICLES SCRIPT (same as index) ===== -->
-<script src="/assets/js/particles.js"></script>
-
+  <script src="/assets/js/particles.js"></script>
 </body>
 </html>

@@ -3,621 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="kwlew — Developer, Robotics Programmer, and RoboCup Participant. Building efficient software and robotics systems." />
   <title>kwlew.dev</title>
-
-  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
-
-  <style>
-    /* ===== RESET (keep minimal) ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* ===== BASE ===== */
-    body {
-      font-family: Arial, sans-serif;
-      color: #e6edf3;
-      background: radial-gradient(circle at top, #0d1117, #020617);
-      overflow-x: hidden;
-    }
-
-    .project-actions {
-      margin-top: 15px;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .project-card.active .project-actions {
-      display: block;
-      opacity: 1;
-    }
-
-    /* ===== PARTICLES BACKGROUND ===== */
-    #particles-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -3;
-    }
-
-    /* Glow blobs */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(44,234,37,0.15), transparent 70%);
-      top: -200px;
-      left: -200px;
-      filter: blur(80px);
-      z-index: -2;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(88,166,255,0.15), transparent 70%);
-      bottom: -200px;
-      right: -200px;
-      filter: blur(80px);
-      z-index: -2;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      text-align: center;
-      padding: 100px 20px 60px;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(90deg, #2cea25, #58a6ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      color: #8b949e;
-      margin-top: 10px;
-    }
-
-    .tagline {
-      margin-top: 20px;
-      font-size: 1.2rem;
-      color: #c9d1d9;
-    }
-
-    html, body {
-      min-height: 100%;
-    }
-
-    /* ===== NAVBAR (GLASS) ===== */
-    nav {
-      margin-top: 40px;
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 12px;
-      background: rgba(22, 27, 34, 0.6);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-
-    .nav-link {
-      appearance: none;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      margin: 0 15px;
-      color: #8b949e;
-      font-weight: bold;
-      font-size: 1rem;
-      font-family: inherit;
-      position: relative;
-      transition: all 0.2s ease;
-    }
-
-    .nav-link.active {
-      color: #ffffff;
-    }
-
-    /* Animated underline */
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #2cea25, #58a6ff);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
-    }
-
-    /* ===== SECTIONS ===== */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    /* ===== CARD (GLASS + GLOW) ===== */
-    .card {
-      background: rgba(22, 27, 34, 0.7);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 16px;
-      margin-top: 30px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-      transition: all 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px) scale(1.01);
-      box-shadow: 0 0 40px rgba(44,234,37,0.2);
-    }
-
-    /* ===== DEFAULT BUTTONS ===== */
-    .btn {
-      display: inline-block;
-      margin: 10px 8px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, #2cea25, #1f9dff);
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 15px rgba(44,234,37,0.3);
-    }
-
-    .btn.secondary {
-      background: #30363d;
-      box-shadow: none;
-    }
-
-    .btn:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px rgba(44,234,37,0.6);
-    }
-
-    /* ===== GITHUB BUTTON (INSANE) ===== */
-    .github-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-      position: relative;
-      background: #0d1117;
-      border: 1px solid #30363d;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .github-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Gradient border */
-    .github-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25);
-      -webkit-mask:
-              linear-gradient(#000 0 0) content-box,
-              linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    /* Hover glow */
-    .github-btn:hover {
-      box-shadow: 0 0 25px rgba(88,166,255,0.5);
-    }
-
-    .home-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-
-      padding: 10px 14px;
-      border-radius: 10px;
-
-      background: rgba(22, 27, 34, 0.6);
-      backdrop-filter: blur(10px);
-
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: bold;
-
-      border: 1px solid rgba(255,255,255,0.08);
-
-      transition: all 0.2s ease;
-    }
-
-    /* Hover glow (matches your style) */
-    .home-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(44,234,37,0.5);
-    }
-
-    .instagram-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-
-      padding: 12px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-
-      position: relative;
-      background: #0d1117;
-      border: 1px solid #30363d;
-
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .instagram-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* gradient border */
-    .instagram-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af, #515bd4);
-      -webkit-mask:
-              linear-gradient(#000 0 0) content-box,
-              linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    /* hover glow */
-    .instagram-btn:hover {
-      box-shadow: 0 0 25px rgba(221,42,123,0.5);
-    }
-
-    .modrinth-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-
-      padding: 12px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-
-      position: relative;
-      background: #0d1117;
-      border: 1px solid #30363d;
-
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .modrinth-icon {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .modrinth-btn::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(90deg, #1bd96a, #2cea25, #1bd96a);
-      -webkit-mask:
-              linear-gradient(#000 0 0) content-box,
-              linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    .modrinth-btn:hover {
-      box-shadow: 0 0 25px rgba(27,217,106,0.5);
-    }
-
-    /* ===== PAGE SWITCHING ===== */
-    .page-section {
-      opacity: 0;
-      transform: translateY(20px);
-      visibility: hidden;
-      position: absolute;
-      width: 100%;
-      transition: all 0.4s ease;
-    }
-
-    .rocket {
-      -webkit-text-fill-color: initial;
-      background: none;
-    }
-
-    .page-section.active {
-      opacity: 1;
-      transform: translateY(0);
-      visibility: visible;
-      position: relative;
-    }
-
-    /* Make cards feel clickable */
-    .project-card {
-      cursor: pointer;
-      position: relative;
-    }
-
-    /* Hover effect (stronger feedback) */
-    .project-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 50px rgba(44,234,37,0.35);
-      border: 1px solid rgba(44,234,37,0.3);
-    }
-
-    /* Click feedback */
-    .project-card:active {
-      transform: scale(0.98);
-    }
-
-    /* Optional: subtle indicator arrow */
-    .project-card::after {
-      content: "Click to expand";
-      position: absolute;
-      bottom: 12px;
-      right: 16px;
-      font-size: 0.75rem;
-      color: #8b949e;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .project-card:hover::after {
-      opacity: 1;
-    }
-
-    /* When active */
-    .project-card.active {
-      border: 1px solid rgba(44,234,37,0.6);
-      box-shadow: 0 0 60px rgba(44,234,37,0.4);
-    }
-
-    .project-card:focus-visible,
-    .nav-link:focus-visible,
-    .btn:focus-visible,
-    .github-btn:focus-visible,
-    .instagram-btn:focus-visible,
-    .home-btn:focus-visible {
-      outline: 2px solid #58a6ff;
-      outline-offset: 3px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #8b949e;
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
-
 <body>
-<!-- Hero -->
-<a href="/" class="home-btn" onclick="goHome(event)">⌂</a>
-<header>
   <canvas id="particles-bg"></canvas>
-  <h1>kwlew.dev <span class="rocket">🚀</span></h1>
-  <p class="subtitle">Developer • Robotics Programmer • RoboCup Participant</p>
-  <p class="tagline">Building efficient software & robotics systems</p>
 
-  <nav>
-    <button type="button" class="nav-link" data-section="projects">Projects</button>
-    <button type="button" class="nav-link" data-section="docs">Docs</button>
-    <button type="button" class="nav-link" data-section="contact">Contact</button>
-  </nav>
-</header>
+  <header>
+    <h1>kwlew.dev <span class="emoji">🚀</span></h1>
+    <p class="subtitle">Developer &bull; Robotics Programmer &bull; RoboCup Participant</p>
+    <p class="tagline">Building efficient software &amp; robotics systems</p>
 
-<!-- Projects -->
-<section id="projects" class="page-section" aria-label="Projects">
-  <div class="container">
-    <h2>Projects</h2>
+    <nav aria-label="Main navigation">
+      <button type="button" class="nav-link" data-section="projects">Projects</button>
+      <button type="button" class="nav-link" data-section="docs">Docs</button>
+      <button type="button" class="nav-link" data-section="contact">Contact</button>
+    </nav>
+  </header>
 
-    <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
-      <h3>kSetHome</h3>
-      <p>
-        A high-performance home management plugin designed for flexibility,
-        speed, and clean architecture.
-      </p>
+  <main class="sections-wrapper">
 
-      <div class="project-actions">
-        <a class="btn" href="/plugins/ksethome.html">Plugin Page</a>
-        <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
+    <!-- Projects -->
+    <section id="projects" class="page-section" aria-label="Projects">
+      <div class="container">
+        <h2>Projects</h2>
+
+        <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
+          <h3>kSetHome</h3>
+          <p>A high-performance home management plugin designed for flexibility, speed, and clean architecture.</p>
+          <span class="expand-hint"></span>
+          <div class="project-actions">
+            <a class="btn" href="/plugins/ksethome.html">Plugin Page</a>
+            <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
+          </div>
+        </div>
+
+        <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
+          <h3>Robotics</h3>
+          <p>Robotics projects, RoboCup participation, and autonomous systems.</p>
+          <span class="expand-hint"></span>
+          <div class="project-actions">
+            <a class="btn" href="/robotics.html">See More</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="card project-card" data-project-card tabindex="0" role="button" aria-expanded="false">
-      <h3>Robotics</h3>
-      <p>
-        Robotics projects, RoboCup participation, and autonomous systems.
-      </p>
+    <!-- Documentation -->
+    <section id="docs" class="page-section" aria-label="Documentation">
+      <div class="container">
+        <h2>Documentation</h2>
+        <p class="section-desc">Setup guides, configuration help, and troubleshooting.</p>
 
-      <div class="project-actions">
-        <a class="btn" href="/robotics.html">See More</a>
+        <div class="card">
+          <h3>kSetHome Docs</h3>
+          <p>Plugin setup, commands, permissions, and configuration reference.</p>
+          <div style="margin-top: 16px;">
+            <a class="btn" href="/docs/ksethome.html">Open Docs</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
+    <!-- Contact -->
+    <section id="contact" class="page-section" aria-label="Contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-desc">Find me on social media and coding platforms.</p>
 
-<!-- Documentation -->
-<section id="docs" class="page-section" aria-label="Documentation">
-  <div class="container">
-    <h2>Documentation</h2>
-    <p>Setup guides, configuration help, and troubleshooting.</p>
+        <div class="socials">
+          <a href="https://github.com/kwlew" class="social-btn github-btn" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56
+0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67
+-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25
+3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66
+0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31
+3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39
+2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17
+.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65
+.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11
+0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12
+C23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
 
-    <div class="card">
-      <h3>kSetHome Docs</h3>
-      <a class="btn" href="/docs/ksethome.html">Open Docs</a>
-    </div>
-  </div>
-</section>
+          <a href="https://instagram.com/kaleo.sm" class="social-btn instagram-btn" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
+0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
+0 3 1.34 3 3v10c0 1.66-1.34 3-3
+3H7c-1.66 0-3-1.34-3-3V7c0-1.66
+1.34-3 3-3h10zm-5 3a5 5 0 100
+10 5 5 0 000-10zm0 2a3 3 0 110
+6 3 3 0 010-6zm4.5-2.75a1.25
+1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+            </svg>
+            <span>Instagram</span>
+          </a>
 
-<!-- Contact -->
-<section id="contact" class="page-section" aria-label="Contact">
-  <div class="container">
-    <h2>Contact</h2>
-    <p>
-      <a href="https://github.com/kwlew" class="github-btn" target="_blank" rel="noopener noreferrer">
-        <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56
-    0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67
-    -1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25
-    3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66
-    0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31
-    3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39
-    2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17
-    .75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65
-    .41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11
-    0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12
-    C23.5 5.65 18.35.5 12 .5z"/>
-        </svg>
+          <a href="https://modrinth.com/user/kwlew" class="social-btn modrinth-btn" target="_blank" rel="noopener noreferrer">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/>
+            </svg>
+            <span>Modrinth</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        <span>GitHub</span>
-      </a>
-      <a href="https://instagram.com/kaleo.sm" class="instagram-btn" target="_blank" rel="noopener noreferrer">
-        <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
-    0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
-    0 3 1.34 3 3v10c0 1.66-1.34 3-3
-    3H7c-1.66 0-3-1.34-3-3V7c0-1.66
-    1.34-3 3-3h10zm-5 3a5 5 0 100
-    10 5 5 0 000-10zm0 2a3 3 0 110
-    6 3 3 0 010-6zm4.5-2.75a1.25
-    1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
-        </svg>
+  </main>
 
-        <span>Instagram</span>
-      </a>
-      <a href="https://modrinth.com/user/kwlew" class="modrinth-btn" target="_blank" rel="noopener noreferrer">
-        <svg class="modrinth-icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <title>Modrinth</title>
-          <path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/>
-        </svg>
+  <footer>
+    <p>&copy; 2026 kwlew.dev</p>
+  </footer>
 
-        <span>Modrinth</span>
-      </a>
-    </p>
-  </div>
+  <script src="/assets/js/particles.js"></script>
+  <script>
+    const sections    = document.querySelectorAll('.page-section');
+    const navLinks    = document.querySelectorAll('.nav-link');
+    const projectCards = document.querySelectorAll('[data-project-card]');
 
-</section>
+    const VALID = ["projects", "docs", "contact"];
 
-<footer>
-  <p>© 2026 kwlew.dev</p>
-</footer>
+    function showSection(id) {
+      const safeId = VALID.includes(id) ? id : "projects";
 
-<script>
-  const sections = document.querySelectorAll('.page-section');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const projectCards = document.querySelectorAll('[data-project-card]');
+      sections.forEach(s => s.classList.toggle('active', s.id === safeId));
+      navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === safeId));
 
-  function showSection(id) {
-    const safeId = ["projects", "docs", "contact"].includes(id) ? id : "projects";
+      if (window.location.hash !== `#${safeId}`) {
+        history.replaceState(null, "", `#${safeId}`);
+      }
+    }
 
-    sections.forEach(section => {
-      section.classList.toggle('active', section.id === safeId);
-    });
+    function toggleProject(card) {
+      const wasActive = card.classList.contains('active');
+
+      projectCards.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!wasActive) {
+        card.classList.add('active');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }
 
     navLinks.forEach(link => {
-      link.classList.toggle('active', link.dataset.section === safeId);
+      link.addEventListener('click', () => showSection(link.dataset.section));
     });
 
-    if (window.location.hash !== `#${safeId}`) {
-      history.replaceState(null, "", `#${safeId}`);
-    }
-  }
-
-  function toggleProject(card) {
-    projectCards.forEach(otherCard => {
-      if (otherCard !== card) {
-        otherCard.classList.remove("active");
-        otherCard.setAttribute("aria-expanded", "false");
-      }
+    projectCards.forEach(card => {
+      card.addEventListener('click', () => toggleProject(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleProject(card);
+        }
+      });
     });
 
-    const isActive = card.classList.toggle("active");
-    card.setAttribute("aria-expanded", String(isActive));
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      showSection(link.dataset.section);
-    });
-  });
-
-  projectCards.forEach(card => {
-    card.addEventListener("click", () => {
-      toggleProject(card);
+    document.querySelectorAll('.project-actions a').forEach(link => {
+      link.addEventListener('click', e => e.stopPropagation());
     });
 
-    card.addEventListener("keydown", event => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggleProject(card);
-      }
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection(window.location.hash.replace('#', '') || 'projects');
     });
-  });
-
-  document.querySelectorAll(".project-actions a").forEach(link => {
-    link.addEventListener("click", event => {
-      event.stopPropagation();
-    });
-  });
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const initialSection = window.location.hash.replace("#", "") || "projects";
-    showSection(initialSection);
-  });
-
-  function goHome(e) {
-    if (window.location.pathname === "/" || window.location.pathname.includes("index")) {
-      e.preventDefault();
-      showSection("projects");
-    }
-  }
-</script>
-
-<script src="/assets/js/particles.js"></script>
-
+  </script>
 </body>
 </html>
