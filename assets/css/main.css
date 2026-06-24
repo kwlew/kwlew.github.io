@@ -30,16 +30,17 @@
 }
 
 /* ===== BASE ===== */
-html, body {
+html {
   min-height: 100%;
+  background: radial-gradient(circle at top, var(--c-bg), var(--c-bg-deep));
 }
 
 body {
+  min-height: 100%;
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.65;
   color: var(--c-text);
-  background: radial-gradient(circle at top, var(--c-bg), var(--c-bg-deep));
   overflow-x: hidden;
 }
 
@@ -236,6 +237,7 @@ nav {
 /* ===== SECTIONS WRAPPER ===== */
 .sections-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 /* ===== PAGE SECTIONS ===== */
@@ -385,6 +387,30 @@ nav {
   background: rgba(255, 255, 255, 0.04);
   border-color: var(--c-border-dark);
   color: var(--c-text-muted);
+}
+
+.tag.red {
+  background: rgba(255, 0, 0, 0.07);
+  border-color: rgba(255, 0, 0, 0.2);
+  color: #ff4d4d;
+}
+
+.tag.cyan {
+  background: rgba(0, 255, 255, 0.07);
+  border-color: rgba(0, 255, 255, 0.2);
+  color: #00ffff;
+}
+
+.tag.gold {
+  background: rgba(255, 215, 0, 0.07);
+  border-color: rgba(255, 215, 0, 0.2);
+  color: #ffbb00;
+}
+
+.tag.white {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 /* ===== PROJECT LINKS ===== */
