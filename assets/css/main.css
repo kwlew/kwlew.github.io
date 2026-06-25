@@ -489,6 +489,9 @@ nav {
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
 }
@@ -546,6 +549,9 @@ nav {
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
 }
@@ -578,6 +584,19 @@ nav {
 
 .contact-modrinth::before  { background: linear-gradient(90deg, #1bd96a, #2cea25, #1bd96a); }
 .contact-modrinth:hover    { box-shadow: 0 0 24px rgba(27, 217, 106, 0.4); transform: translateY(-4px); }
+
+.contact-codeforces::before { background: linear-gradient(90deg, #1f8dd6, #e84d3d, #1f8dd6); }
+.contact-codeforces:hover   { box-shadow: 0 0 24px rgba(232, 77, 61, 0.4); transform: translateY(-4px); }
+
+.contact-leetcode::before  { background: linear-gradient(90deg, #ffa116, #f0a500, #ffa116); }
+.contact-leetcode:hover    { box-shadow: 0 0 24px rgba(255, 161, 22, 0.4); transform: translateY(-4px); }
+
+.contact-neps::before      { background: linear-gradient(90deg, #4a90d9, #1a6fb5, #4a90d9); }
+.contact-neps:hover        { box-shadow: 0 0 24px rgba(74, 144, 217, 0.4); transform: translateY(-4px); }
+
+.contact-discord::before   { background: linear-gradient(90deg, #5865f2, #7289da, #5865f2); }
+.contact-discord:hover     { box-shadow: 0 0 24px rgba(88, 101, 242, 0.4); transform: translateY(-4px); }
+.contact-discord           { opacity: 0.6; cursor: default; pointer-events: none; }
 
 /* ===== INLINE CODE ===== */
 code {
@@ -626,6 +645,160 @@ pre {
   text-decoration: underline;
 }
 
+/* ===== MEDAL SUMMARY ===== */
+.medal-summary {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.medal-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 12px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  backdrop-filter: blur(10px);
+}
+
+.medal-summary-count {
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.medal-summary-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.medal-summary-item.national { border-color: rgba(255, 255, 255, 1.0); }
+.medal-summary-item.national .medal-summary-count { color: #00eeff; }
+.medal-summary-item.national .medal-summary-label { color: #75cac0; }
+
+.medal-summary-item.gold { border-color: rgba(255, 215, 0, 0.18); }
+.medal-summary-item.gold .medal-summary-count { color: #ffcc00; }
+.medal-summary-item.gold .medal-summary-label { color: #ffcc00; }
+
+.medal-summary-item.silver { border-color: rgba(192, 192, 192, 0.18); }
+.medal-summary-item.silver .medal-summary-count { color: #c8c8c8; }
+.medal-summary-item.silver .medal-summary-label { color: #c8c8c8; }
+
+.medal-summary-item.bronze { border-color: rgba(205, 127, 50, 0.18); }
+.medal-summary-item.bronze .medal-summary-count { color: #cd7f32; }
+.medal-summary-item.bronze .medal-summary-label { color: #cd7f32; }
+
+/* ===== ACHIEVEMENTS GRID ===== */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.achievement-wide {
+  grid-column: 1 / -1;
+}
+
+.achievement-wide .medal-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 32px;
+  margin-top: 16px;
+}
+
+.achievement-acronym {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.achievement-subtitle {
+  font-size: 0.75rem;
+  color: var(--c-text-muted);
+  margin-top: 2px;
+}
+
+/* ===== MEDAL LIST ===== */
+.medal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.medal-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.medal-year {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--c-text-secondary);
+  min-width: 36px;
+}
+
+.medal-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.medal-badge.gold {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  color: #ffcc00;
+}
+
+.medal-badge.silver {
+  background: rgba(192, 192, 192, 0.1);
+  border: 1px solid rgba(192, 192, 192, 0.28);
+  color: #c8c8c8;
+}
+
+.medal-badge.bronze {
+  background: rgba(205, 127, 50, 0.1);
+  border: 1px solid rgba(205, 127, 50, 0.28);
+  color: #cd7f32;
+}
+
+.medal-badge.lost {
+  background: rgba(255, 0, 0, 0.08);
+  border: 1px solid rgba(255, 0, 0, 0.22);
+  color: #ff5555;
+}
+
+.medal-badge.phase {
+  background: rgba(88, 166, 255, 0.08);
+  border: 1px solid rgba(88, 166, 255, 0.22);
+  color: var(--c-blue);
+}
+
+.medal-badge.participant {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--c-text-muted);
+}
+
+.medal-entry-label {
+  flex: 1;
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  min-width: 0;
+}
+
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
@@ -671,7 +844,12 @@ footer {
     padding: 32px 0 60px;
   }
 
-  .contact-grid {
+  .contact-grid,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-wide .medal-list {
     grid-template-columns: 1fr;
   }
 
