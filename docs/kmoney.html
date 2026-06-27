@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="kMoney documentation — commands, permissions, money checks, storage, sounds, PlaceholderAPI, and configuration reference." />
+  <title>kMoney Docs &bull; kwlew.dev</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=3">
+  <style>
+    .cmd-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+
+    .cmd-table th {
+      color: var(--c-text-muted);
+      font-weight: 600;
+      padding: 8px 12px 8px 0;
+      border-bottom: 1px solid var(--c-border-dark);
+      white-space: nowrap;
+    }
+
+    .cmd-table td {
+      padding: 9px 12px 9px 0;
+      color: var(--c-text-secondary);
+      border-bottom: 1px solid var(--c-border);
+      vertical-align: top;
+    }
+
+    .cmd-table td:first-child {
+      color: var(--c-text);
+      font-family: "Fira Code", "Cascadia Code", Consolas, monospace;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      padding-right: 20px;
+    }
+
+    .cmd-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .perm-default {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .perm-default.everyone {
+      background: rgba(44, 234, 37, 0.08);
+      border: 1px solid rgba(44, 234, 37, 0.22);
+      color: #2cea25;
+    }
+
+    .perm-default.op {
+      background: rgba(255, 161, 22, 0.08);
+      border: 1px solid rgba(255, 161, 22, 0.22);
+      color: #ffa116;
+    }
+
+    .section-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .section-nav a {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--c-text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--c-border-dark);
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .section-nav a:hover {
+      color: var(--c-text);
+      border-color: rgba(44, 234, 37, 0.3);
+    }
+
+    @media (max-width: 640px) {
+      .cmd-table th:nth-child(3),
+      .cmd-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles-bg"></canvas>
+  <a href="/" class="home-btn" title="Home">&#8962;</a>
+
+  <header>
+    <h1>kMoney Docs <span class="emoji">📖</span></h1>
+    <p class="subtitle">Complete reference for commands, permissions, and configuration</p>
+  </header>
+
+  <div class="action-bar">
+    <a class="btn" href="/plugins/kmoney.html">Plugin Page</a>
+    <a class="btn secondary" href="https://github.com/kwlew/kMoney" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </div>
+
+  <main class="container" style="padding-bottom: 20px;">
+
+    <div class="card">
+      <h2>Contents</h2>
+      <div class="section-nav">
+        <a href="#commands">Commands</a>
+        <a href="#amounts">Amount Format</a>
+        <a href="#permissions">Permissions</a>
+        <a href="#checks">Money Checks</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#storage">Storage</a>
+        <a href="#sounds">Sounds</a>
+        <a href="#messages">Messages</a>
+        <a href="#papi">PlaceholderAPI</a>
+        <a href="#vault">Vault</a>
+        <a href="#admin">Admin Notifications</a>
+        <a href="#config">Config Files</a>
+      </div>
+    </div>
+
+    <div class="card" id="commands">
+      <h2>Commands</h2>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:8px;">All subcommands are under <code>/money</code>. The root command <code>/balance</code> is an alias for <code>/money</code>.</p>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Permission</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>/money</td>
+            <td>Show your own balance</td>
+            <td><code>kmoney.command.money</code></td>
+          </tr>
+          <tr>
+            <td>/money balance</td>
+            <td>Show your own balance</td>
+            <td><code>kmoney.command.money</code></td>
+          </tr>
+          <tr>
+            <td>/money balance &lt;player&gt;</td>
+            <td>Show another player's balance</td>
+            <td><code>kmoney.command.money</code></td>
+          </tr>
+          <tr>
+            <td>/money pay &lt;player&gt; &lt;amount&gt;</td>
+            <td>Send money to another player</td>
+            <td><code>kmoney.command.money.pay</code></td>
+          </tr>
+          <tr>
+            <td>/money top [page]</td>
+            <td>Show the richest players (10 per page)</td>
+            <td><code>kmoney.command.money.top</code></td>
+          </tr>
+          <tr>
+            <td>/money withdraw &lt;amount|all&gt; [notes]</td>
+            <td>Convert balance into a physical money check item</td>
+            <td><code>kmoney.command.money.withdraw</code></td>
+          </tr>
+          <tr>
+            <td>/money add &lt;player&gt; &lt;amount&gt;</td>
+            <td>Add money to a player's balance</td>
+            <td><code>kmoney.command.money.add</code></td>
+          </tr>
+          <tr>
+            <td>/money remove &lt;player&gt; &lt;amount|all&gt;</td>
+            <td>Remove money from a player's balance</td>
+            <td><code>kmoney.command.money.remove</code></td>
+          </tr>
+          <tr>
+            <td>/money set &lt;player&gt; &lt;amount&gt;</td>
+            <td>Set a player's balance to an exact value</td>
+            <td><code>kmoney.command.money.set</code></td>
+          </tr>
+          <tr>
+            <td>/money admin &lt;on|off&gt;</td>
+            <td>Toggle your own admin join notification</td>
+            <td><code>kmoney.command.money.admin</code></td>
+          </tr>
+          <tr>
+            <td>/money reload</td>
+            <td>Reload all configuration files live</td>
+            <td><code>kmoney.command.money.reload</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="amounts">
+      <h2>Amount Format</h2>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:8px;">All amount arguments accept shorthand suffixes (case-insensitive). Comma-separated numbers are also accepted. The keyword <code>all</code> is supported by <code>/money remove</code> and <code>/money withdraw</code>.</p>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Input</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>100</td><td>100</td></tr>
+          <tr><td>1k</td><td>1,000</td></tr>
+          <tr><td>1m</td><td>1,000,000</td></tr>
+          <tr><td>1b</td><td>1,000,000,000</td></tr>
+          <tr><td>1t</td><td>1e12</td></tr>
+          <tr><td>1q</td><td>1e15</td></tr>
+          <tr><td>&hellip;</td><td>up to <code>tvg</code> = 1e72</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="permissions">
+      <h2>Permissions</h2>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>kmoney.command.money</td>
+            <td><span class="perm-default everyone">everyone</span></td>
+            <td>Balance checks</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.pay</td>
+            <td><span class="perm-default everyone">everyone</span></td>
+            <td>Pay other players</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.top</td>
+            <td><span class="perm-default everyone">everyone</span></td>
+            <td>View rich list</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.withdraw</td>
+            <td><span class="perm-default everyone">everyone</span></td>
+            <td>Create money checks</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.add</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Add money to players</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.remove</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Remove money from players</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.set</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Set player balances</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.admin</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Toggle admin join message</td>
+          </tr>
+          <tr>
+            <td>kmoney.command.money.reload</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Reload configuration</td>
+          </tr>
+          <tr>
+            <td>kmoney.admin</td>
+            <td><span class="perm-default op">op</span></td>
+            <td>Grants all of the above</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="checks">
+      <h2>Money Checks</h2>
+      <ul>
+        <li>A money check is a physical in-game item (default: Paper) representing a fixed monetary value.</li>
+        <li>Players use <code>/money withdraw</code> to convert balance into checks; right-clicking a check claims its value.</li>
+        <li>The item material is configurable via <code>check-material</code> in <code>config.yml</code>.</li>
+        <li><code>/money withdraw &lt;amount&gt; &lt;notes&gt;</code> creates a stack of up to 64 checks, each worth <code>amount</code>. Total cost is <code>amount &times; notes</code>.</li>
+        <li>Item lore shows the per-note value and the creator's name.</li>
+        <li>Checks are protected against duplication through hoppers, villager trades, and piglin bartering.</li>
+      </ul>
+    </div>
+
+    <div class="card" id="leaderboard">
+      <h2>Leaderboard</h2>
+      <ul>
+        <li>The rich list is built asynchronously and cached in memory &mdash; <code>/money top</code> is always instant regardless of server size.</li>
+        <li>Results are paginated at 10 entries per page.</li>
+        <li>Cache refresh interval is set by <code>top-update-interval-seconds</code> in <code>config.yml</code> (default: 300 s).</li>
+        <li>The interval is re-applied immediately on <code>/money reload</code>.</li>
+        <li>Before each refresh, all pending balance changes are flushed to disk so the leaderboard reflects up-to-date data.</li>
+      </ul>
+    </div>
+
+    <div class="card" id="storage">
+      <h2>Storage</h2>
+      <ul>
+        <li>Balances are stored as individual YAML files at <code>plugins/kMoney/players/&lt;uuid&gt;.yml</code>.</li>
+        <li>The economy manager keeps an in-memory write-back cache: reads hit the cache first; a miss loads from disk and populates the cache.</li>
+        <li>Writes go to the cache and mark the entry dirty.</li>
+        <li>Dirty entries are flushed to disk every 30 seconds via an async autosave task.</li>
+        <li>All dirty entries are also flushed synchronously on plugin shutdown.</li>
+        <li>Balances can never go negative &mdash; <code>removeBalance</code> clamps at zero.</li>
+      </ul>
+    </div>
+
+    <div class="card" id="sounds">
+      <h2>Sounds</h2>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:8px;">Every economy action plays a configurable sound. All sounds are defined in <code>sounds.yml</code>. Each entry supports <code>enabled</code>, <code>sound</code>, <code>pitch</code> (0.1&ndash;2.0), and <code>volume</code>. The entire system can be disabled by setting <code>enabled: false</code> at the top of <code>sounds.yml</code>.</p>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Default Sound</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>pay</td><td><code>block.note_block.pling</code></td></tr>
+          <tr><td>add</td><td><code>block.note_block.chime</code></td></tr>
+          <tr><td>set</td><td><code>block.note_block.pling</code></td></tr>
+          <tr><td>remove</td><td><code>block.note_block.chime</code></td></tr>
+          <tr><td>withdraw</td><td><code>entity.item.pickup</code></td></tr>
+          <tr><td>redeem (claim check)</td><td><code>entity.player.levelup</code></td></tr>
+          <tr><td>top</td><td><code>block.note_block.pling</code></td></tr>
+          <tr><td>reload</td><td><code>entity.player.levelup</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="messages">
+      <h2>Messages &amp; Formatting</h2>
+      <ul>
+        <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" style="color:var(--c-blue);">MiniMessage</a> format.</li>
+        <li>Every message automatically receives the global <code>prefix</code>.</li>
+        <li>Item lore (check name/value) uses raw messages without the prefix.</li>
+        <li>Setting <code>small-font: true</code> in <code>messages.yml</code> replaces all standard Latin characters with Unicode small-caps equivalents &mdash; a stylised look without a resource pack.</li>
+      </ul>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:14px;">Formatted amounts use small-caps Unicode suffixes:</p>
+      <pre style="margin-top:8px;">ᴋ M ʙ ᴛ ǫ ǫǫ ѕ ѕѕ ᴏᴄ ɴᴏ ᴅᴄ ᴜᴅᴄ … up to ᴛᴠɢ (1e72)</pre>
+    </div>
+
+    <div class="card" id="papi">
+      <h2>PlaceholderAPI</h2>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:8px;">When PlaceholderAPI is installed, the following placeholders are available:</p>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>Placeholder</th>
+            <th>Returns</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>%kMoney_balance%</td>
+            <td>Raw balance (no symbol, no suffix)</td>
+          </tr>
+          <tr>
+            <td>%kMoney_balance_formatted%</td>
+            <td>Formatted balance with symbol and suffix</td>
+          </tr>
+          <tr>
+            <td>%kMoney_symbol%</td>
+            <td>The configured currency symbol</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" id="vault">
+      <h2>Vault</h2>
+      <ul>
+        <li>kMoney registers itself as a Vault Economy provider.</li>
+        <li>Any plugin that uses the Vault Economy API will automatically use kMoney's balances.</li>
+        <li>Bank operations are not supported.</li>
+      </ul>
+    </div>
+
+    <div class="card" id="admin">
+      <h2>Admin Join Notifications</h2>
+      <ul>
+        <li>Operators with <code>kmoney.admin</code> receive a brief status message on join.</li>
+        <li>If the running version matches the latest release on Modrinth: a confirmation message with a GitHub link.</li>
+        <li>If a newer version is available: an update notice with a clickable Modrinth download link.</li>
+        <li>Each admin can disable this for themselves with <code>/money admin off</code>.</li>
+      </ul>
+    </div>
+
+    <div class="card" id="config">
+      <h2>Configuration Files</h2>
+      <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:8px;">All three files are reloaded live with <code>/money reload</code>.</p>
+      <table class="cmd-table">
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>config.yml</td>
+            <td>Currency symbol, check material, default balance, leaderboard interval, join-message and update-warning toggles</td>
+          </tr>
+          <tr>
+            <td>messages.yml</td>
+            <td>All player-facing text, prefix, small-font toggle</td>
+          </tr>
+          <tr>
+            <td>sounds.yml</td>
+            <td>Per-event sound keys, pitch, volume, and enable flags</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 kwlew.dev</p>
+  </footer>
+
+  <script src="/assets/js/particles.js?v=2"></script>
+</body>
+</html>

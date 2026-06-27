@@ -20,6 +20,13 @@
   --radius-card: 16px;
   --radius-btn: 10px;
   --radius-social: 12px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 0.18s;
+  --t-med: 0.32s;
+  --t-slow: 0.55s;
 }
 
 /* ===== RESET ===== */
@@ -33,6 +40,7 @@
 html {
   min-height: 100%;
   background: radial-gradient(circle at top, var(--c-bg), var(--c-bg-deep));
+  scroll-behavior: smooth;
 }
 
 body {
@@ -42,6 +50,14 @@ body {
   line-height: 1.65;
   color: var(--c-text);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Anchored sections (e.g. docs nav) clear the fixed header offset */
+[id] {
+  scroll-margin-top: 90px;
 }
 
 /* ===== PARTICLES BACKGROUND ===== */
@@ -96,13 +112,16 @@ body::after {
   text-decoration: none;
   font-weight: bold;
   border: 1px solid var(--c-border-faint);
-  transition: all 0.2s ease;
+  transition: transform var(--t-fast) var(--ease-out),
+              box-shadow var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) var(--ease-out);
   line-height: 1;
 }
 
 .home-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(44, 234, 37, 0.5);
+  transform: scale(1.06);
+  border-color: rgba(44, 234, 37, 0.3);
+  box-shadow: 0 0 20px rgba(44, 234, 37, 0.45);
 }
 
 /* ===== HEADER ===== */
@@ -110,6 +129,22 @@ header {
   text-align: center;
   padding: 96px 20px 56px;
 }
+
+/* Staggered entrance for the hero on first paint */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+header > * {
+  animation: rise-in 0.7s var(--ease-out) both;
+}
+
+header .status-pill { animation-delay: 0.05s; }
+header h1           { animation-delay: 0.13s; }
+header .subtitle    { animation-delay: 0.21s; }
+header .tagline     { animation-delay: 0.29s; }
+header nav          { animation-delay: 0.37s; }
 
 /* ===== STATUS PILL ===== */
 .status-pill {
@@ -203,7 +238,8 @@ nav {
   font-size: 0.875rem;
   font-family: inherit;
   position: relative;
-  transition: all 0.2s ease;
+  transition: color var(--t-fast) var(--ease-smooth),
+              background-color var(--t-fast) var(--ease-smooth);
 }
 
 .nav-link:hover {
@@ -248,8 +284,7 @@ nav {
   width: 100%;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(14px);
-  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+  transition: opacity var(--t-med) var(--ease-smooth), visibility var(--t-med);
   pointer-events: none;
   padding: 52px 0 80px;
 }
@@ -258,9 +293,48 @@ nav {
   position: relative;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
   pointer-events: auto;
 }
+
+/* Content rises and fades in, staggered, each time a section is shown */
+@keyframes section-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-section.active > .container > *:not(.achievements-grid):not(.contact-grid) {
+  animation: section-enter 0.5s var(--ease-out) backwards;
+}
+
+.page-section.active > .container > *:nth-child(1) { animation-delay: 0.04s; }
+.page-section.active > .container > *:nth-child(2) { animation-delay: 0.10s; }
+.page-section.active > .container > *:nth-child(3) { animation-delay: 0.16s; }
+.page-section.active > .container > *:nth-child(4) { animation-delay: 0.22s; }
+.page-section.active > .container > *:nth-child(5) { animation-delay: 0.28s; }
+.page-section.active > .container > *:nth-child(n+6) { animation-delay: 0.32s; }
+
+/* Grids stagger their own items rather than animating as one block */
+.page-section.active .achievements-grid > .card,
+.page-section.active .contact-grid > * {
+  animation: section-enter 0.5s var(--ease-out) backwards;
+}
+
+.page-section.active .achievements-grid > .card:nth-child(1),
+.page-section.active .contact-grid > *:nth-child(1) { animation-delay: 0.16s; }
+.page-section.active .achievements-grid > .card:nth-child(2),
+.page-section.active .contact-grid > *:nth-child(2) { animation-delay: 0.21s; }
+.page-section.active .achievements-grid > .card:nth-child(3),
+.page-section.active .contact-grid > *:nth-child(3) { animation-delay: 0.26s; }
+.page-section.active .achievements-grid > .card:nth-child(4),
+.page-section.active .contact-grid > *:nth-child(4) { animation-delay: 0.31s; }
+.page-section.active .achievements-grid > .card:nth-child(5),
+.page-section.active .contact-grid > *:nth-child(5) { animation-delay: 0.36s; }
+.page-section.active .achievements-grid > .card:nth-child(6),
+.page-section.active .contact-grid > *:nth-child(6) { animation-delay: 0.41s; }
+.page-section.active .achievements-grid > .card:nth-child(7),
+.page-section.active .contact-grid > *:nth-child(7) { animation-delay: 0.46s; }
+.page-section.active .achievements-grid > .card:nth-child(n+8),
+.page-section.active .contact-grid > *:nth-child(n+8) { animation-delay: 0.50s; }
 
 /* ===== SECTION HEADINGS ===== */
 .page-section > .container > h2 {
@@ -304,13 +378,15 @@ nav {
   margin-top: 20px;
   border: 1px solid var(--c-border);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform var(--t-med) var(--ease-out),
+              box-shadow var(--t-med) var(--ease-out),
+              border-color var(--t-med) var(--ease-out);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(44, 234, 37, 0.12);
-  border-color: rgba(44, 234, 37, 0.14);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 38px rgba(44, 234, 37, 0.12);
+  border-color: rgba(44, 234, 37, 0.18);
 }
 
 .card h2,
@@ -330,13 +406,15 @@ nav {
 
 /* ===== PROJECT CARD ===== */
 .project-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform var(--t-med) var(--ease-out),
+              box-shadow var(--t-med) var(--ease-out),
+              border-color var(--t-med) var(--ease-out);
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 14px 50px rgba(44, 234, 37, 0.18);
-  border-color: rgba(44, 234, 37, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 48px rgba(44, 234, 37, 0.18);
+  border-color: rgba(44, 234, 37, 0.22);
 }
 
 /* ===== PROJECT META ROW ===== */
@@ -436,7 +514,9 @@ nav {
   font-size: 0.875rem;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--t-fast) var(--ease-out),
+              box-shadow var(--t-fast) var(--ease-out),
+              filter var(--t-fast) var(--ease-out);
   box-shadow: 0 0 16px rgba(44, 234, 37, 0.28);
 }
 
@@ -446,13 +526,18 @@ nav {
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 26px rgba(44, 234, 37, 0.52);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(44, 234, 37, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn.secondary:hover {
-  box-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  filter: brightness(1.15);
 }
 
 /* ===== ACTION BAR (centered button group) ===== */
@@ -476,7 +561,8 @@ nav {
   position: relative;
   background: var(--c-dark);
   border: 1px solid var(--c-border-dark);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform var(--t-fast) var(--ease-out),
+              box-shadow var(--t-fast) var(--ease-out);
 }
 
 .social-btn::before {
@@ -536,7 +622,8 @@ nav {
   position: relative;
   background: var(--c-dark);
   border: 1px solid var(--c-border-dark);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  transition: transform var(--t-med) var(--ease-out),
+              box-shadow var(--t-med) var(--ease-out);
 }
 
 .contact-card::before {
@@ -662,6 +749,13 @@ pre {
   background: var(--c-surface);
   border: 1px solid var(--c-border);
   backdrop-filter: blur(10px);
+  transition: transform var(--t-med) var(--ease-out),
+              box-shadow var(--t-med) var(--ease-out);
+}
+
+.medal-summary-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .medal-summary-count {
@@ -860,5 +954,20 @@ footer {
 
   .project-meta {
     flex-direction: column;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
   }
 }
