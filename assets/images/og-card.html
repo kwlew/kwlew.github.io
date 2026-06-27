@@ -1,0 +1,171 @@
+<!--
+  HOW TO GENERATE og-image.png FROM THIS FILE
+  ============================================
+  1. Open this file in Chrome (File > Open, or drag it in)
+  2. Open DevTools (F12) → click the device-toolbar icon (Ctrl+Shift+M)
+  3. Set the dimensions to exactly 1200 × 630 in the toolbar at the top
+  4. Close DevTools
+  5. Right-click the page → "Save as..." or use DevTools > More tools >
+     Capture screenshot (in the three-dot menu inside DevTools)
+  6. Save the result as: assets/images/og-image.png
+  7. Push the PNG to the repository — the OG meta tags already reference it
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #0d1117;
+      font-family: 'Inter', system-ui, -apple-system, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Glow blobs */
+    .blob-green {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(44,234,37,0.18), transparent 70%);
+      top: -150px;
+      left: -150px;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .blob-blue {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(88,166,255,0.18), transparent 70%);
+      bottom: -150px;
+      right: -150px;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(22, 27, 34, 0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 60px 72px;
+      width: 960px;
+      backdrop-filter: blur(10px);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(44,234,37,0.07);
+      border: 1px solid rgba(44,234,37,0.22);
+      color: #2cea25;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2cea25;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: linear-gradient(90deg, #2cea25, #58a6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+      color: #8b949e;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .tag-green {
+      background: rgba(44,234,37,0.07);
+      border: 1px solid rgba(44,234,37,0.25);
+      color: #2cea25;
+    }
+
+    .tag-blue {
+      background: rgba(88,166,255,0.07);
+      border: 1px solid rgba(88,166,255,0.25);
+      color: #58a6ff;
+    }
+
+    .tag-cyan {
+      background: rgba(0,255,255,0.07);
+      border: 1px solid rgba(0,255,255,0.25);
+      color: #00ffff;
+    }
+
+    .url {
+      margin-top: 36px;
+      font-size: 18px;
+      color: rgba(139,148,158,0.6);
+      letter-spacing: 0.02em;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="blob-green"></div>
+  <div class="blob-blue"></div>
+
+  <div class="card">
+    <div class="status">
+      <div class="dot"></div>
+      Active Developer
+    </div>
+    <h1>kwlew.dev</h1>
+    <p class="subtitle">Backend Developer &bull; Robotics Programmer &bull; RoboCup Contestant</p>
+    <div class="tags">
+      <span class="tag tag-green">Java</span>
+      <span class="tag tag-green">Minecraft Plugins</span>
+      <span class="tag tag-cyan">Embedded Systems</span>
+      <span class="tag tag-cyan">Robotics</span>
+      <span class="tag tag-blue">Competitive Programming</span>
+    </div>
+    <p class="url">kwlew.dev</p>
+  </div>
+</body>
+</html>

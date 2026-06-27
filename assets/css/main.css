@@ -302,7 +302,7 @@ nav {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.page-section.active > .container > *:not(.achievements-grid):not(.contact-grid) {
+.page-section.active > .container > *:not(.achievements-grid):not(.contact-grid):not(.ach-panel) {
   animation: section-enter 0.5s var(--ease-out) backwards;
 }
 
@@ -335,6 +335,91 @@ nav {
 .page-section.active .contact-grid > *:nth-child(7) { animation-delay: 0.46s; }
 .page-section.active .achievements-grid > .card:nth-child(n+8),
 .page-section.active .contact-grid > *:nth-child(n+8) { animation-delay: 0.50s; }
+
+/* ===== ACHIEVEMENT INNER TABS ===== */
+.ach-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 12px;
+  background: var(--c-surface-nav);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--c-border-faint);
+  margin-top: 20px;
+  animation: section-enter 0.5s var(--ease-out) 0.16s backwards;
+}
+
+.ach-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 8px;
+  color: var(--c-text-muted);
+  font-weight: 600;
+  font-size: 0.82rem;
+  font-family: inherit;
+  position: relative;
+  transition: color var(--t-fast) var(--ease-smooth),
+              background-color var(--t-fast) var(--ease-smooth);
+}
+
+.ach-tab:hover {
+  color: var(--c-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ach-tab.active {
+  color: var(--c-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ach-tab::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 3px;
+  height: 2px;
+  background: var(--gradient-brand);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.ach-tab.active::after {
+  transform: scaleX(1);
+}
+
+/* Panel visibility — JS toggles [hidden] */
+.ach-panel[hidden] {
+  display: none;
+}
+
+/* Animation when switching panels */
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ach-panel.panel-entering > *,
+.ach-panel.panel-entering .achievements-grid > .card {
+  animation: panel-in 0.4s var(--ease-out) backwards;
+}
+
+.ach-panel.panel-entering > *:nth-child(1) { animation-delay: 0.00s; }
+.ach-panel.panel-entering > *:nth-child(2) { animation-delay: 0.06s; }
+.ach-panel.panel-entering > *:nth-child(3) { animation-delay: 0.12s; }
+.ach-panel.panel-entering > *:nth-child(n+4) { animation-delay: 0.16s; }
+
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(1)  { animation-delay: 0.14s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(2)  { animation-delay: 0.19s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(3)  { animation-delay: 0.24s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(4)  { animation-delay: 0.29s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(5)  { animation-delay: 0.34s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(6)  { animation-delay: 0.39s; }
+.ach-panel.panel-entering .achievements-grid > .card:nth-child(n+7) { animation-delay: 0.44s; }
 
 /* ===== SECTION HEADINGS ===== */
 .page-section > .container > h2 {
@@ -819,6 +904,13 @@ pre {
   font-size: 0.75rem;
   color: var(--c-text-muted);
   margin-top: 2px;
+}
+
+.achievement-note {
+  font-size: 0.72rem;
+  color: #ffa116;
+  margin-top: 6px;
+  opacity: 0.85;
 }
 
 /* ===== MEDAL LIST ===== */

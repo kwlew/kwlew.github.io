@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="kwlew — Developer, Robotics Programmer, and RoboCup Participant. Building Minecraft plugins and competing in robotics worldwide." />
+  <meta name="description" content="kwlew — Backend Developer, Robotics Programmer, and RoboCup Participant. Building Minecraft plugins and competing in robotics worldwide." />
+  <meta property="og:type"             content="website" />
+  <meta property="og:url"              content="https://kwlew.dev/" />
+  <meta property="og:title"            content="kwlew.dev" />
+  <meta property="og:description"      content="kwlew — Backend Developer, Robotics Programmer, and RoboCup Participant." />
+  <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
+  <meta name="twitter:card"            content="summary_large_image" />
+  <meta name="twitter:title"           content="kwlew.dev" />
+  <meta name="twitter:description"     content="kwlew — Backend Developer, Robotics Programmer, and RoboCup Participant." />
+  <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
   <title>kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=3">
+  <link rel="stylesheet" href="/assets/css/main.css?v=5">
 </head>
 <body>
   <canvas id="particles-bg"></canvas>
@@ -22,10 +31,11 @@
     </div>
 
     <h1>kwlew.dev <span class="emoji">🚀</span></h1>
-    <p class="subtitle">Developer &bull; Robotics Programmer &bull; RoboCup Participant</p>
-    <p class="tagline">Building Minecraft plugins and competing in robotics worldwide</p>
+    <p class="subtitle">Backend Developer &bull; Robotics Programmer &bull; RoboCup Contestant</p>
+    <p class="tagline">Building coding projects and competing internationally in robotics.</p>
 
     <nav aria-label="Main navigation">
+      <button type="button" class="nav-link" data-section="about">About</button>
       <button type="button" class="nav-link" data-section="projects">Projects</button>
       <button type="button" class="nav-link" data-section="docs">Docs</button>
       <button type="button" class="nav-link" data-section="achievements">Achievements</button>
@@ -34,6 +44,33 @@
   </header>
 
   <main class="sections-wrapper">
+
+    <!-- About -->
+    <section id="about" class="page-section" aria-label="About">
+      <div class="container">
+        <h2>About</h2>
+        <p class="section-desc">Who I am and what I work with.</p>
+
+        <div class="card">
+          <h3>Bio</h3>
+          <p>I'm Kaleo, a backend developer and competitive programmer from Brazil. I build Minecraft plugins, program autonomous robots for RoboCup competitions with ByteVoltaTeam, and compete in programming olympiads.</p>
+        </div>
+
+        <div class="card">
+          <h3>Tech Stack</h3>
+          <div class="tags" style="justify-content: flex-start; gap: 8px; margin-top: 10px;">
+            <span class="tag gold">Java</span>
+            <span class="tag white">Paper API</span>
+            <span class="tag cyan">C / C++</span>
+            <span class="tag cyan">Embedded Systems</span>
+            <span class="tag blue">Competitive Programming</span>
+            <span class="tag gray">Git</span>
+            <span class="tag gold">AI / Robotics</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- Projects -->
     <section id="projects" class="page-section" aria-label="Projects">
@@ -127,6 +164,14 @@
       <div class="container">
         <h2>Achievements</h2>
         <p class="section-desc">Domestic and international competition results.</p>
+
+        <div class="ach-tabs" role="tablist" aria-label="Achievement view">
+          <button class="ach-tab active" role="tab" aria-selected="true"  data-ach-tab="personal">Personal</button>
+          <button class="ach-tab"        role="tab" aria-selected="false" data-ach-tab="team">ByteVoltaTeam</button>
+        </div>
+
+        <!-- ===== PERSONAL PANEL ===== -->
+        <div class="ach-panel" id="ach-personal" role="tabpanel">
 
         <div class="medal-summary">
           <div class="medal-summary-item national">
@@ -410,6 +455,64 @@
           </div>
 
         </div>
+
+        </div><!-- /ach-personal -->
+
+        <!-- ===== TEAM PANEL ===== -->
+        <div class="ach-panel" id="ach-team" role="tabpanel" hidden>
+
+          <div class="medal-summary">
+            <div class="medal-summary-item national">
+              <span class="medal-summary-count">2</span>
+              <span class="medal-summary-label">National Wins</span>
+            </div>
+          </div>
+
+          <div class="achievements-grid">
+
+            <div class="card achievement-card achievement-wide">
+              <div class="achievement-acronym">CBR 2025</div>
+              <div class="achievement-subtitle">5 results &middot; 2025</div>
+              <div class="medal-list">
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Overall</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Super Teams</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Technical Challenge</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Team Description Paper</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Video</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card achievement-card achievement-wide">
+              <div class="achievement-acronym">CBR 2024</div>
+              <div class="achievement-subtitle">1 result &middot; 2024</div>
+              <p class="achievement-note">* Not a member during this competition</p>
+              <div class="medal-list">
+                <div class="medal-entry">
+                  <span class="medal-entry-label">Overall</span>
+                  <span class="medal-badge gold">1st Place</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div><!-- /ach-team -->
+
       </div>
     </section>
 
@@ -523,10 +626,10 @@ C23.5 5.65 18.35.5 12 .5z"/>
     const sections = document.querySelectorAll('.page-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    const VALID = ["projects", "docs", "achievements", "contact"];
+    const VALID = ["about", "projects", "docs", "achievements", "contact"];
 
     function showSection(id) {
-      const safeId = VALID.includes(id) ? id : "projects";
+      const safeId = VALID.includes(id) ? id : "about";
 
       sections.forEach(s => s.classList.toggle('active', s.id === safeId));
       navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === safeId));
@@ -541,7 +644,35 @@ C23.5 5.65 18.35.5 12 .5z"/>
     });
 
     window.addEventListener('DOMContentLoaded', () => {
-      showSection(window.location.hash.replace('#', '') || 'projects');
+      showSection(window.location.hash.replace('#', '') || 'about');
+    });
+
+    // ===== ACHIEVEMENT INNER TABS =====
+    const achTabs   = document.querySelectorAll('.ach-tab');
+    const achPanels = document.querySelectorAll('.ach-panel');
+
+    achTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.achTab;
+
+        achTabs.forEach(t => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+
+        achPanels.forEach(p => {
+          const show = p.id === `ach-${target}`;
+          if (show) {
+            p.removeAttribute('hidden');
+            p.classList.remove('panel-entering');
+            void p.offsetWidth; // force reflow so animation restarts
+            p.classList.add('panel-entering');
+          } else {
+            p.setAttribute('hidden', '');
+            p.classList.remove('panel-entering');
+          }
+        });
+      });
     });
   </script>
 </body>
