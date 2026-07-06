@@ -859,6 +859,10 @@ pre {
 .medal-summary-item.national .medal-summary-count { color: #00eeff; }
 .medal-summary-item.national .medal-summary-label { color: #75cac0; }
 
+.medal-summary-item.world { border-color: rgba(188, 140, 255, 0.28); }
+.medal-summary-item.world .medal-summary-count { color: #bc8cff; }
+.medal-summary-item.world .medal-summary-label { color: #bc8cff; }
+
 .medal-summary-item.gold { border-color: rgba(255, 215, 0, 0.18); }
 .medal-summary-item.gold .medal-summary-count { color: #ffcc00; }
 .medal-summary-item.gold .medal-summary-label { color: #ffcc00; }
@@ -900,6 +904,13 @@ pre {
   background-clip: text;
 }
 
+.achievement-fullname {
+  font-size: 0.72rem;
+  color: var(--c-text-secondary);
+  margin-top: 1px;
+  line-height: 1.35;
+}
+
 .achievement-subtitle {
   font-size: 0.75rem;
   color: var(--c-text-muted);
@@ -927,6 +938,29 @@ pre {
   gap: 10px;
 }
 
+.medal-group-label {
+  grid-column: 1 / -1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-secondary);
+  padding-bottom: 5px;
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.medal-group-label:first-child {
+  margin-top: 0;
+}
+
+.medal-group-label .medal-group-place {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--c-text-muted);
+}
+
 .medal-year {
   font-size: 0.875rem;
   font-weight: 600;
@@ -940,6 +974,18 @@ pre {
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+}
+
+.medal-badge.national {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  color: #00ffff;
+}
+
+.medal-badge.world {
+  background: rgba(188, 140, 255, 0.1);
+  border: 1px solid rgba(188, 140, 255, 0.3);
+  color: #bc8cff;
 }
 
 .medal-badge.gold {

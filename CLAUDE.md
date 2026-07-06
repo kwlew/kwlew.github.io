@@ -24,7 +24,7 @@ Pushing to `main` deploys automatically via GitHub Pages. The `CNAME` file sets 
 
 ### Shared assets
 All pages reference the same two files:
-- `/assets/css/main.css?v=5` — single stylesheet for the entire site
+- `/assets/css/main.css?v=6` — single stylesheet for the entire site
 - `/assets/js/particles.js?v=2` — animated canvas particle background
 
 **When either file changes, bump the version query string** (`?v=5` → `?v=6`, etc.) in every HTML file that references it, otherwise visitors get stale cached versions.
