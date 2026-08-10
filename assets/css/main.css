@@ -17,6 +17,29 @@
   --c-dark: #0d1117;
   --gradient-brand: linear-gradient(90deg, #2cea25, #58a6ff);
   --gradient-btn: linear-gradient(90deg, #2cea25, #1f9dff);
+
+  /* Label palette — tuned for the #0d1117 background.
+     Each entry is an RGB triplet (for the translucent fill/border) plus a
+     solid foreground. Fully-saturated values like #00ffff or #ff0000 vibrate
+     badly on a dark surface and read as a different weight than their
+     neighbours, so every hue here is pulled to a comparable lightness. */
+  --label-red-rgb: 255, 123, 114;      --label-red: #ff7b72;
+  --label-orange-rgb: 255, 166, 87;    --label-orange: #ffa657;
+  --label-gold-rgb: 227, 179, 65;      --label-gold: #e3b341;
+  --label-green-rgb: 86, 211, 100;     --label-green: #56d364;
+  --label-cyan-rgb: 57, 197, 207;      --label-cyan: #39c5cf;
+  --label-blue-rgb: 88, 166, 255;      --label-blue: #58a6ff;
+  --label-purple-rgb: 188, 140, 255;   --label-purple: #bc8cff;
+  --label-pink-rgb: 247, 120, 186;     --label-pink: #f778ba;
+  --label-silver-rgb: 201, 209, 217;   --label-silver: #c9d1d9;
+  --label-bronze-rgb: 224, 144, 79;    --label-bronze: #e0904f;
+  --label-white-rgb: 230, 237, 243;    --label-white: #e6edf3;
+  --label-gray-rgb: 139, 148, 158;     --label-gray: #8b949e;
+
+  /* Shared fill/border strengths so every label reads at one weight */
+  --label-fill: 0.10;
+  --label-stroke: 0.28;
+
   --radius-card: 16px;
   --radius-btn: 10px;
   --radius-social: 12px;
@@ -39,7 +62,11 @@
 /* ===== BASE ===== */
 html {
   min-height: 100%;
-  background: radial-gradient(circle at top, var(--c-bg), var(--c-bg-deep));
+  /* Solid colour first: the gradient only paints over html's own box, so any
+     canvas beyond it (long pages, overscroll) would otherwise fall back to
+     the browser's default white. */
+  background-color: var(--c-bg-deep);
+  background-image: radial-gradient(circle at top, var(--c-bg), var(--c-bg-deep));
   scroll-behavior: smooth;
 }
 
@@ -217,6 +244,12 @@ h1 {
 nav {
   margin-top: 36px;
   display: inline-flex;
+  /* Six items overflow a phone viewport and drag the whole document sideways
+     (body's overflow-x:hidden doesn't stop the canvas widening), so let the
+     row wrap instead of forcing a 479px-wide nav at 375px. */
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
   gap: 4px;
   padding: 6px 10px;
   border-radius: 12px;
@@ -528,52 +561,55 @@ nav {
   justify-content: flex-end;
 }
 
+/* One recipe, one line per colour. Defaults to green so a bare .tag still
+   works exactly as before. */
 .tag {
+  --tag-rgb: var(--label-green-rgb);
+  --tag-fg: var(--label-green);
   padding: 3px 9px;
   border-radius: 20px;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: rgba(44, 234, 37, 0.07);
-  border: 1px solid rgba(44, 234, 37, 0.2);
-  color: var(--c-green);
+  background: rgba(var(--tag-rgb), var(--label-fill));
+  border: 1px solid rgba(var(--tag-rgb), var(--label-stroke));
+  color: var(--tag-fg);
   white-space: nowrap;
 }
 
-.tag.blue {
-  background: rgba(88, 166, 255, 0.07);
-  border-color: rgba(88, 166, 255, 0.2);
-  color: var(--c-blue);
+.tag.red    { --tag-rgb: var(--label-red-rgb);    --tag-fg: var(--label-red); }
+.tag.orange { --tag-rgb: var(--label-orange-rgb); --tag-fg: var(--label-orange); }
+.tag.gold   { --tag-rgb: var(--label-gold-rgb);   --tag-fg: var(--label-gold); }
+.tag.green  { --tag-rgb: var(--label-green-rgb);  --tag-fg: var(--label-green); }
+.tag.cyan   { --tag-rgb: var(--label-cyan-rgb);   --tag-fg: var(--label-cyan); }
+.tag.blue   { --tag-rgb: var(--label-blue-rgb);   --tag-fg: var(--label-blue); }
+.tag.purple { --tag-rgb: var(--label-purple-rgb); --tag-fg: var(--label-purple); }
+.tag.pink   { --tag-rgb: var(--label-pink-rgb);   --tag-fg: var(--label-pink); }
+.tag.white  { --tag-rgb: var(--label-white-rgb);  --tag-fg: var(--label-white); }
+.tag.gray   { --tag-rgb: var(--label-gray-rgb);   --tag-fg: var(--label-gray); }
+
+/* ===== TECH STACK GROUPS ===== */
+.stack-group + .stack-group {
+  margin-top: 18px;
 }
 
-.tag.gray {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--c-border-dark);
+.stack-group:first-of-type {
+  margin-top: 14px;
+}
+
+.stack-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--c-text-muted);
+  margin-bottom: 9px;
 }
 
-.tag.red {
-  background: rgba(255, 0, 0, 0.07);
-  border-color: rgba(255, 0, 0, 0.2);
-  color: #ff4d4d;
-}
-
-.tag.cyan {
-  background: rgba(0, 255, 255, 0.07);
-  border-color: rgba(0, 255, 255, 0.2);
-  color: #00ffff;
-}
-
-.tag.gold {
-  background: rgba(255, 215, 0, 0.07);
-  border-color: rgba(255, 215, 0, 0.2);
-  color: #ffbb00;
-}
-
-.tag.white {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+/* Stack tags read as a wrapping list, not a right-aligned meta row */
+.stack-tags {
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 /* ===== PROJECT LINKS ===== */
@@ -832,7 +868,9 @@ pre {
   padding: 10px 22px;
   border-radius: 12px;
   background: var(--c-surface);
-  border: 1px solid var(--c-border);
+  --sum-rgb: var(--label-gray-rgb);
+  --sum-fg: var(--label-gray);
+  border: 1px solid rgba(var(--sum-rgb), var(--label-stroke));
   backdrop-filter: blur(10px);
   transition: transform var(--t-med) var(--ease-out),
               box-shadow var(--t-med) var(--ease-out);
@@ -847,33 +885,24 @@ pre {
   font-size: 1.4rem;
   font-weight: 800;
   line-height: 1;
+  color: var(--sum-fg);
 }
 
 .medal-summary-label {
   font-size: 0.78rem;
   font-weight: 500;
   opacity: 0.75;
+  color: var(--sum-fg);
 }
 
-.medal-summary-item.national { border-color: rgba(255, 255, 255, 1.0); }
-.medal-summary-item.national .medal-summary-count { color: #00eeff; }
-.medal-summary-item.national .medal-summary-label { color: #75cac0; }
-
-.medal-summary-item.world { border-color: rgba(188, 140, 255, 0.28); }
-.medal-summary-item.world .medal-summary-count { color: #bc8cff; }
-.medal-summary-item.world .medal-summary-label { color: #bc8cff; }
-
-.medal-summary-item.gold { border-color: rgba(255, 215, 0, 0.18); }
-.medal-summary-item.gold .medal-summary-count { color: #ffcc00; }
-.medal-summary-item.gold .medal-summary-label { color: #ffcc00; }
-
-.medal-summary-item.silver { border-color: rgba(192, 192, 192, 0.18); }
-.medal-summary-item.silver .medal-summary-count { color: #c8c8c8; }
-.medal-summary-item.silver .medal-summary-label { color: #c8c8c8; }
-
-.medal-summary-item.bronze { border-color: rgba(205, 127, 50, 0.18); }
-.medal-summary-item.bronze .medal-summary-count { color: #cd7f32; }
-.medal-summary-item.bronze .medal-summary-label { color: #cd7f32; }
+/* Count and label share one colour per tier. Previously .national carried a
+   fully opaque white border while its count and label were two different
+   colours — it read as a different component than the tiles beside it. */
+.medal-summary-item.national { --sum-rgb: var(--label-cyan-rgb);   --sum-fg: var(--label-cyan); }
+.medal-summary-item.world    { --sum-rgb: var(--label-purple-rgb); --sum-fg: var(--label-purple); }
+.medal-summary-item.gold     { --sum-rgb: var(--label-gold-rgb);   --sum-fg: var(--label-gold); }
+.medal-summary-item.silver   { --sum-rgb: var(--label-silver-rgb); --sum-fg: var(--label-silver); }
+.medal-summary-item.bronze   { --sum-rgb: var(--label-bronze-rgb); --sum-fg: var(--label-bronze); }
 
 /* ===== ACHIEVEMENTS GRID ===== */
 .achievements-grid {
@@ -968,61 +997,29 @@ pre {
   min-width: 36px;
 }
 
+/* Same recipe as .tag, so a "Gold" badge and a "Java" tag carry equal weight. */
 .medal-badge {
+  --badge-rgb: var(--label-gray-rgb);
+  --badge-fg: var(--label-gray);
   padding: 3px 10px;
   border-radius: 20px;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  background: rgba(var(--badge-rgb), var(--label-fill));
+  border: 1px solid rgba(var(--badge-rgb), var(--label-stroke));
+  color: var(--badge-fg);
+  white-space: nowrap;
 }
 
-.medal-badge.national {
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid rgba(0, 255, 255, 0.25);
-  color: #00ffff;
-}
-
-.medal-badge.world {
-  background: rgba(188, 140, 255, 0.1);
-  border: 1px solid rgba(188, 140, 255, 0.3);
-  color: #bc8cff;
-}
-
-.medal-badge.gold {
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  color: #ffcc00;
-}
-
-.medal-badge.silver {
-  background: rgba(192, 192, 192, 0.1);
-  border: 1px solid rgba(192, 192, 192, 0.28);
-  color: #c8c8c8;
-}
-
-.medal-badge.bronze {
-  background: rgba(205, 127, 50, 0.1);
-  border: 1px solid rgba(205, 127, 50, 0.28);
-  color: #cd7f32;
-}
-
-.medal-badge.lost {
-  background: rgba(255, 0, 0, 0.08);
-  border: 1px solid rgba(255, 0, 0, 0.22);
-  color: #ff5555;
-}
-
-.medal-badge.phase {
-  background: rgba(88, 166, 255, 0.08);
-  border: 1px solid rgba(88, 166, 255, 0.22);
-  color: var(--c-blue);
-}
-
-.medal-badge.participant {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--c-text-muted);
-}
+.medal-badge.national    { --badge-rgb: var(--label-cyan-rgb);   --badge-fg: var(--label-cyan); }
+.medal-badge.world       { --badge-rgb: var(--label-purple-rgb); --badge-fg: var(--label-purple); }
+.medal-badge.gold        { --badge-rgb: var(--label-gold-rgb);   --badge-fg: var(--label-gold); }
+.medal-badge.silver      { --badge-rgb: var(--label-silver-rgb); --badge-fg: var(--label-silver); }
+.medal-badge.bronze      { --badge-rgb: var(--label-bronze-rgb); --badge-fg: var(--label-bronze); }
+.medal-badge.lost        { --badge-rgb: var(--label-red-rgb);    --badge-fg: var(--label-red); }
+.medal-badge.phase       { --badge-rgb: var(--label-blue-rgb);   --badge-fg: var(--label-blue); }
+.medal-badge.participant { --badge-rgb: var(--label-gray-rgb);   --badge-fg: var(--label-gray); }
 
 .medal-entry-label {
   flex: 1;
