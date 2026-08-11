@@ -398,15 +398,6 @@ C23.5 5.65 18.35.5 12 .5z"/>
     });
 
     // ===== ACHIEVEMENT DATA =====
-    // Single source of truth. Entries shared between the Personal and
-    // ByteVoltaTeam panels (robocup, cbr) are referenced by both rather than
-    // written out twice, so a label fix only ever happens in one place.
-    //
-    // A result row is one of:
-    //   { group, place }        -> a year/location divider
-    //   { year,  badge, text }  -> a row led by a year
-    //   { label, badge, text }  -> a row led by a category name
-    //   {        badge, text }  -> a bare badge
     const ACHIEVEMENTS = {
       omc: {
         acronym: 'OMC',
@@ -469,7 +460,7 @@ C23.5 5.65 18.35.5 12 .5z"/>
         subtitle: '2 results',
         results: [
           { year: '2025', badge: 'phase',       text: '4th Phase' },
-          { year: '2026', badge: 'participant', text: 'Ongoing' }
+          { year: '2026', badge: 'participant', text: 'Ongoing (3rd Phase)' }
         ]
       },
       oci: {
@@ -543,7 +534,15 @@ C23.5 5.65 18.35.5 12 .5z"/>
         subtitle: '4 results',
         results: [
           { year: '23, 24, 25', badge: 'phase',       text: '3× 2nd Phase' },
-          { year: '2026',       badge: 'participant', text: 'Ongoing' }
+          { year: '2026',       badge: 'participant', text: 'Ongoing (2nd Phase)' }
+        ]
+      },
+      obiTheoretical: {
+        acronym: 'OBI-T',
+        fullname: 'Olimpíada Brasileira de Informática Teórica',
+        subtitle: '1 result',
+        results: [
+          { year: '2022', badge: 'phase', text: '3rd Phase' }
         ]
       },
       onad: {
@@ -584,8 +583,8 @@ C23.5 5.65 18.35.5 12 .5z"/>
         ],
         cards: [
           'omc', 'obg', 'obrl', 'oba', 'obrPractical', 'obrTheoretical',
-          'obcit', 'oci', 'robocup', 'cbr', 'fdc', 'ocq', 'obi', 'onad',
-          'obf', 'ocm'
+          'obcit', 'oci', 'robocup', 'cbr', 'fdc', 'ocq', 'obi', 'obiTheoretical',
+          'onad', 'obf', 'ocm'
         ]
       },
       team: {
