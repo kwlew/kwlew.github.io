@@ -188,6 +188,7 @@ header nav          { animation-delay: 0.37s; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 22px;
+  animation: pill-pulse 1s ease-in-out infinite;
 }
 
 .status-dot {
@@ -196,12 +197,17 @@ header nav          { animation-delay: 0.37s; }
   border-radius: 50%;
   background: var(--c-green);
   flex-shrink: 0;
-  animation: dot-pulse 2.4s ease-in-out infinite;
+  animation: dot-pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes dot-pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.3; }
+}
+
+@keyframes pill-pulse {
+  0%, 100% { background: rgba(44, 234, 37, 0.07); }
+  50%       { background: rgba(44, 234, 37, 0.12); }
 }
 
 /* ===== H1 ===== */
@@ -638,7 +644,7 @@ nav {
   transition: transform var(--t-fast) var(--ease-out),
               box-shadow var(--t-fast) var(--ease-out),
               filter var(--t-fast) var(--ease-out);
-  box-shadow: 0 0 16px rgba(44, 234, 37, 0.28);
+  box-shadow: 0 0 16px rgba(16, 43, 15, 0.28);
 }
 
 .btn.secondary {
@@ -648,7 +654,7 @@ nav {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(44, 234, 37, 0.5);
+  box-shadow: 0 6px 28px rgba(32, 90, 30, 0.5);
   filter: brightness(1.05);
 }
 
@@ -659,6 +665,79 @@ nav {
 .btn.secondary:hover {
   box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
   filter: brightness(1.15);
+}
+
+/* ===== GITHUB BUTTON =====
+   For any button linking to a repo's source on GitHub. Mirrors the
+   gradient-border language already used for .github-btn / .contact-github
+   so every GitHub link on the site reads the same way. */
+.btn.github {
+  position: relative;
+  background: var(--c-dark);
+  box-shadow: none;
+}
+
+.btn.github::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-btn);
+  padding: 1px;
+  background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn.github:hover {
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+}
+
+.btn .btn-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== DISCORD BUTTON ===== */
+.btn.discord {
+  position: relative;
+  background: var(--c-dark);
+  box-shadow: none;
+}
+
+.btn.discord::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-btn);
+  padding: 1px;
+  background: linear-gradient(90deg, #5865f2, #7289da, #5865f2);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn.discord:hover {
+  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+}
+
+.btn.discord .btn-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* ===== ACTION BAR (centered button group) ===== */
