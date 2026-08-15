@@ -10,13 +10,24 @@
   --c-text: #e6edf3;
   --c-text-secondary: #c9d1d9;
   --c-text-muted: #8b949e;
+  /* Status accent — reserved for the "active" pill/dot only. Every other
+     accent on the site is the purple brand palette below. */
   --c-green: #2cea25;
-  --c-green-alt: #1bd96a;
-  --c-blue: #58a6ff;
-  --c-blue-dark: #1f9dff;
+  --c-green-rgb: 44, 234, 37;
+
+  /* Brand accent — purple/violet. Drives headings, buttons, hovers, glows
+     and the particle background. */
+  --c-purple: #a78bfa;
+  --c-purple-rgb: 167, 139, 250;
+  --c-purple-alt: #8b5cf6;
+  --c-purple-alt-rgb: 139, 92, 246;
+  --c-violet: #818cf8;
+  --c-violet-rgb: 129, 140, 248;
+  --c-violet-dark: #6366f1;
+  --c-violet-dark-rgb: 99, 102, 241;
   --c-dark: #0d1117;
-  --gradient-brand: linear-gradient(90deg, #2cea25, #58a6ff);
-  --gradient-btn: linear-gradient(90deg, #2cea25, #1f9dff);
+  --gradient-brand: linear-gradient(90deg, var(--c-purple), var(--c-violet));
+  --gradient-btn: linear-gradient(90deg, var(--c-purple-alt), var(--c-violet-dark));
 
   /* Label palette — tuned for the #0d1117 background.
      Each entry is an RGB triplet (for the translucent fill/border) plus a
@@ -104,7 +115,7 @@ body::before {
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(44, 234, 37, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(var(--c-purple-rgb), 0.12), transparent 70%);
   top: -200px;
   left: -200px;
   filter: blur(80px);
@@ -117,7 +128,7 @@ body::after {
   position: fixed;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(88, 166, 255, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(var(--c-violet-rgb), 0.12), transparent 70%);
   bottom: -200px;
   right: -200px;
   filter: blur(80px);
@@ -147,8 +158,8 @@ body::after {
 
 .home-btn:hover {
   transform: scale(1.06);
-  border-color: rgba(44, 234, 37, 0.3);
-  box-shadow: 0 0 20px rgba(44, 234, 37, 0.45);
+  border-color: rgba(var(--c-purple-rgb), 0.3);
+  box-shadow: 0 0 20px rgba(var(--c-purple-rgb), 0.45);
 }
 
 /* ===== HEADER ===== */
@@ -180,8 +191,8 @@ header nav          { animation-delay: 0.37s; }
   gap: 8px;
   padding: 6px 14px;
   border-radius: 20px;
-  background: rgba(44, 234, 37, 0.07);
-  border: 1px solid rgba(44, 234, 37, 0.22);
+  background: rgba(var(--c-green-rgb), 0.07);
+  border: 1px solid rgba(var(--c-green-rgb), 0.22);
   color: var(--c-green);
   font-size: 0.72rem;
   font-weight: 600;
@@ -206,8 +217,8 @@ header nav          { animation-delay: 0.37s; }
 }
 
 @keyframes pill-pulse {
-  0%, 100% { background: rgba(44, 234, 37, 0.07); }
-  50%       { background: rgba(44, 234, 37, 0.12); }
+  0%, 100% { background: rgba(var(--c-green-rgb), 0.07); }
+  50%       { background: rgba(var(--c-green-rgb), 0.12); }
 }
 
 /* ===== H1 ===== */
@@ -509,8 +520,8 @@ nav {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 38px rgba(44, 234, 37, 0.12);
-  border-color: rgba(44, 234, 37, 0.18);
+  box-shadow: 0 12px 38px rgba(var(--c-purple-rgb), 0.12);
+  border-color: rgba(var(--c-purple-rgb), 0.18);
 }
 
 .card h2,
@@ -537,8 +548,8 @@ nav {
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 48px rgba(44, 234, 37, 0.18);
-  border-color: rgba(44, 234, 37, 0.22);
+  box-shadow: 0 18px 48px rgba(var(--c-purple-rgb), 0.18);
+  border-color: rgba(var(--c-purple-rgb), 0.22);
 }
 
 /* ===== PROJECT META ROW ===== */
@@ -683,7 +694,7 @@ nav {
   inset: 0;
   border-radius: var(--radius-btn);
   padding: 1px;
-  background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25);
+  background: linear-gradient(90deg, var(--c-purple), var(--c-violet), var(--c-purple));
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
@@ -696,7 +707,7 @@ nav {
 }
 
 .btn.github:hover {
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+  box-shadow: 0 0 20px rgba(var(--c-violet-rgb), 0.4);
 }
 
 .btn .btn-icon {
@@ -731,7 +742,7 @@ nav {
 }
 
 .btn.discord:hover {
-  box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
+  box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
 }
 
 .btn.discord .btn-icon {
@@ -788,8 +799,8 @@ nav {
   flex-shrink: 0;
 }
 
-.github-btn::before    { background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25); }
-.github-btn:hover      { box-shadow: 0 0 25px rgba(88, 166, 255, 0.5); transform: scale(1.04); }
+.github-btn::before    { background: linear-gradient(90deg, var(--c-purple), var(--c-violet), var(--c-purple)); }
+.github-btn:hover      { box-shadow: 0 0 25px rgba(var(--c-violet-rgb), 0.5); transform: scale(1.04); }
 
 .instagram-btn::before { background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af, #515bd4); }
 .instagram-btn:hover   { box-shadow: 0 0 25px rgba(221, 42, 123, 0.5); transform: scale(1.04); }
@@ -863,8 +874,8 @@ nav {
   margin-top: 2px;
 }
 
-.contact-github::before    { background: linear-gradient(90deg, #2cea25, #58a6ff, #2cea25); }
-.contact-github:hover      { box-shadow: 0 0 24px rgba(88, 166, 255, 0.4); transform: translateY(-4px); }
+.contact-github::before    { background: linear-gradient(90deg, var(--c-purple), var(--c-violet), var(--c-purple)); }
+.contact-github:hover      { box-shadow: 0 0 24px rgba(var(--c-violet-rgb), 0.4); transform: translateY(-4px); }
 
 .contact-instagram::before { background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af, #515bd4); }
 .contact-instagram:hover   { box-shadow: 0 0 24px rgba(221, 42, 123, 0.4); transform: translateY(-4px); }
@@ -924,7 +935,7 @@ pre {
 }
 
 .repo-stats a {
-  color: var(--c-blue);
+  color: var(--c-violet);
   text-decoration: none;
 }
 
@@ -1119,7 +1130,7 @@ footer {
 
 /* ===== ACCESSIBILITY ===== */
 :focus-visible {
-  outline: 2px solid var(--c-blue);
+  outline: 2px solid var(--c-violet);
   outline-offset: 3px;
   border-radius: 3px;
 }

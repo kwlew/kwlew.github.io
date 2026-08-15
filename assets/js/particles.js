@@ -13,7 +13,12 @@ if (!canvas) {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         let particles = [];
-        let hue = 0;
+        // Hue drifts back and forth across a narrow indigo→violet band
+        // instead of cycling the full rainbow, so the background stays on
+        // the site's purple brand instead of strobing through every hue.
+        let hueT = 0;
+        const HUE_BASE = 250;
+        const HUE_SPAN = 15;
         let rafId = null;
 
         const mouse = {
@@ -72,7 +77,8 @@ if (!canvas) {
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            hue = (hue + 0.5) % 360;
+            hueT += 0.003;
+            const hue = HUE_BASE + Math.sin(hueT) * HUE_SPAN;
             const color = `hsl(${hue}, 100%, 60%)`;
 
             const w = canvas.width;
@@ -174,7 +180,7 @@ if (!canvas) {
         if (reduceMotion) {
             // Honour the user's motion preference: paint one static frame,
             // no animation loop.
-            const color = `hsl(200, 100%, 60%)`;
+            const color = `hsl(${HUE_BASE}, 100%, 60%)`;
             ctx.fillStyle = color;
             ctx.shadowColor = color;
             ctx.shadowBlur = 10;

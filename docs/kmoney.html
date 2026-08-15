@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=8">
+  <link rel="stylesheet" href="/assets/css/main.css?v=9">
   <style>
     .cmd-table {
       width: 100%;
@@ -97,7 +97,7 @@
 
     .section-nav a:hover {
       color: var(--c-text);
-      border-color: rgba(44, 234, 37, 0.3);
+      border-color: rgba(var(--c-purple-rgb), 0.3);
     }
 
     @media (max-width: 640px) {
@@ -362,7 +362,7 @@
     <div class="card" id="messages">
       <h2>Messages &amp; Formatting</h2>
       <ul>
-        <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" style="color:var(--c-blue);">MiniMessage</a> format.</li>
+        <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" style="color:var(--c-violet);">MiniMessage</a> format.</li>
         <li>Every message automatically receives the global <code>prefix</code>.</li>
         <li>Item lore (check name/value) uses raw messages without the prefix.</li>
         <li>Setting <code>small-font: true</code> in <code>messages.yml</code> replaces all standard Latin characters with Unicode small-caps equivalents &mdash; a stylised look without a resource pack.</li>
@@ -450,6 +450,6 @@
     <p>&copy; 2026 kwlew.dev</p>
   </footer>
 
-  <script src="/assets/js/particles.js?v=2"></script>
+  <script src="/assets/js/particles.js?v=3"></script>
 </body>
 </html>
