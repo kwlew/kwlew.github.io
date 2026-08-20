@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="kMoney documentation — commands, permissions, money checks, storage, sounds, PlaceholderAPI, and configuration reference." />
+  <meta name="description" content="kMoney documentation: commands, permissions, money checks, storage, sounds, PlaceholderAPI, and configuration reference." />
   <meta property="og:type"             content="website" />
   <meta property="og:url"              content="https://kwlew.dev/docs/kmoney.html" />
   <meta property="og:title"            content="kMoney Docs &bull; kwlew.dev" />
-  <meta property="og:description"      content="kMoney documentation — commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
+  <meta property="og:description"      content="kMoney documentation: commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
   <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
   <meta name="twitter:card"            content="summary_large_image" />
   <meta name="twitter:title"           content="kMoney Docs • kwlew.dev" />
-  <meta name="twitter:description"     content="kMoney documentation — commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
+  <meta name="twitter:description"     content="kMoney documentation: commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
   <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
   <title>kMoney Docs &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=9">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=12">
   <style>
     .cmd-table {
       width: 100%;
@@ -316,7 +316,7 @@
     <div class="card" id="leaderboard">
       <h2>Leaderboard</h2>
       <ul>
-        <li>The rich list is built asynchronously and cached in memory &mdash; <code>/money top</code> is always instant regardless of server size.</li>
+        <li>The rich list is built asynchronously and cached in memory, so <code>/money top</code> is always instant regardless of server size.</li>
         <li>Results are paginated at 10 entries per page.</li>
         <li>Cache refresh interval is set by <code>top-update-interval-seconds</code> in <code>config.yml</code> (default: 300 s).</li>
         <li>The interval is re-applied immediately on <code>/money reload</code>.</li>
@@ -332,7 +332,7 @@
         <li>Writes go to the cache and mark the entry dirty.</li>
         <li>Dirty entries are flushed to disk every 30 seconds via an async autosave task.</li>
         <li>All dirty entries are also flushed synchronously on plugin shutdown.</li>
-        <li>Balances can never go negative &mdash; <code>removeBalance</code> clamps at zero.</li>
+        <li>Balances can never go negative; <code>removeBalance</code> clamps at zero.</li>
       </ul>
     </div>
 
@@ -365,7 +365,7 @@
         <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" style="color:var(--c-violet);">MiniMessage</a> format.</li>
         <li>Every message automatically receives the global <code>prefix</code>.</li>
         <li>Item lore (check name/value) uses raw messages without the prefix.</li>
-        <li>Setting <code>small-font: true</code> in <code>messages.yml</code> replaces all standard Latin characters with Unicode small-caps equivalents &mdash; a stylised look without a resource pack.</li>
+        <li>Setting <code>small-font: true</code> in <code>messages.yml</code> replaces all standard Latin characters with Unicode small-caps equivalents, giving a stylised look without a resource pack.</li>
       </ul>
       <p style="color:var(--c-text-muted);font-size:0.875rem;margin-top:14px;">Formatted amounts use small-caps Unicode suffixes:</p>
       <pre style="margin-top:8px;">ᴋ M ʙ ᴛ ǫ ǫǫ ѕ ѕѕ ᴏᴄ ɴᴏ ᴅᴄ ᴜᴅᴄ … up to ᴛᴠɢ (1e72)</pre>

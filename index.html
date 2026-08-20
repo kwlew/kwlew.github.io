@@ -3,679 +3,534 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="kwlew — Backend Developer, Robotics Programmer, and RoboCup Participant. Building Minecraft plugins and competing in robotics worldwide." />
+  <meta name="description" content="kwlew (Kaleo Soares): backend developer and robotics programmer from Brazil. Minecraft server plugins, autonomous rescue robotics, and international competition results." />
   <meta property="og:type"             content="website" />
   <meta property="og:url"              content="https://kwlew.dev/" />
   <meta property="og:title"            content="kwlew.dev" />
-  <meta property="og:description"      content="kwlew | Backend Developer, Robotics Programmer, and RoboCup Participant." />
+  <meta property="og:description"      content="Backend developer and robotics programmer from Brazil. Minecraft server plugins, autonomous rescue robotics, and international competition results." />
   <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
   <meta name="twitter:card"            content="summary_large_image" />
   <meta name="twitter:title"           content="kwlew.dev" />
-  <meta name="twitter:description"     content="kwlew | Backend Developer, Robotics Programmer, and RoboCup Participant." />
+  <meta name="twitter:description"     content="Backend developer and robotics programmer from Brazil. Minecraft server plugins, autonomous rescue robotics, and international competition results." />
   <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
   <title>kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=9">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=12">
 </head>
 <body>
   <canvas id="particles-bg"></canvas>
+  <div class="grid-veil" aria-hidden="true"></div>
 
-  <header>
-    <div class="status-pill">
-      <span class="status-dot"></span>
-      Active Developer
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="site-nav-inner">
+      <a href="#top" class="nav-brand">
+        <span class="brand-mark" aria-hidden="true">k</span>
+        <span class="brand-name">kwlew.dev</span>
+      </a>
+
+      <div class="nav-menu">
+        <a href="#work" class="nav-item">Work</a>
+        <a href="#results" class="nav-item">Results</a>
+        <a href="#stack" class="nav-item">Stack</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </div>
+
+      <a class="btn secondary" href="https://github.com/kwlew" target="_blank" rel="noopener noreferrer">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        <span>GitHub</span>
+      </a>
     </div>
+  </nav>
 
-    <h1>kwlew.dev <span class="emoji">🚀</span></h1>
-    <p class="subtitle">Backend Developer &bull; Robotics Programmer &bull; RoboCup Contestant</p>
-    <p class="tagline">Building coding projects and competing internationally in robotics.</p>
+  <main>
 
-    <nav aria-label="Main navigation">
-      <button type="button" class="nav-link" data-section="about">About</button>
-      <button type="button" class="nav-link" data-section="projects">Projects</button>
-      <button type="button" class="nav-link" data-section="games">Games</button>
-      <button type="button" class="nav-link" data-section="docs">Docs</button>
-      <button type="button" class="nav-link" data-section="achievements">Achievements</button>
-      <button type="button" class="nav-link" data-section="contact">Contact</button>
-    </nav>
-  </header>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top" aria-label="Introduction">
+      <div class="hero-grid">
 
-  <main class="sections-wrapper">
+        <div class="hero-body">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Available for collaboration
+          </div>
 
-    <!-- About -->
-    <section id="about" class="page-section" aria-label="About">
-      <div class="container">
-        <h2>About</h2>
-        <p class="section-desc">Who am I?</p>
+          <h1 class="hero-title">
+            I write the code<br>that gets the robot<br>
+            <span class="accent">out of the maze.</span>
+          </h1>
 
-        <div class="card">
-          <h3>Bio 🇧🇷</h3>
-          <p>I'm Kaleo, back-end developer, robotics programmer, gaming enthusiast, and competitive programmer.</p>
+          <p class="hero-sub">
+            Kaleo, a backend developer and robotics programmer from Brazil. Minecraft
+            plugins running on real servers, and autonomous navigation that placed 6th
+            in the world at RoboCup 2026.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#work">
+              <span>See the work</span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+            </a>
+            <a class="btn secondary" href="/robotics.html">
+              <span>The robotics story</span>
+            </a>
+          </div>
+
+          <dl class="hero-stats">
+            <div class="hero-stat">
+              <dt class="hero-stat-num">6th</dt>
+              <dd class="hero-stat-label">in the world</dd>
+            </div>
+            <div class="hero-stat">
+              <dt class="hero-stat-num">2</dt>
+              <dd class="hero-stat-label">world awards</dd>
+            </div>
+            <div class="hero-stat">
+              <dt class="hero-stat-num">1st</dt>
+              <dd class="hero-stat-label">CBR 2025</dd>
+            </div>
+            <div class="hero-stat">
+              <dt class="hero-stat-num">11</dt>
+              <dd class="hero-stat-label">medals</dd>
+            </div>
+          </dl>
         </div>
 
-        <div class="card">
-          <h3>Tech Stack</h3>
+        <!-- Illustrative schematic of the Rescue Maze task, not a recorded run. -->
+        <figure class="hero-panel">
+          <div class="panel-bar">
+            <span class="panel-bar-dot" style="background: rgba(255, 123, 114, 0.65);"></span>
+            <span class="panel-bar-dot" style="background: rgba(227, 179, 65, 0.65);"></span>
+            <span class="panel-bar-dot" style="background: rgba(86, 211, 100, 0.65);"></span>
+            <span class="panel-bar-title">rescue_maze</span>
+          </div>
 
-          <div class="stack-group">
-            <div class="stack-group-label">Languages</div>
-            <div class="tags stack-tags">
-              <span class="tag orange">Java</span>
-              <span class="tag purple">Kotlin</span>
-              <span class="tag blue">C++</span>
-              <span class="tag cyan">C</span>
-              <span class="tag purple">C#</span>
-              <span class="tag gold">Python</span>
-              <span class="tag gold">JavaScript</span>
-              <span class="tag blue">Lua</span>
-              <span class="tag cyan">SQL</span>
-              <span class="tag orange">HTML5</span>
-              <span class="tag blue">CSS3</span>
+          <div class="panel-body">
+            <div class="maze" role="img" aria-label="Schematic of a rescue maze: walls, open tiles, the robot, and a victim">
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell wall"></span>
+
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell wall"></span>
+
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell bot"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell wall"></span>
+
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell"></span>
+
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell victim"></span>
+              <span class="maze-cell"></span>
+              <span class="maze-cell wall"></span>
+              <span class="maze-cell wall"></span>
+            </div>
+
+            <div class="panel-specs">
+              <dl class="spec-list">
+                <div class="spec-row"><dt>maze layout</dt><dd>unknown at start</dd></div>
+                <div class="spec-row"><dt>victims</dt><dd>found in transit</dd></div>
+                <div class="spec-row"><dt>map</dt><dd>built during the run</dd></div>
+                <div class="spec-row"><dt>human input</dt><dd class="on">none</dd></div>
+              </dl>
+
+              <div class="panel-legend">
+                <span class="legend-item">
+                  <span class="legend-swatch" style="background: var(--gradient-btn);"></span>robot
+                </span>
+                <span class="legend-item">
+                  <span class="legend-swatch" style="background: rgba(57, 197, 207, 0.45);"></span>victim
+                </span>
+                <span class="legend-item">
+                  <span class="legend-swatch" style="background: rgba(167, 139, 250, 0.3);"></span>wall
+                </span>
+              </div>
             </div>
           </div>
 
-          <div class="stack-group">
-            <div class="stack-group-label">Frameworks &amp; Engines</div>
-            <div class="tags stack-tags">
-              <span class="tag green">Spring</span>
-              <span class="tag white">Paper</span>
-              <span class="tag pink">L&Ouml;VE2D</span>
-              <span class="tag red">OpenGL</span>
-              <span class="tag gray">LWJGL</span>
-              <span class="tag purple">discord.js</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label">Backend &amp; Cloud</div>
-            <div class="tags stack-tags">
-              <span class="tag green">Node.js</span>
-              <span class="tag orange">Cloudflare Workers</span>
-              <span class="tag cyan">FastAPI</span>
-              <span class="tag green">Supabase</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label">Embedded &amp; Systems</div>
-            <div class="tags stack-tags">
-              <span class="tag gold">MicroPython</span>
-              <span class="tag cyan">RTOS</span>
-              <span class="tag white">Linux</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label">Tooling</div>
-            <div class="tags stack-tags">
-              <span class="tag blue">Docker</span>
-              <span class="tag orange">Git</span>
-              <span class="tag cyan">Gradle</span>
-              <span class="tag red">Maven</span>
-              <span class="tag green">WSL</span>
-            </div>
-          </div>
-        </div>
+          <figcaption class="panel-note">
+            How the category works: the robot explores an unknown maze, finds victims and
+            maps as it goes, with no human input once the run starts.
+          </figcaption>
+        </figure>
 
       </div>
     </section>
 
-    <section id="games" class="page-section" aria-label="Games">
-      <div class="container">
-        <h2>Games</h2>
-        <p class="section-desc">My gaming projects and experiences.</p>
+    <!-- ===== SELECTED WORK ===== -->
+    <section class="section" id="work" aria-label="Selected work">
+      <p class="eyebrow">01 / Selected work</p>
+      <h2 class="section-title">Things I&rsquo;ve built and shipped.</h2>
+      <p class="section-lead">Plugins with real servers running them, autonomous robots, and the occasional game.</p>
 
-        <div class="card project-card">
-          <div class="project-meta">
-            <span class="project-num">01</span>
-            <div class="tags">
-              <span class="tag pink">L&Ouml;VE2D</span>
-              <span class="tag red">Open Source</span>
-            </div>
+      <div class="featured">
+        <div class="featured-body">
+          <div class="featured-meta">
+            <span class="tag brand">Featured</span>
+            <span class="featured-team">BYTEVOLTATEAM</span>
+          </div>
+
+          <h3 class="featured-title">Autonomous Rescue Robotics</h3>
+
+          <p>
+            RoboCup Rescue Maze robots explore an unknown multi-level maze, detect victims
+            and map as they go, with zero human input once the run starts. I write the
+            navigation, sensor fusion and victim-detection code.
+          </p>
+
+          <div class="tags stack-tags" style="margin-top: 20px;">
+            <span class="tag cyan">C / C++</span>
+            <span class="tag cyan">Embedded</span>
+            <span class="tag gold">Autonomous Nav</span>
+            <span class="tag blue">Sensor Fusion</span>
+          </div>
+
+          <a class="btn" href="/robotics.html" style="margin-top: 26px; margin-left: 0;">
+            <span>Read the full story</span>
+            <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+
+        <div class="featured-panel">
+          <div class="panel-head">RoboCup 2026 &middot; Incheon, Korea</div>
+          <div class="result-row"><span>Outstanding Innovation Award</span><span class="medal-badge world">Winner</span></div>
+          <div class="result-row"><span>Community Award</span><span class="medal-badge world">1st Place</span></div>
+          <div class="result-row"><span>Overall</span><span class="medal-badge phase">6th Place</span></div>
+          <div class="result-row"><span>Documents</span><span class="medal-badge phase">4th Place</span></div>
+          <div class="result-row"><span>Super Teams</span><span class="medal-badge phase">5th Place</span></div>
+          <div class="result-row"><span>Technical Challenge</span><span class="medal-badge phase">6th Place</span></div>
+        </div>
+      </div>
+
+      <div class="work-grid">
+
+        <article class="work-card">
+          <div class="work-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"></circle><path d="M14.8 9.4a3.4 3.4 0 0 0-5.6 1.3"></path><path d="M9.2 14.6a3.4 3.4 0 0 0 5.6-1.3"></path><path d="M12 7v10"></path></svg>
+          </div>
+          <h3>kMoney</h3>
+          <p>A modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks and an async leaderboard.</p>
+          <div class="tags stack-tags" style="margin-top: 18px;">
+            <span class="tag gold">Java</span>
+            <span class="tag white">Paper</span>
+            <span class="tag red">Open Source</span>
+          </div>
+          <div class="work-links">
+            <a href="/plugins/kmoney.html">Plugin page</a>
+            <a href="/docs/kmoney.html">Docs</a>
+            <a href="https://modrinth.com/plugin/kmoney" target="_blank" rel="noopener noreferrer">Modrinth</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"></path><path d="M6 10.5V19h12v-8.5"></path><path d="M10 19v-4.5h4V19"></path></svg>
+          </div>
+          <h3>kSetHome</h3>
+          <p>High-performance home management built for speed and a clean, service-based architecture. Multiple homes per player, fully configurable.</p>
+          <div class="tags stack-tags" style="margin-top: 18px;">
+            <span class="tag gold">Java</span>
+            <span class="tag white">Paper</span>
+            <span class="tag red">Open Source</span>
+          </div>
+          <div class="work-links">
+            <a href="/plugins/ksethome.html">Plugin page</a>
+            <a href="/docs/ksethome.html">Docs</a>
+            <a href="https://github.com/kwlew/kSetHome" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11a4 4 0 0 1 3.9 3.1l.9 4A3.4 3.4 0 0 1 19 19c-1 0-1.9-.5-2.5-1.3L15 16H9l-1.5 1.7C6.9 18.5 6 19 5 19a3.4 3.4 0 0 1-3.3-3.9l.9-4A4 4 0 0 1 6.5 8Z"></path><path d="M7.5 12.5h2"></path><path d="M8.5 11.5v2"></path><circle cx="16" cy="12" r=".6" fill="currentColor"></circle></svg>
           </div>
           <h3>TD Idle</h3>
-          <p>An idle tower defense game made with L&Ouml;VE.</p>
-          <div class="project-links">
-            <a class="btn" href="/games/tdidle.html">Game Page</a>
-            <a class="btn github" href="https://github.com/kwlew/TD-Idle"
-            target="_blank" rel="noopener noreferrer">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-              Source code
-            </a>
+          <p>An idle tower-defense game built with L&Ouml;VE2D, a side project for getting hands-on with Lua and real-time game loops.</p>
+          <div class="tags stack-tags" style="margin-top: 18px;">
+            <span class="tag pink">L&Ouml;VE2D</span>
+            <span class="tag blue">Lua</span>
+            <span class="tag red">Open Source</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="page-section" aria-label="Projects">
-      <div class="container">
-        <h2>Projects</h2>
-        <p class="section-desc">Open-source tools and systems I&rsquo;ve built.</p>
-
-        <div class="card project-card">
-          <div class="project-meta">
-            <span class="project-num">01</span>
-            <div class="tags">
-              <span class="tag gold">Java</span>
-              <span class="tag white">Paper</span>
-              <span class="tag red">Open Source</span>
-              <span class="tag gold">Vault</span>
-              <span class="tag blue">PAPI</span>
-            </div>
+          <div class="work-links">
+            <a href="/games/tdidle.html">Game page</a>
+            <a href="https://github.com/kwlew/TD-Idle" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-          <h3>kMoney</h3>
-          <p>A modern, feature-rich economy plugin for Paper 1.21.4+. Vault compatible, PlaceholderAPI support, money checks, and an async leaderboard.</p>
-          <div class="project-links">
-            <a class="btn" href="/plugins/kmoney.html">Plugin Page</a>
-            <a class="btn secondary" href="https://modrinth.com/plugin/kmoney" target="_blank" rel="noopener noreferrer">Modrinth</a>
-            <a class="btn github" href="https://github.com/kwlew/kMoney" target="_blank" rel="noopener noreferrer">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-meta">
-            <span class="project-num">02</span>
-            <div class="tags">
-              <span class="tag gold">Java</span>
-              <span class="tag white">Paper</span>
-              <span class="tag red">Open Source</span>
-            </div>
-          </div>
-          <h3>kSetHome</h3>
-          <p>A high-performance home management plugin designed for flexibility, speed, and clean service-based architecture.</p>
-          <div class="project-links">
-            <a class="btn" href="/plugins/ksethome.html">Plugin Page</a>
-            <a class="btn secondary" href="/docs/ksethome.html">Documentation</a>
-            <a class="btn github" href="https://github.com/kwlew/kSetHome" target="_blank" rel="noopener noreferrer">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="card project-card">
-          <div class="project-meta">
-            <span class="project-num">03</span>
-            <div class="tags">
-              <span class="tag red">RoboCup</span>
-              <span class="tag cyan">Embedded</span>
-              <span class="tag gold">AI</span>
-            </div>
-          </div>
-          <h3>Robotics</h3>
-          <p>RoboCup Rescue Maze with ByteVoltaTeam | CBR 2025 Champions and Outstanding Innovation Award winners at RoboCup 2026 Korea &#x1F1F0;&#x1F1F7;.</p>
-          <div class="project-links">
-            <a class="btn" href="/robotics.html">See More</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Documentation -->
-    <section id="docs" class="page-section" aria-label="Documentation">
-      <div class="container">
-        <h2>Documentation</h2>
-        <p class="section-desc">Setup guides, configuration, and reference material.</p>
-
-        <div class="card">
-          <h3>kSetHome</h3>
-          <p>Plugin setup, commands, permissions, and configuration reference.</p>
-          <div class="project-links">
-            <a class="btn" href="/docs/ksethome.html">Open Docs</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>kMoney</h3>
-          <p>Economy plugin documentation &mdash; commands, permissions, Vault integration, sounds, and all configuration files.</p>
-          <div class="project-links">
-            <a class="btn" href="/docs/kmoney.html">Open Docs</a>
-            <a class="btn github" href="https://github.com/kwlew/kMoney" target="_blank" rel="noopener noreferrer">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section id="achievements" class="page-section" aria-label="Achievements">
-      <div class="container">
-        <h2>Achievements</h2>
-        <p class="section-desc">Domestic and international competition results.</p>
-
-        <div class="ach-tabs" role="tablist" aria-label="Achievement view">
-          <button class="ach-tab active" role="tab" aria-selected="true"  data-ach-tab="personal">Personal</button>
-          <button class="ach-tab"        role="tab" aria-selected="false" data-ach-tab="team">ByteVoltaTeam</button>
-        </div>
-
-        <!-- Both panels are rendered from the ACHIEVEMENTS data at the
-             bottom of this file; RoboCup/CBR appear in both without being
-             written out twice. -->
-        <div class="ach-panel" id="ach-personal" role="tabpanel"></div>
-        <div class="ach-panel" id="ach-team" role="tabpanel" hidden></div>
+        </article>
 
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="page-section" aria-label="Contact">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="section-desc">Find me on social media and coding platforms.</p>
+    <!-- ===== COMPETITION RECORD ===== -->
+    <section class="section" id="results" aria-label="Competition record">
+      <p class="eyebrow">02 / Competition record</p>
 
-        <div class="contact-grid">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Competing since 2021.</h2>
+          <p class="section-lead">Robotics, informatics, maths and science olympiads, at home and internationally.</p>
+        </div>
+        <a class="text-link" href="/achievements.html">
+          <span>All results</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+        </a>
+      </div>
 
-          <a href="https://github.com/kwlew" class="contact-card contact-github" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56
-0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67
--1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25
-3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66
-0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31
-3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39
-2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17
-.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65
-.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11
-0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12
-C23.5 5.65 18.35.5 12 .5z"/>
-            </svg>
-            <div>
-              <strong>GitHub</strong>
-              <small>@kwlew</small>
-            </div>
+      <div class="medal-tiles">
+        <div class="medal-summary-item gold">
+          <span class="medal-summary-count">4</span>
+          <span class="medal-summary-label">Gold</span>
+        </div>
+        <div class="medal-summary-item silver">
+          <span class="medal-summary-count">6</span>
+          <span class="medal-summary-label">Silver</span>
+        </div>
+        <div class="medal-summary-item bronze">
+          <span class="medal-summary-count">1</span>
+          <span class="medal-summary-label">Bronze</span>
+        </div>
+        <div class="medal-summary-item national">
+          <span class="medal-summary-count">1</span>
+          <span class="medal-summary-label">National win</span>
+        </div>
+      </div>
+
+      <div class="record-grid">
+
+        <article class="record-card">
+          <div class="record-name">CBR 2025</div>
+          <div class="record-meta">Competi&ccedil;&atilde;o Brasileira de Rob&oacute;tica &middot; Vit&oacute;ria, ES</div>
+          <div class="record-sub">A clean sweep of every category entered.</div>
+
+          <div class="record-rows">
+            <div class="result-row"><span>Overall</span><span class="medal-badge national">1st Place</span></div>
+            <div class="result-row"><span>Super Teams</span><span class="medal-badge gold">1st Place</span></div>
+            <div class="result-row"><span>Technical Challenge</span><span class="medal-badge gold">1st Place</span></div>
+            <div class="result-row"><span>Team Description Paper</span><span class="medal-badge gold">1st Place</span></div>
+            <div class="result-row"><span>Video</span><span class="medal-badge gold">1st Place</span></div>
+          </div>
+
+          <p class="record-note">Defending the title at CBR 2026 in Jo&atilde;o Pessoa this November.</p>
+        </article>
+
+        <article class="record-card">
+          <div class="record-name">Olympiads</div>
+          <div class="record-meta">Maths, geography, logic, astronomy, informatics</div>
+          <div class="record-sub">Individual results, 2021 to 2026.</div>
+
+          <div class="record-rows">
+            <div class="result-row"><span>Matem&aacute;tica Canguru &middot; OMC</span><span class="medal-badge gold">3&times; Gold</span></div>
+            <div class="result-row"><span>Geografia &middot; OBG</span><span class="medal-badge gold">Gold</span></div>
+            <div class="result-row"><span>Rob&oacute;tica Te&oacute;rica &middot; OBR</span><span class="medal-badge silver">Silver</span></div>
+            <div class="result-row"><span>Racioc&iacute;nio L&oacute;gico &middot; OBRL</span><span class="medal-badge silver">2&times; Silver</span></div>
+            <div class="result-row"><span>Inform&aacute;tica &middot; OBI</span><span class="medal-badge phase">3&times; 2nd Phase</span></div>
+          </div>
+
+          <p class="record-note">Plus OBA, OBCIT, OCI, OCQ, ONAD, OBF and OCM. See all results.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== STACK ===== -->
+    <section class="section" id="stack" aria-label="Tech stack">
+      <p class="eyebrow">03 / Stack</p>
+      <h2 class="section-title">What I work in.</h2>
+
+      <div class="stack-grid">
+
+        <div class="stack-card">
+          <div class="stack-card-label">Languages</div>
+          <div class="tags">
+            <span class="tag orange">Java</span>
+            <span class="tag purple">Kotlin</span>
+            <span class="tag blue">C++</span>
+            <span class="tag cyan">C</span>
+            <span class="tag purple">C#</span>
+            <span class="tag gold">Python</span>
+            <span class="tag gold">JavaScript</span>
+            <span class="tag blue">Lua</span>
+            <span class="tag cyan">SQL</span>
+            <span class="tag orange">HTML5</span>
+            <span class="tag blue">CSS3</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-label">Backend and Cloud</div>
+          <div class="tags">
+            <span class="tag green">Spring</span>
+            <span class="tag green">Node.js</span>
+            <span class="tag white">Paper</span>
+            <span class="tag orange">Cloudflare Workers</span>
+            <span class="tag cyan">FastAPI</span>
+            <span class="tag green">Supabase</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-label">Embedded and Systems</div>
+          <div class="tags">
+            <span class="tag gold">MicroPython</span>
+            <span class="tag cyan">RTOS</span>
+            <span class="tag white">Linux</span>
+            <span class="tag red">OpenGL</span>
+            <span class="tag gray">LWJGL</span>
+            <span class="tag pink">L&Ouml;VE2D</span>
+          </div>
+        </div>
+
+        <div class="stack-card">
+          <div class="stack-card-label">Tooling</div>
+          <div class="tags">
+            <span class="tag blue">Docker</span>
+            <span class="tag orange">Git</span>
+            <span class="tag cyan">Gradle</span>
+            <span class="tag red">Maven</span>
+            <span class="tag green">WSL</span>
+            <span class="tag purple">discord.js</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="cta-panel">
+        <div class="cta-inner">
+          <p class="eyebrow">04 / Contact</p>
+          <h2 class="section-title">Let&rsquo;s build something.</h2>
+          <p class="section-lead">Open to collaboration on plugins, robotics and anything embedded. The fastest way to reach me is GitHub.</p>
+
+          <a class="btn" href="https://github.com/kwlew" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            <span>github.com/kwlew</span>
           </a>
 
-          <a href="https://instagram.com/kaleo.sm" class="contact-card contact-instagram" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76
-0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66
-0 3 1.34 3 3v10c0 1.66-1.34 3-3
-3H7c-1.66 0-3-1.34-3-3V7c0-1.66
-1.34-3 3-3h10zm-5 3a5 5 0 100
-10 5 5 0 000-10zm0 2a3 3 0 110
-6 3 3 0 010-6zm4.5-2.75a1.25
-1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
-            </svg>
-            <div>
-              <strong>Instagram</strong>
-              <small>@kaleo.sm</small>
-            </div>
-          </a>
+          <div class="contact-grid">
 
-          <a href="https://modrinth.com/user/kwlew" class="contact-card contact-modrinth" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/>
-            </svg>
-            <div>
-              <strong>Modrinth</strong>
-              <small>kwlew</small>
-            </div>
-          </a>
+            <a href="https://modrinth.com/user/kwlew" class="contact-card contact-modrinth" target="_blank" rel="noopener noreferrer">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/>
+              </svg>
+              <div>
+                <strong>Modrinth</strong>
+                <small>Plugin downloads</small>
+              </div>
+            </a>
 
-          <a href="https://codeforces.com/profile/kwlew" class="contact-card contact-codeforces" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3A1.5 1.5 0 0 1 0 19.5V9a1.5 1.5 0 0 1 1.5-1.5h3zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 19.5v-15A1.5 1.5 0 0 1 10.5 3h3zm9 7.5A1.5 1.5 0 0 1 24 12v7.5A1.5 1.5 0 0 1 22.5 21h-3A1.5 1.5 0 0 1 18 19.5V12a1.5 1.5 0 0 1 1.5-1.5h3z"/>
-            </svg>
-            <div>
-              <strong>Codeforces</strong>
-              <small>kwlew</small>
-            </div>
-          </a>
+            <a href="https://codeforces.com/profile/kwlew" class="contact-card contact-codeforces" target="_blank" rel="noopener noreferrer">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3A1.5 1.5 0 0 1 0 19.5V9a1.5 1.5 0 0 1 1.5-1.5h3zm9-4.5A1.5 1.5 0 0 1 15 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 19.5v-15A1.5 1.5 0 0 1 10.5 3h3zm9 7.5A1.5 1.5 0 0 1 24 12v7.5A1.5 1.5 0 0 1 22.5 21h-3A1.5 1.5 0 0 1 18 19.5V12a1.5 1.5 0 0 1 1.5-1.5h3z"/>
+              </svg>
+              <div>
+                <strong>Codeforces</strong>
+                <small>Competitive programming</small>
+              </div>
+            </a>
 
-          <a href="https://leetcode.com/u/kwlew" class="contact-card contact-leetcode" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
-            </svg>
-            <div>
-              <strong>LeetCode</strong>
-              <small>kwlew</small>
-            </div>
-          </a>
+            <a href="https://leetcode.com/u/kwlew" class="contact-card contact-leetcode" target="_blank" rel="noopener noreferrer">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+              </svg>
+              <div>
+                <strong>LeetCode</strong>
+                <small>Problem solving</small>
+              </div>
+            </a>
 
-          <a href="https://neps.academy/user/27568" class="contact-card contact-neps" target="_blank" rel="noopener noreferrer">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M2 2h4l7 12V2h4v20h-4L6 10v12H2V2z"/>
-            </svg>
-            <div>
-              <strong>NEPS Academy</strong>
-              <small>kwlew</small>
-            </div>
-          </a>
+            <a href="https://instagram.com/kaleo.sm" class="contact-card contact-instagram" target="_blank" rel="noopener noreferrer">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-2.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+              </svg>
+              <div>
+                <strong>Instagram</strong>
+                <small>@kaleo.sm</small>
+              </div>
+            </a>
 
-          <a href="#" class="contact-card contact-discord" tabindex="-1" aria-label="Discord server (coming soon)">
-            <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-            </svg>
-            <div>
-              <strong>Discord</strong>
-              <small>Coming soon</small>
-            </div>
-          </a>
+            <a href="https://neps.academy/user/27568" class="contact-card contact-neps" target="_blank" rel="noopener noreferrer">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M2 2h4l7 12V2h4v20h-4L6 10v12H2V2z"/>
+              </svg>
+              <div>
+                <strong>NEPS Academy</strong>
+                <small>Olympiad training</small>
+              </div>
+            </a>
 
+            <span class="contact-card contact-discord" aria-label="Discord server, coming soon">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+              </svg>
+              <div>
+                <strong>Discord</strong>
+                <small>Coming soon</small>
+              </div>
+            </span>
+
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <p>&copy; 2026 kwlew.dev</p>
+  <footer class="site-footer">
+    <span>&copy; 2026 kwlew.dev</span>
+    <span class="footer-place">BRAZIL</span>
   </footer>
 
   <script src="/assets/js/particles.js?v=3"></script>
   <script>
-    const sections = document.querySelectorAll('.page-section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Highlight the nav item for whichever section is currently in view.
+    // Driven by scroll position rather than IntersectionObserver: the same
+    // few rect reads, but it also behaves in throttled/background tabs where
+    // observer callbacks are not delivered.
+    (function () {
+      const items = Array.from(document.querySelectorAll('.nav-item'));
+      if (!items.length) return;
 
-    const VALID = ["about", "projects", "games", "docs", "achievements", "contact"];
+      const pairs = items
+        .map(a => ({ link: a, section: document.getElementById(a.getAttribute('href').slice(1)) }))
+        .filter(p => p.section);
 
-    function showSection(id) {
-      const safeId = VALID.includes(id) ? id : "about";
+      if (!pairs.length) return;
 
-      sections.forEach(s => s.classList.toggle('active', s.id === safeId));
-      navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === safeId));
+      function sync() {
+        // Reference line sits ~40% down the viewport. Sections are in
+        // document order, so the last one that has crossed it is current.
+        const line = window.innerHeight * 0.4;
+        let current = null;
 
-      if (window.location.hash !== `#${safeId}`) {
-        history.replaceState(null, "", `#${safeId}`);
-      }
-    }
+        for (const p of pairs) {
+          if (p.section.getBoundingClientRect().top <= line) current = p;
+        }
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => showSection(link.dataset.section));
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      showSection(window.location.hash.replace('#', '') || 'about');
-    });
-
-    // ===== ACHIEVEMENT DATA =====
-    const ACHIEVEMENTS = {
-      omc: {
-        acronym: 'OMC',
-        fullname: 'Olimpíada de Matemática Canguru',
-        subtitle: '4 medals',
-        results: [
-          { year: '2022', badge: 'gold',   text: 'Gold' },
-          { year: '2023', badge: 'silver', text: 'Silver' },
-          { year: '2024', badge: 'gold',   text: 'Gold' },
-          { year: '2025', badge: 'gold',   text: 'Gold' }
-        ]
-      },
-      obg: {
-        acronym: 'OBG',
-        fullname: 'Olimpíada Brasileira de Geografia',
-        subtitle: '2 medals',
-        results: [
-          { year: '2023', badge: 'gold',   text: 'Gold' },
-          { year: '2024', badge: 'silver', text: 'Silver' }
-        ]
-      },
-      obrl: {
-        acronym: 'OBRL',
-        fullname: 'Olimpíada Brasileira de Raciocínio Lógico',
-        subtitle: '2 medals',
-        results: [
-          { year: '2022', badge: 'silver', text: 'Silver' },
-          { year: '2023', badge: 'silver', text: 'Silver' }
-        ]
-      },
-      oba: {
-        acronym: 'OBA',
-        fullname: 'Olimpíada Brasileira de Astronomia',
-        subtitle: '2 medals',
-        results: [
-          { year: '2021', badge: 'silver', text: 'Silver' },
-          { year: '2025', badge: 'bronze', text: 'Bronze' }
-        ]
-      },
-      obrPractical: {
-        acronym: 'OBR PRACTICAL',
-        fullname: 'Olimpíada Brasileira de Robótica — Practical',
-        subtitle: '2 participations',
-        results: [
-          { year: '2025', badge: 'lost',        text: 'Forfeited' },
-          { year: '2026', badge: 'participant', text: 'Ongoing' }
-        ]
-      },
-      obrTheoretical: {
-        acronym: 'OBR THEORETICAL',
-        fullname: 'Olimpíada Brasileira de Robótica — Theoretical',
-        subtitle: '1 medal',
-        results: [
-          { year: '2025', badge: 'silver', text: 'Silver' }
-        ]
-      },
-      obcit: {
-        acronym: 'OBCIT',
-        fullname: 'Olimpíada Brasileira de Ciência, Inovação e Tecnologia',
-        subtitle: '2 results',
-        results: [
-          { year: '2025', badge: 'phase',       text: '4th Phase' },
-          { year: '2026', badge: 'participant', text: 'Ongoing (3rd Phase)' }
-        ]
-      },
-      oci: {
-        acronym: 'OCI',
-        fullname: 'Olimpíada Cearense de Informática',
-        subtitle: '1 result',
-        results: [
-          { year: '2024', badge: 'participant', text: 'Participant' }
-        ]
-      },
-      robocup: {
-        acronym: 'ROBOCUP',
-        fullname: 'RoboCup Rescue Maze — International',
-        subtitle: '6 results · 2026',
-        wide: true,
-        results: [
-          { group: '2026', place: 'Incheon, Korea 🇰🇷' },
-          { label: 'Outstanding Innovation Award', badge: 'world', text: 'Winner' },
-          { label: 'Community Award',              badge: 'world', text: '1st Place' },
-          { label: 'Overall',                      badge: 'phase', text: '6th Place' },
-          { label: 'Documents',                    badge: 'phase', text: '4th Place' },
-          { label: 'Super Teams',                  badge: 'phase', text: '5th Place' },
-          { label: 'Technical Challenge',          badge: 'phase', text: '6th Place' }
-        ]
-      },
-      cbr: {
-        acronym: 'CBR',
-        fullname: 'Competição Brasileira de Robótica',
-        subtitle: '5 results · 2025–2026',
-        wide: true,
-        results: [
-          { group: '2025', place: 'Vitória, ES' },
-          { label: 'Overall',               badge: 'national', text: '1st Place' },
-          { label: 'Super Teams',           badge: 'gold',     text: '1st Place' },
-          { label: 'Technical Challenge',   badge: 'gold',     text: '1st Place' },
-          { label: 'Team Description Paper', badge: 'gold',    text: '1st Place' },
-          { label: 'Video',                 badge: 'gold',     text: '1st Place' },
-          { group: '2026', place: 'João Pessoa, PB' },
-          { label: 'Defending the title this November', badge: 'participant', text: 'Upcoming' }
-        ]
-      },
-      cbr2024: {
-        acronym: 'CBR 2024',
-        fullname: 'Competição Brasileira de Robótica',
-        subtitle: '1 result · 2024',
-        wide: true,
-        note: '* Not a member during this competition',
-        results: [
-          { label: 'Overall', badge: 'gold', text: '1st Place' }
-        ]
-      },
-      fdc: {
-        acronym: 'FDC',
-        fullname: 'Feira do Conhecimento',
-        subtitle: '1 result',
-        results: [
-          { year: '2025', badge: 'bronze', text: '3rd Place' }
-        ]
-      },
-      ocq: {
-        acronym: 'OCQ',
-        fullname: 'Olimpíada Cearense de Química',
-        subtitle: '1 result',
-        results: [
-          { year: '2025', badge: 'phase', text: '2nd Phase' }
-        ]
-      },
-      obi: {
-        acronym: 'OBI',
-        fullname: 'Olimpíada Brasileira de Informática',
-        subtitle: '4 results',
-        results: [
-          { year: '23, 24, 25', badge: 'phase',       text: '3× 2nd Phase' },
-          { year: '2026',       badge: 'participant', text: 'Ongoing (2nd Phase)' }
-        ]
-      },
-      obiTheoretical: {
-        acronym: 'OBI-T',
-        fullname: 'Olimpíada Brasileira de Informática Teórica',
-        subtitle: '1 result',
-        results: [
-          { year: '2022', badge: 'phase', text: '3rd Phase' }
-        ]
-      },
-      onad: {
-        acronym: 'ONAD',
-        fullname: 'Olimpíada Nacional de Astronomia Digital',
-        subtitle: '1 result',
-        results: [
-          { year: '2026', badge: 'participant', text: 'Participant' }
-        ]
-      },
-      obf: {
-        acronym: 'OBF',
-        fullname: 'Olimpíada Brasileira de Física',
-        subtitle: '2 results',
-        results: [
-          { badge: 'phase', text: '2× 2nd Phase' }
-        ]
-      },
-      ocm: {
-        acronym: 'OCM',
-        fullname: 'Olimpíada Cearense de Matemática',
-        subtitle: '1 result',
-        results: [
-          { badge: 'participant', text: 'Participant' }
-        ]
-      }
-    };
-
-    const PANELS = {
-      personal: {
-        summaries: [
-          [{ kind: 'national', count: '1', label: 'National Win' }],
-          [
-            { kind: 'gold',   count: '4', label: 'Gold' },
-            { kind: 'silver', count: '6', label: 'Silver' },
-            { kind: 'bronze', count: '1', label: 'Bronze' }
-          ]
-        ],
-        cards: [
-          'omc', 'obg', 'obrl', 'oba', 'obrPractical', 'obrTheoretical',
-          'obcit', 'oci', 'robocup', 'cbr', 'fdc', 'ocq', 'obi', 'obiTheoretical',
-          'onad', 'obf', 'ocm'
-        ]
-      },
-      team: {
-        summaries: [
-          [
-            { kind: 'national', count: '2', label: 'National Wins' },
-            { kind: 'world',    count: '2', label: 'International Awards' }
-          ]
-        ],
-        cards: ['robocup', 'cbr', 'cbr2024']
-      }
-    };
-
-    // ===== ACHIEVEMENT RENDERING =====
-    const esc = (s) => String(s).replace(/[&<>"]/g, c => (
-      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
-    ));
-
-    function renderResult(r) {
-      if (r.group) {
-        return `<div class="medal-group-label">${esc(r.group)} · ` +
-               `<span class="medal-group-place">${esc(r.place)}</span></div>`;
+        for (const p of pairs) {
+          p.link.classList.toggle('active', p === current);
+        }
       }
 
-      let lead = '';
-      if (r.year)       lead = `<span class="medal-year">${esc(r.year)}</span>`;
-      else if (r.label) lead = `<span class="medal-entry-label">${esc(r.label)}</span>`;
-
-      return `<div class="medal-entry">${lead}` +
-             `<span class="medal-badge ${esc(r.badge)}">${esc(r.text)}</span></div>`;
-    }
-
-    function renderCard(id) {
-      const a = ACHIEVEMENTS[id];
-      return `<div class="card achievement-card${a.wide ? ' achievement-wide' : ''}">` +
-               `<div class="achievement-acronym">${esc(a.acronym)}</div>` +
-               `<div class="achievement-fullname">${esc(a.fullname)}</div>` +
-               `<div class="achievement-subtitle">${esc(a.subtitle)}</div>` +
-               (a.note ? `<p class="achievement-note">${esc(a.note)}</p>` : '') +
-               `<div class="medal-list">${a.results.map(renderResult).join('')}</div>` +
-             `</div>`;
-    }
-
-    function renderPanel(key) {
-      const p = PANELS[key];
-
-      const summaries = p.summaries.map(row =>
-        `<div class="medal-summary">` +
-          row.map(s =>
-            `<div class="medal-summary-item ${esc(s.kind)}">` +
-              `<span class="medal-summary-count">${esc(s.count)}</span>` +
-              `<span class="medal-summary-label">${esc(s.label)}</span>` +
-            `</div>`
-          ).join('') +
-        `</div>`
-      ).join('');
-
-      return summaries +
-        `<div class="achievements-grid">${p.cards.map(renderCard).join('')}</div>`;
-    }
-
-    document.getElementById('ach-personal').innerHTML = renderPanel('personal');
-    document.getElementById('ach-team').innerHTML     = renderPanel('team');
-
-    // ===== ACHIEVEMENT INNER TABS =====
-    const achTabs   = document.querySelectorAll('.ach-tab');
-    const achPanels = document.querySelectorAll('.ach-panel');
-
-    achTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.achTab;
-
-        achTabs.forEach(t => {
-          t.classList.toggle('active', t === tab);
-          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
-        });
-
-        achPanels.forEach(p => {
-          const show = p.id === `ach-${target}`;
-          if (show) {
-            p.removeAttribute('hidden');
-            p.classList.remove('panel-entering');
-            void p.offsetWidth; // force reflow so animation restarts
-            p.classList.add('panel-entering');
-          } else {
-            p.setAttribute('hidden', '');
-            p.classList.remove('panel-entering');
-          }
-        });
-      });
-    });
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync, { passive: true });
+      sync();
+    })();
   </script>
 </body>
 </html>

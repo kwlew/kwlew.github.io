@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="kMoney — a modern, feature-rich economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
+  <meta name="description" content="kMoney: a modern, feature-rich economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
   <meta property="og:type"             content="website" />
   <meta property="og:url"              content="https://kwlew.dev/plugins/kmoney.html" />
   <meta property="og:title"            content="kMoney &bull; kwlew.dev" />
-  <meta property="og:description"      content="kMoney — a modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
+  <meta property="og:description"      content="kMoney: a modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
   <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
   <meta name="twitter:card"            content="summary_large_image" />
   <meta name="twitter:title"           content="kMoney • kwlew.dev" />
-  <meta name="twitter:description"     content="kMoney — a modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
+  <meta name="twitter:description"     content="kMoney: a modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
   <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
   <title>kMoney &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=9">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=12">
   <style>
     .cmd-table {
       width: 100%;
@@ -124,7 +124,7 @@
       </div>
       <ul>
         <li>💰 Per-player balances stored in YAML with in-memory write-back cache</li>
-        <li>🏦 Physical money checks &mdash; withdraw balance into tradeable in-game items</li>
+        <li>🏦 Physical money checks: withdraw balance into tradeable in-game items</li>
         <li>🏆 Async leaderboard (<code>/money top</code>) with configurable refresh interval</li>
         <li>🔔 Admin join notifications with automatic update detection via Modrinth</li>
         <li>🎵 Fully configurable per-event sounds via <code>sounds.yml</code></li>
@@ -186,8 +186,8 @@
     <div class="card">
       <h2>Integrations</h2>
       <ul>
-        <li>🔗 <strong>Vault</strong> &mdash; registers as a Vault Economy provider; any plugin using the Vault API works out of the box</li>
-        <li>📊 <strong>PlaceholderAPI</strong> &mdash; <code>%kMoney_balance%</code>, <code>%kMoney_balance_formatted%</code>, <code>%kMoney_symbol%</code></li>
+        <li>🔗 <strong>Vault</strong>: registers as a Vault Economy provider; any plugin using the Vault API works out of the box</li>
+        <li>📊 <strong>PlaceholderAPI</strong>: <code>%kMoney_balance%</code>, <code>%kMoney_balance_formatted%</code>, <code>%kMoney_symbol%</code></li>
       </ul>
     </div>
 
@@ -195,8 +195,8 @@
       <h2>Architecture</h2>
       <ul>
         <li>YAML files per player under <code>plugins/kMoney/players/&lt;uuid&gt;.yml</code></li>
-        <li>In-memory write-back cache &mdash; reads are instant, dirty entries flushed every 30 s</li>
-        <li>All leaderboard work runs asynchronously &mdash; no main thread blocking</li>
+        <li>In-memory write-back cache: reads are instant, dirty entries flushed every 30 s</li>
+        <li>All leaderboard work runs asynchronously, with no main thread blocking</li>
         <li>Money checks protected against duplication via hoppers, villager trades &amp; piglin bartering</li>
         <li>Three config files: <code>config.yml</code>, <code>messages.yml</code>, <code>sounds.yml</code></li>
       </ul>

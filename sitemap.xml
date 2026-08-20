@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kwlew.dev/</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-08-21</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -11,9 +11,15 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://kwlew.dev/tdidle.html<./loc>
+    <loc>https://kwlew.dev/achievements.html</loc>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kwlew.dev/games/tdidle.html</loc>
     <lastmod>2026-06-27</lastmod>
     <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://kwlew.dev/plugins/ksethome.html</loc>
     <lastmod>2026-06-27</lastmod>

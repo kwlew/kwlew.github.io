@@ -95,7 +95,7 @@ if (!canvas) {
             }
 
             // Draw every dot in ONE path with a single shadow setup.
-            // shadowBlur is the most expensive op here — doing it once per
+            // shadowBlur is the most expensive op here, so doing it once per
             // frame instead of once per particle is a huge win, and the look
             // is identical since all dots share the same colour.
             ctx.fillStyle = color;
