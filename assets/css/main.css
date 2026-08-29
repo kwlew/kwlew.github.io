@@ -2,8 +2,6 @@
 :root {
   --c-bg: #0d1117;
   --c-bg-deep: #020617;
-  /* Glass surfaces: lighter fill + blur/saturate so panels read as frosted
-     glass (vivid, see-through) rather than a flat dark box. */
   --c-surface: rgba(22, 27, 34, 0.6);
   --c-surface-nav: rgba(22, 27, 34, 0.5);
   --c-surface-sunken: rgba(2, 6, 23, 0.45);
@@ -1021,8 +1019,16 @@ h1 {
   margin-right: auto;
 }
 
-.cta-panel .btn {
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 30px;
+}
+
+.cta-actions .btn {
+  margin: 0;
 }
 
 /* ===== CARD ===== */
@@ -1962,6 +1968,10 @@ footer {
   .cta-panel .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .cta-actions {
+    flex-direction: column;
   }
 
   .contact-grid,
