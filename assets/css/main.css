@@ -890,7 +890,7 @@ h1 {
   display: grid;
   grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
   gap: 32px;
-  margin-top: 24px;
+  margin-top: 64px;
   padding: 32px;
   border-radius: 18px;
   background: var(--c-surface);
@@ -1138,6 +1138,144 @@ h1 {
   border-radius: 8px;
   background: rgba(27, 217, 106, 0.08);
   color: #1bd96a;
+  font: 600 0.72rem var(--font-body);
+  cursor: pointer;
+}
+
+/* ===== STARSOWN LIVE STATS ===== */
+.starsown-stats-panel {
+  padding: 28px 30px;
+  margin-top: 20px;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25),
+              inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.starsown-stats-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.starsown-stats-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--c-purple);
+}
+
+.starsown-stats-head h2 {
+  margin-top: 2px;
+  font-size: 1.55rem;
+}
+
+.starsown-stats-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+
+.starsown-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-purple);
+  box-shadow: 0 0 8px rgba(var(--c-purple-rgb), 0.6);
+  flex-shrink: 0;
+  animation: dot-pulse 1.5s ease-in-out infinite;
+}
+
+.starsown-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+  list-style: none;
+}
+
+.starsown-stats-grid[aria-busy="true"] .starsown-stat dt {
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.starsown-stat {
+  --stat-rgb: var(--c-purple-rgb);
+  --stat-fg: var(--c-purple);
+  padding: 18px 14px;
+  border-radius: 14px;
+  text-align: center;
+  background: var(--c-surface-sunken);
+  border: 1px solid var(--c-border-hair);
+  transition: border-color var(--t-fast) var(--ease-smooth),
+              transform var(--t-fast) var(--ease-out);
+}
+
+.starsown-stat:hover {
+  border-color: rgba(var(--stat-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.starsown-stat dt {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--stat-fg);
+}
+
+.starsown-stat dd {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: var(--c-text-muted);
+}
+
+.starsown-stat.online  { --stat-rgb: var(--c-purple-rgb);  --stat-fg: var(--c-purple); }
+.starsown-stat.stars   { --stat-rgb: var(--label-silver-rgb); --stat-fg: var(--label-silver); }
+.starsown-stat.golden  { --stat-rgb: var(--label-gold-rgb);   --stat-fg: var(--label-gold); }
+.starsown-stat.rainbow { --stat-rgb: var(--label-pink-rgb);   --stat-fg: var(--label-pink); }
+
+.starsown-stat.rainbow dt {
+  background: linear-gradient(90deg, var(--label-cyan), var(--label-purple), var(--label-pink), var(--label-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@supports not (background-clip: text) {
+  .starsown-stat.rainbow dt { color: var(--label-pink); }
+}
+
+.starsown-stats-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--c-surface-sunken);
+  border: 1px solid var(--c-border-hair);
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+}
+
+.starsown-stats-error button {
+  padding: 7px 11px;
+  border: 1px solid rgba(var(--c-purple-rgb), 0.28);
+  border-radius: 8px;
+  background: rgba(var(--c-purple-rgb), 0.08);
+  color: var(--c-purple);
   font: 600 0.72rem var(--font-body);
   cursor: pointer;
 }
@@ -2105,6 +2243,10 @@ footer {
     margin-top: 4px;
   }
 
+  .starsown-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .medal-tiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2227,6 +2369,7 @@ footer {
   }
 
   .modrinth-panel {
+    margin-top: 44px;
     padding: 22px;
   }
 
@@ -2250,6 +2393,22 @@ footer {
 
   .modrinth-project-downloads small {
     display: none;
+  }
+
+  .starsown-stats-panel {
+    padding: 22px;
+  }
+
+  .starsown-stats-grid {
+    gap: 10px;
+  }
+
+  .starsown-stat {
+    padding: 14px 8px;
+  }
+
+  .starsown-stat dt {
+    font-size: 1.35rem;
   }
 
   .cta-panel {

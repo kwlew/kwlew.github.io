@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=12">
+  <link rel="stylesheet" href="/assets/css/main.css?v=15">
 </head>
 
 <body>
@@ -50,6 +50,42 @@
   
   <main class="container" style="padding-bottom: 20px;">
 
+    <section class="starsown-stats-panel" aria-labelledby="starsown-stats-heading">
+      <div class="starsown-stats-head">
+        <div>
+          <span class="starsown-stats-kicker">Live from the game</span>
+          <h2 id="starsown-stats-heading">Community stats</h2>
+        </div>
+        <div class="starsown-stats-status">
+          <span class="starsown-live-dot" aria-hidden="true"></span>
+          <span id="starsown-stats-status-text">Loading&hellip;</span>
+        </div>
+      </div>
+
+      <dl class="starsown-stats-grid" id="starsown-stats-grid" aria-live="polite" aria-busy="true">
+        <div class="starsown-stat online">
+          <dt id="starsown-stat-online">&mdash;</dt>
+          <dd>Players online</dd>
+        </div>
+        <div class="starsown-stat stars">
+          <dt id="starsown-stat-stars">&mdash;</dt>
+          <dd>Stars collected</dd>
+        </div>
+        <div class="starsown-stat golden">
+          <dt id="starsown-stat-golden">&mdash;</dt>
+          <dd>Golden stars</dd>
+        </div>
+        <div class="starsown-stat rainbow">
+          <dt id="starsown-stat-rainbow">&mdash;</dt>
+          <dd>Rainbow stars</dd>
+        </div>
+      </dl>
+
+      <noscript>
+        <p class="starsown-stats-error">Enable JavaScript to load live Starsown stats.</p>
+      </noscript>
+    </section>
+
     <div class="card">
         <h2>About Starsown</h2>
         <p>Starsown is an RPG-Like 2D top down game built with L&Ouml;VE2D. Players explore a vast world, engage in combat, and level up their characters.</p>
@@ -71,7 +107,7 @@
   </footer>
 
   <script>
-    const repo = "kwlew/TD-Idle";
+    const repo = "kwlew/starsown";
 
     fetch(`https://api.github.com/repos/${repo}`)
       .then(res => res.ok ? res.json() : Promise.reject())
@@ -97,6 +133,7 @@
   </script>
 
   <script src="/assets/js/particles.js?v=3"></script>
+  <script src="/assets/js/starsown-stats.js?v=1"></script>
 </body>
 </html>
 
