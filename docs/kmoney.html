@@ -8,110 +8,25 @@
   <meta property="og:url"              content="https://kwlew.dev/docs/kmoney.html" />
   <meta property="og:title"            content="kMoney Docs &bull; kwlew.dev" />
   <meta property="og:description"      content="kMoney documentation: commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
-  <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
+  <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png?v=2" />
   <meta name="twitter:card"            content="summary_large_image" />
   <meta name="twitter:title"           content="kMoney Docs • kwlew.dev" />
   <meta name="twitter:description"     content="kMoney documentation: commands, permissions, money checks, PlaceholderAPI, and configuration reference." />
-  <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
+  <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png?v=2" />
   <title>kMoney Docs &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=15">
-  <style>
-    .cmd-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 14px;
-      font-size: 0.875rem;
-      text-align: left;
-    }
-
-    .cmd-table th {
-      color: var(--c-text-muted);
-      font-weight: 600;
-      padding: 8px 12px 8px 0;
-      border-bottom: 1px solid var(--c-border-dark);
-      white-space: nowrap;
-    }
-
-    .cmd-table td {
-      padding: 9px 12px 9px 0;
-      color: var(--c-text-secondary);
-      border-bottom: 1px solid var(--c-border);
-      vertical-align: top;
-    }
-
-    .cmd-table td:first-child {
-      color: var(--c-text);
-      font-family: "Fira Code", "Cascadia Code", Consolas, monospace;
-      font-size: 0.82rem;
-      white-space: nowrap;
-      padding-right: 20px;
-    }
-
-    .cmd-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .perm-default {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 20px;
-      font-size: 0.68rem;
-      font-weight: 600;
-    }
-
-    .perm-default.everyone {
-      background: rgba(44, 234, 37, 0.08);
-      border: 1px solid rgba(44, 234, 37, 0.22);
-      color: #2cea25;
-    }
-
-    .perm-default.op {
-      background: rgba(255, 161, 22, 0.08);
-      border: 1px solid rgba(255, 161, 22, 0.22);
-      color: #ffa116;
-    }
-
-    .section-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .section-nav a {
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--c-text-muted);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--c-border-dark);
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .section-nav a:hover {
-      color: var(--c-text);
-      border-color: rgba(var(--c-purple-rgb), 0.3);
-    }
-
-    @media (max-width: 640px) {
-      .cmd-table th:nth-child(3),
-      .cmd-table td:nth-child(3) { display: none; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=22">
 </head>
 <body>
-  <canvas id="particles-bg"></canvas>
-  <a href="/" class="home-btn" title="Home">&#8962;</a>
+  <canvas id="particles-bg" aria-hidden="true"></canvas>
+  <a href="/" class="home-btn vt-brand" title="Home"><span aria-hidden="true">&larr;</span> kwlew.dev</a>
 
   <header>
-    <h1>kMoney Docs <span class="emoji">📖</span></h1>
+    <h1 class="vt-kmoney">kMoney Docs <span class="emoji">📖</span></h1>
     <p class="subtitle">Complete reference for commands, permissions, and configuration</p>
   </header>
 
@@ -362,7 +277,7 @@
     <div class="card" id="messages">
       <h2>Messages &amp; Formatting</h2>
       <ul>
-        <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" style="color:var(--c-violet);">MiniMessage</a> format.</li>
+        <li>All player-facing text is defined in <code>messages.yml</code> using <a href="https://docs.advntr.dev/minimessage/format.html" target="_blank" rel="noopener noreferrer" >MiniMessage</a> format.</li>
         <li>Every message automatically receives the global <code>prefix</code>.</li>
         <li>Item lore (check name/value) uses raw messages without the prefix.</li>
         <li>Setting <code>small-font: true</code> in <code>messages.yml</code> replaces all standard Latin characters with Unicode small-caps equivalents, giving a stylised look without a resource pack.</li>
@@ -450,6 +365,6 @@
     <p>&copy; 2026 kwlew.dev</p>
   </footer>
 
-  <script src="/assets/js/particles.js?v=3"></script>
+  <script src="/assets/js/particles.js?v=4"></script>
 </body>
 </html>

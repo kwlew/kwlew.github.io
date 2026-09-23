@@ -8,26 +8,26 @@
   <meta property="og:url"              content="https://kwlew.dev/games/starsown.html" />
   <meta property="og:title"            content="Starsown &bull; kwlew.dev" />
   <meta property="og:description"      content="Starsown: an RPG-Like 2D top down game built with L&Ouml;VE2D. Download, changelog, and source." />
-  <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png" />
+  <meta property="og:image"            content="https://kwlew.dev/assets/images/og-image.png?v=2" />
   <meta name="twitter:card"            content="summary_large_image" />
   <meta name="twitter:title"           content="Starsown • kwlew.dev" />
   <meta name="twitter:description"     content="Everything you need to know about Starsown." />
-  <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png" />
+  <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png?v=2" />
   <title>Starsown &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=15">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css?v=22">
 </head>
 
 <body>
-  <canvas id="particles-bg"></canvas>
-  <a href="/" class="home-btn" title="Home">&#8962;</a>
+  <canvas id="particles-bg" aria-hidden="true"></canvas>
+  <a href="/" class="home-btn vt-brand" title="Home"><span aria-hidden="true">&larr;</span> kwlew.dev</a>
 
   <header>
-    <h1>Starsown <span class="emoji">🌠</span></h1>
+    <h1 class="vt-starsown">Starsown <span class="emoji">🌠</span></h1>
     <p class="subtitle">Everything you need to know about Starsown</p>
   </header>
 
@@ -64,19 +64,19 @@
 
       <dl class="starsown-stats-grid" id="starsown-stats-grid" aria-live="polite" aria-busy="true">
         <div class="starsown-stat online">
-          <dt id="starsown-stat-online">&mdash;</dt>
+          <dt id="starsown-stat-online">--</dt>
           <dd>Players online</dd>
         </div>
         <div class="starsown-stat stars">
-          <dt id="starsown-stat-stars">&mdash;</dt>
+          <dt id="starsown-stat-stars">--</dt>
           <dd>Stars collected</dd>
         </div>
         <div class="starsown-stat golden">
-          <dt id="starsown-stat-golden">&mdash;</dt>
+          <dt id="starsown-stat-golden">--</dt>
           <dd>Golden stars</dd>
         </div>
         <div class="starsown-stat rainbow">
-          <dt id="starsown-stat-rainbow">&mdash;</dt>
+          <dt id="starsown-stat-rainbow">--</dt>
           <dd>Rainbow stars</dd>
         </div>
       </dl>
@@ -132,7 +132,7 @@
       });
   </script>
 
-  <script src="/assets/js/particles.js?v=3"></script>
+  <script src="/assets/js/particles.js?v=4"></script>
   <script src="/assets/js/starsown-stats.js?v=1"></script>
 </body>
 </html>

@@ -1,184 +1,175 @@
 <!--
-  HOW TO GENERATE og-image.png FROM THIS FILE
-  ============================================
-  1. Open this file in Chrome (File > Open, or drag it in)
-  2. Open DevTools (F12) → click the device-toolbar icon (Ctrl+Shift+M)
-  3. Set the dimensions to exactly 1200 × 630 in the toolbar at the top
-  4. Close DevTools
-  5. Right-click the page → "Save as..." or use DevTools > More tools >
-     Capture screenshot (in the three-dot menu inside DevTools)
-  6. Save the result as: assets/images/og-image.png
-  7. Push the PNG to the repository; the OG meta tags already reference it
+  Source for assets/images/og-image.png (1200 x 630), the link preview image.
+
+  It reuses the site's stylesheet and the real maze simulation, rendered
+  with reduced motion so the maze shows one completed run. Absolute asset
+  paths need the site served from its root:
+
+    python -m http.server 8080
+    open http://localhost:8080/assets/images/og-card.html
+    DevTools > Rendering > emulate prefers-reduced-motion: reduce
+    DevTools device toolbar at 1200 x 630 > Capture screenshot
+
+  Save the result over assets/images/og-image.png, then bump the ?v= on
+  og-image.png in every page's og:image and twitter:image tags so link
+  previews refresh.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=1200" />
+  <title>og-card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
+    html, body {
       width: 1200px;
       height: 630px;
       overflow: hidden;
-      background: #0d1117;
-      font-family: 'Inter', system-ui, -apple-system, Arial, sans-serif;
+    }
+
+    /* Static stand-in for the site's dot-matrix background. */
+    body {
+      background:
+        radial-gradient(circle, rgba(var(--c-text-rgb), 0.07) 0.9px, transparent 1.2px) 0 0 / 28px 28px,
+        var(--c-bg);
+    }
+
+    .og {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 392px;
+      gap: 56px;
+      height: 100%;
+      padding: 44px 56px 44px 64px;
+    }
+
+    .og-copy {
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+    }
+
+    .og-top {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    /* Glow blobs */
-    .blob-purple {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(167,139,250,0.18), transparent 70%);
-      top: -150px;
-      left: -150px;
-      filter: blur(60px);
-      pointer-events: none;
-    }
-    .blob-violet {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(129,140,248,0.18), transparent 70%);
-      bottom: -150px;
-      right: -150px;
-      filter: blur(60px);
-      pointer-events: none;
-    }
-
-    .card {
-      position: relative;
-      z-index: 1;
-      background: rgba(22, 27, 34, 0.85);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 60px 72px;
-      width: 960px;
-      backdrop-filter: blur(10px);
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 20px;
-      background: rgba(44,234,37,0.07);
-      border: 1px solid rgba(44,234,37,0.22);
-      color: #2cea25;
+      color: var(--c-text-muted);
+      font-family: var(--font-mono);
       font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 28px;
     }
 
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #2cea25;
-      flex-shrink: 0;
-    }
-
-    h1 {
-      font-size: 72px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      background: linear-gradient(90deg, #a78bfa, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 20px;
-    }
-
-    .subtitle {
+    .og-top .brand {
       font-size: 22px;
-      color: #8b949e;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .tag {
-      padding: 6px 16px;
-      border-radius: 20px;
+    .og .kicker {
       font-size: 14px;
-      font-weight: 600;
     }
 
-    .tag-green {
-      background: rgba(44,234,37,0.07);
-      border: 1px solid rgba(44,234,37,0.25);
-      color: #2cea25;
+    .og .hero-name {
+      margin-top: 18px;
+      font-size: 112px;
     }
 
-    .tag-blue {
-      background: rgba(88,166,255,0.07);
-      border: 1px solid rgba(88,166,255,0.25);
-      color: #58a6ff;
+    .og .hero-lead {
+      max-width: none;
+      margin-top: 26px;
+      font-size: 30px;
+      animation: none;
     }
 
-    .tag-cyan {
-      background: rgba(0,255,255,0.07);
-      border: 1px solid rgba(0,255,255,0.25);
-      color: #00ffff;
+    .og-figures {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--c-border);
     }
 
-    .tag-gold {
-      background: rgba(255,215,0,0.07);
-      border: 1px solid rgba(255,215,0,0.25);
-      color: #ffbb00;
+    .og-figures .figure {
+      padding: 18px 16px 0 0;
     }
 
-    .url {
-      margin-top: 36px;
-      font-size: 18px;
-      color: rgba(139,148,158,0.6);
-      letter-spacing: 0.02em;
+    .og-figures .figure + .figure {
+      padding-left: 16px;
+    }
+
+    .og-figures .figure-num {
+      font-size: 40px;
+    }
+
+    .og-figures .figure-label {
+      margin-top: 10px;
+      font-size: 11px;
+    }
+
+    .og .sim {
+      align-self: center;
+      animation: none;
+    }
+
+    .og .sim-bar {
+      display: none;
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="blob-purple"></div>
-  <div class="blob-violet"></div>
+  <main class="og">
+    <div class="og-copy">
+      <div class="og-top">
+        <span class="brand">KWLEW<span>.DEV</span></span>
+        <span>Fortaleza, BR</span>
+      </div>
 
-  <div class="card">
-    <div class="status">
-      <div class="dot"></div>
-      Active Developer
+      <div>
+        <p class="kicker">Backend / Robotics / Indie-dev</p>
+        <h1 class="hero-name">
+          <span class="line">Kaleo</span>
+          <span class="line">Soares</span>
+        </h1>
+        <p class="hero-lead">I write the code that gets the robot<br><em>out of the maze.</em></p>
+      </div>
+
+      <div class="og-figures">
+        <div class="figure">
+          <span class="figure-num">6<small>th</small></span>
+          <span class="figure-label">World, RoboCup</span>
+        </div>
+        <div class="figure">
+          <span class="figure-num">2</span>
+          <span class="figure-label">Intl. awards</span>
+        </div>
+        <div class="figure">
+          <span class="figure-num">1<small>st</small></span>
+          <span class="figure-label">CBR 2025</span>
+        </div>
+        <div class="figure">
+          <span class="figure-num">11</span>
+          <span class="figure-label">Olympiad medals</span>
+        </div>
+      </div>
     </div>
-    <h1>kwlew.dev</h1>
-    <p class="subtitle">Backend Developer &bull; Robotics Programmer &bull; RoboCup Contestant</p>
-    <div class="tags">
-      <span class="tag tag-gold">Java</span>
-      <span class="tag tag-gold">JavaScript</span>
-      <span class="tag tag-gold">Python</span>
-      <span class="tag tag-cyan">C</span>
-      <span class="tag tag-cyan">C++</span>
-      <span class="tag tag-cyan">C#</span>
-      <span class="tag tag-blue">Lua</span>
-      <span class="tag tag-blue">LOVE2D</span>
-      <span class="tag tag-green">Minecraft Plugins</span>
-      <span class="tag tag-cyan">Embedded Systems</span>
-      <span class="tag tag-gold">Robotics</span>
-      <span class="tag tag-blue">Competitive Programming</span>
-    </div>
-    <p class="url">kwlew.dev</p>
-  </div>
+
+    <figure class="sim">
+      <div class="sim-head">
+        <span><b>SIM</b> / rescue_maze</span>
+        <span>seed <b id="sim-seed">----</b> &middot; run <b id="sim-run">1</b></span>
+      </div>
+      <canvas class="sim-canvas" id="sim-canvas"></canvas>
+      <div class="sim-bar"><div class="sim-speed" id="sim-speed"></div></div>
+      <dl class="sim-readouts">
+        <div><dt>Mapped</dt><dd id="sim-mapped">0/81</dd></div>
+        <div><dt>Victims</dt><dd id="sim-victims">0/0</dd></div>
+        <div><dt>Run time</dt><dd id="sim-time">00:00.0</dd></div>
+        <div><dt>State</dt><dd id="sim-state">IDLE</dd></div>
+      </dl>
+    </figure>
+  </main>
+
+  <script src="/assets/js/maze-sim.js"></script>
 </body>
 </html>

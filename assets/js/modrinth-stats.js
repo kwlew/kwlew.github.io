@@ -12,7 +12,13 @@
   const projectsElement = document.getElementById("modrinth-projects");
   const statusElement = document.getElementById("modrinth-status");
 
-  if (!downloadsElement || !projectCountElement || !projectsElement || !statusElement) return;
+  // The downloads total is optional: the landing page shows it through
+  // telemetry.js (odometer), which listens for the kw:modrinth event below.
+  if (!projectCountElement || !projectsElement || !statusElement) return;
+
+  function announce(detail) {
+    window.dispatchEvent(new CustomEvent("kw:modrinth", { detail }));
+  }
 
   function projectKind(project) {
     const loaders = Array.isArray(project.loaders) ? project.loaders : [];
@@ -84,11 +90,12 @@
     return item;
   }
 
-  function render(projects, cached) {
+  function render(projects, savedAt) {
+    const cached = savedAt !== null;
     const sortedProjects = [...projects].sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
     const totalDownloads = projects.reduce((total, project) => total + (Number(project.downloads) || 0), 0);
 
-    downloadsElement.textContent = numberFormat.format(totalDownloads);
+    if (downloadsElement) downloadsElement.textContent = numberFormat.format(totalDownloads);
     projectCountElement.textContent = numberFormat.format(projects.length);
     projectsElement.replaceChildren(...sortedProjects.slice(0, 3).map(createProjectRow));
     projectsElement.setAttribute("aria-busy", "false");
@@ -101,6 +108,7 @@
     }
 
     statusElement.textContent = cached ? "Recently updated \u00b7 cached for 15 min" : "Updated just now \u00b7 public API";
+    announce({ projects, totalDownloads, savedAt: savedAt || Date.now() });
   }
 
   function renderError() {
@@ -119,13 +127,14 @@
     projectsElement.append(error);
 
     statusElement.textContent = "Could not reach the Modrinth API";
+    announce(null);
   }
 
   function readCache() {
     try {
       const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
       if (cached && Array.isArray(cached.projects) && Date.now() - cached.savedAt < CACHE_TTL) {
-        return cached.projects;
+        return cached;
       }
     } catch (_) {
       // Storage can be disabled; live fetching still works without it.
@@ -142,9 +151,9 @@
   }
 
   async function loadProjects() {
-    const cachedProjects = readCache();
-    if (cachedProjects) {
-      render(cachedProjects, true);
+    const cached = readCache();
+    if (cached) {
+      render(cached.projects, cached.savedAt);
       return;
     }
 
@@ -165,7 +174,7 @@
       if (!Array.isArray(projects)) throw new TypeError("Unexpected Modrinth response");
 
       writeCache(projects);
-      render(projects, false);
+      render(projects, null);
     } catch (_) {
       renderError();
     } finally {

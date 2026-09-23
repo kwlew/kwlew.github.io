@@ -1,0 +1,210 @@
+{
+  "generatedAt": "2026-09-23T17:42:38.740Z",
+  "user": "kwlew",
+  "repoCount": 27,
+  "linesAdded": 128548,
+  "linesDeleted": 60367,
+  "repos": [
+    {
+      "name": "Starsown",
+      "added": 63325,
+      "deleted": 46447
+    },
+    {
+      "name": "kMoney",
+      "added": 11936,
+      "deleted": 5065
+    },
+    {
+      "name": "kwlew.github.io",
+      "added": 9532,
+      "deleted": 4199
+    },
+    {
+      "name": "Parkaim",
+      "added": 8717,
+      "deleted": 75
+    },
+    {
+      "name": "Haven",
+      "added": 5404,
+      "deleted": 931
+    },
+    {
+      "name": "TD-Idle-bot",
+      "added": 4030,
+      "deleted": 978
+    },
+    {
+      "name": "BlockGame-LJWGL",
+      "added": 3906,
+      "deleted": 995
+    },
+    {
+      "name": "TDLove",
+      "added": 2076,
+      "deleted": 201
+    },
+    {
+      "name": "Game",
+      "added": 2062,
+      "deleted": 709
+    },
+    {
+      "name": "kCombatLog",
+      "added": 2055,
+      "deleted": 25
+    },
+    {
+      "name": "PIDEasy-Improved",
+      "added": 2034,
+      "deleted": 398
+    },
+    {
+      "name": "MintyArmor",
+      "added": 1703,
+      "deleted": 6
+    },
+    {
+      "name": "Pyper",
+      "added": 1654,
+      "deleted": 0
+    },
+    {
+      "name": "Raycraft",
+      "added": 1543,
+      "deleted": 0
+    },
+    {
+      "name": "kWelcome",
+      "added": 1520,
+      "deleted": 122
+    },
+    {
+      "name": "BeaconsPlus",
+      "added": 1344,
+      "deleted": 6
+    },
+    {
+      "name": "learningML",
+      "added": 1194,
+      "deleted": 0
+    },
+    {
+      "name": "Relics",
+      "added": 1138,
+      "deleted": 0
+    },
+    {
+      "name": "BetterRTP",
+      "added": 1073,
+      "deleted": 0
+    },
+    {
+      "name": "uidacbot",
+      "added": 816,
+      "deleted": 3
+    },
+    {
+      "name": "PlayerSkills",
+      "added": 553,
+      "deleted": 28
+    },
+    {
+      "name": "kwlew",
+      "added": 275,
+      "deleted": 122
+    },
+    {
+      "name": "SDLogger-ESP32",
+      "added": 261,
+      "deleted": 2
+    },
+    {
+      "name": "OBR-36-HOUR-SCRAM",
+      "added": 239,
+      "deleted": 55
+    },
+    {
+      "name": "Competitive-Programming",
+      "added": 104,
+      "deleted": 0
+    },
+    {
+      "name": "LearningRust",
+      "added": 54,
+      "deleted": 0
+    },
+    {
+      "name": "conduit",
+      "added": 0,
+      "deleted": 0
+    }
+  ],
+  "languages": [
+    {
+      "name": "Java",
+      "bytes": 611863
+    },
+    {
+      "name": "Lua",
+      "bytes": 561144
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 105599
+    },
+    {
+      "name": "C++",
+      "bytes": 97719
+    },
+    {
+      "name": "HTML",
+      "bytes": 85064
+    },
+    {
+      "name": "CSS",
+      "bytes": 55411
+    },
+    {
+      "name": "Jupyter Notebook",
+      "bytes": 46270
+    },
+    {
+      "name": "C#",
+      "bytes": 25772
+    },
+    {
+      "name": "Python",
+      "bytes": 25603
+    },
+    {
+      "name": "PowerShell",
+      "bytes": 16339
+    },
+    {
+      "name": "Wolfram Language",
+      "bytes": 15479
+    },
+    {
+      "name": "Shell",
+      "bytes": 7612
+    },
+    {
+      "name": "CMake",
+      "bytes": 3763
+    },
+    {
+      "name": "GLSL",
+      "bytes": 1458
+    },
+    {
+      "name": "C",
+      "bytes": 794
+    },
+    {
+      "name": "Rust",
+      "bytes": 67
+    }
+  ]
+}

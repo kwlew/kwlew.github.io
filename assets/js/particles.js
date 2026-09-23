@@ -1,211 +1,159 @@
-const canvas = document.getElementById("particles-bg");
-if (!canvas) {
-    console.error("particles.js: canvas not found");
-} else {
-    const ctx = canvas.getContext("2d");
-    if (!ctx) {
-        console.error("particles.js: failed to get 2d context");
-    } else {
+// Background field: a faint dot matrix that brightens toward the accent
+// around the pointer, with a slow scan line sweeping down every so often.
+// Draws only while something changes (pointer moved or a sweep is running),
+// so an idle page costs nothing.
+(function () {
+  "use strict";
 
-        const TAU = Math.PI * 2;
-        const CONN = 120;          // connection distance
-        const CONN2 = CONN * CONN; // squared, avoids sqrt in the hot loop
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canvas = document.getElementById("particles-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
 
-        let particles = [];
-        // Hue drifts back and forth across a narrow indigo→violet band
-        // instead of cycling the full rainbow, so the background stays on
-        // the site's purple brand instead of strobing through every hue.
-        let hueT = 0;
-        const HUE_BASE = 250;
-        const HUE_SPAN = 15;
-        let rafId = null;
+  const SPACING = 28;
+  const DOT = 1.5;
+  const BASE_ALPHA = 0.06;
+  const POINTER_RADIUS = 150;
+  const POINTER_ALPHA = 0.45;
+  const SWEEP_BAND = 60;
+  const SWEEP_ALPHA = 0.1;
+  const SWEEP_DURATION = 7000;
+  const SWEEP_EVERY = 16000;
 
-        const mouse = {
-            x: null,
-            y: null,
-            radius: 120,
-            radius2: 120 * 120
-        };
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const finePointer = window.matchMedia("(pointer: fine)").matches;
 
-        // ===== RESIZE HANDLING =====
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            createParticles();
-        }
+  // Colours come from the design tokens so the field follows the palette.
+  const styles = getComputedStyle(document.documentElement);
+  const rgb = name => styles.getPropertyValue(name).split(",").map(n => Number(n.trim()));
+  const TEXT = rgb("--c-text-rgb").length === 3 ? rgb("--c-text-rgb") : [236, 230, 218];
+  const ACCENT = rgb("--c-accent-rgb").length === 3 ? rgb("--c-accent-rgb") : [255, 138, 31];
 
-        // expose globally (kept for backwards compatibility)
-        window.resetParticles = resizeCanvas;
+  let width = 0;
+  let height = 0;
+  let pointer = null;
+  let sweepStart = null;
+  let rafId = null;
+  let sweepTimer = null;
 
-        // Debounce resize so a drag-resize doesn't rebuild particles every tick.
-        let resizeTimer = null;
-        function onResize() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(resizeCanvas, 150);
-        }
-        window.addEventListener("resize", onResize, { passive: true });
-        window.addEventListener("fullscreenchange", onResize, { passive: true });
+  const smoothstep = t => t * t * (3 - 2 * t);
 
-        // ===== MOUSE TRACKING =====
-        window.addEventListener("mousemove", (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        }, { passive: true });
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw(performance.now());
+  }
 
-        // ===== PARTICLE CREATION (RESPONSIVE COUNT) =====
-        function createParticles() {
-            particles = [];
-
-            const area = canvas.width * canvas.height;
-            // Lower density + cap than before: O(n^2) connections make high
-            // counts very expensive for almost no visual gain.
-            const particleCount = Math.min(140, Math.floor(area / 12000));
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.6,
-                    vy: (Math.random() - 0.5) * 0.6,
-                    size: Math.random() * 2 + 1
-                });
-            }
-        }
-
-        // ===== DRAW LOOP =====
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            hueT += 0.003;
-            const hue = HUE_BASE + Math.sin(hueT) * HUE_SPAN;
-            const color = `hsl(${hue}, 100%, 60%)`;
-
-            const w = canvas.width;
-            const h = canvas.height;
-            const hasMouse = mouse.x !== null && mouse.y !== null;
-
-            // Move all particles first.
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > w) p.vx *= -1;
-                if (p.y < 0 || p.y > h) p.vy *= -1;
-            }
-
-            // Draw every dot in ONE path with a single shadow setup.
-            // shadowBlur is the most expensive op here, so doing it once per
-            // frame instead of once per particle is a huge win, and the look
-            // is identical since all dots share the same colour.
-            ctx.fillStyle = color;
-            ctx.shadowColor = color;
-            ctx.shadowBlur = 10;
-            ctx.beginPath();
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                ctx.moveTo(p.x + p.size, p.y);
-                ctx.arc(p.x, p.y, p.size, 0, TAU);
-            }
-            ctx.fill();
-            ctx.shadowBlur = 0;
-
-            // Stronger glow for the handful of particles near the cursor.
-            if (hasMouse) {
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    const dx = p.x - mouse.x;
-                    const dy = p.y - mouse.y;
-                    const d2 = dx * dx + dy * dy;
-                    if (d2 < mouse.radius2) {
-                        const dist = Math.sqrt(d2);
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.size, 0, TAU);
-                        ctx.shadowColor = color;
-                        ctx.shadowBlur = 25 * (1 - dist / mouse.radius);
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    }
-                }
-            }
-
-            // ===== PARTICLE CONNECTIONS =====
-            // Compare squared distances; only pay for sqrt on actual links.
-            ctx.lineWidth = 1;
-            for (let i = 0; i < particles.length; i++) {
-                const a = particles[i];
-                for (let j = i + 1; j < particles.length; j++) {
-                    const b = particles[j];
-                    const dx = a.x - b.x;
-                    const dy = a.y - b.y;
-                    const d2 = dx * dx + dy * dy;
-
-                    if (d2 < CONN2) {
-                        const distance = Math.sqrt(d2);
-                        ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${1 - distance / CONN})`;
-                        ctx.beginPath();
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            // ===== MOUSE CONNECTIONS =====
-            if (hasMouse) {
-                ctx.lineWidth = 1.5;
-                for (let i = 0; i < particles.length; i++) {
-                    const p = particles[i];
-                    const dx = p.x - mouse.x;
-                    const dy = p.y - mouse.y;
-                    const d2 = dx * dx + dy * dy;
-
-                    if (d2 < mouse.radius2) {
-                        const dist = Math.sqrt(d2);
-                        ctx.strokeStyle = `hsla(${hue}, 100%, 60%, ${1 - dist / mouse.radius})`;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            rafId = requestAnimationFrame(draw);
-        }
-
-        // ===== INIT =====
-        resizeCanvas();
-
-        if (reduceMotion) {
-            // Honour the user's motion preference: paint one static frame,
-            // no animation loop.
-            const color = `hsl(${HUE_BASE}, 100%, 60%)`;
-            ctx.fillStyle = color;
-            ctx.shadowColor = color;
-            ctx.shadowBlur = 10;
-            ctx.beginPath();
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                ctx.moveTo(p.x + p.size, p.y);
-                ctx.arc(p.x, p.y, p.size, 0, TAU);
-            }
-            ctx.fill();
-            ctx.shadowBlur = 0;
-        } else {
-            // Pause the loop when the tab is hidden so it isn't burning
-            // cycles in the background, and resume cleanly on return.
-            draw();
-            document.addEventListener("visibilitychange", () => {
-                if (document.hidden) {
-                    if (rafId !== null) {
-                        cancelAnimationFrame(rafId);
-                        rafId = null;
-                    }
-                } else if (rafId === null) {
-                    draw();
-                }
-            });
-        }
+  function sweepY(now) {
+    if (sweepStart === null) return null;
+    const t = (now - sweepStart) / SWEEP_DURATION;
+    if (t >= 1) {
+      sweepStart = null;
+      return null;
     }
-}
+    return -SWEEP_BAND + t * (height + SWEEP_BAND * 2);
+  }
+
+  function draw(now) {
+    ctx.clearRect(0, 0, width, height);
+    const scanY = sweepY(now);
+    const offset = (SPACING - DOT) / 2;
+
+    for (let y = offset; y < height; y += SPACING) {
+      const scanBoost = scanY === null
+        ? 0
+        : SWEEP_ALPHA * Math.max(0, 1 - Math.abs(y - scanY) / SWEEP_BAND);
+      const rowStyle = `rgba(${TEXT[0]}, ${TEXT[1]}, ${TEXT[2]}, ${BASE_ALPHA + scanBoost})`;
+      const rowNearPointer = pointer && Math.abs(y - pointer.y) < POINTER_RADIUS;
+
+      // fillStyle is only reassigned when a dot differs from its row, which
+      // keeps the common case to one assignment per row.
+      ctx.fillStyle = rowStyle;
+      for (let x = offset; x < width; x += SPACING) {
+        let near = 0;
+        if (rowNearPointer) {
+          const dx = x - pointer.x;
+          const dy = y - pointer.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < POINTER_RADIUS) near = smoothstep(1 - distance / POINTER_RADIUS);
+        }
+
+        if (near > 0) {
+          const alpha = BASE_ALPHA + scanBoost + near * (POINTER_ALPHA - BASE_ALPHA);
+          const r = TEXT[0] + (ACCENT[0] - TEXT[0]) * near;
+          const g = TEXT[1] + (ACCENT[1] - TEXT[1]) * near;
+          const b = TEXT[2] + (ACCENT[2] - TEXT[2]) * near;
+          ctx.fillStyle = `rgba(${r | 0}, ${g | 0}, ${b | 0}, ${alpha})`;
+          ctx.fillRect(x, y, DOT, DOT);
+          ctx.fillStyle = rowStyle;
+        } else {
+          ctx.fillRect(x, y, DOT, DOT);
+        }
+      }
+    }
+  }
+
+  function frame(now) {
+    rafId = null;
+    draw(now);
+    if (sweepStart !== null) request();
+  }
+
+  function request() {
+    if (rafId === null && !document.hidden) rafId = requestAnimationFrame(frame);
+  }
+
+  function startSweep() {
+    if (document.hidden) return;
+    sweepStart = performance.now();
+    request();
+  }
+
+  // Debounce resize so a drag-resize doesn't redraw every tick.
+  let resizeTimer = null;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 150);
+  }
+
+  // Kept for backwards compatibility with pages that called it directly.
+  window.resetParticles = resize;
+
+  window.addEventListener("resize", onResize, { passive: true });
+  window.addEventListener("fullscreenchange", onResize, { passive: true });
+
+  if (!reduceMotion) {
+    if (finePointer) {
+      window.addEventListener("pointermove", event => {
+        pointer = { x: event.clientX, y: event.clientY };
+        request();
+      }, { passive: true });
+
+      document.documentElement.addEventListener("pointerleave", () => {
+        pointer = null;
+        request();
+      });
+    }
+
+    sweepTimer = setInterval(startSweep, SWEEP_EVERY);
+    setTimeout(startSweep, 1200);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        rafId = null;
+        clearInterval(sweepTimer);
+      } else {
+        clearInterval(sweepTimer);
+        sweepTimer = setInterval(startSweep, SWEEP_EVERY);
+        request();
+      }
+    });
+  }
+
+  resize();
+})();
