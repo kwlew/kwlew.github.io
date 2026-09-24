@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-23T17:42:38.740Z",
+  "generatedAt": "2026-09-24T11:48:18.212Z",
   "user": "kwlew",
   "repoCount": 27,
-  "linesAdded": 128548,
-  "linesDeleted": 60367,
+  "linesAdded": 135727,
+  "linesDeleted": 63562,
   "repos": [
     {
       "name": "Starsown",
@@ -11,14 +11,14 @@
       "deleted": 46447
     },
     {
+      "name": "kwlew.github.io",
+      "added": 15827,
+      "deleted": 7258
+    },
+    {
       "name": "kMoney",
       "added": 11936,
       "deleted": 5065
-    },
-    {
-      "name": "kwlew.github.io",
-      "added": 9532,
-      "deleted": 4199
     },
     {
       "name": "Parkaim",
@@ -27,8 +27,8 @@
     },
     {
       "name": "Haven",
-      "added": 5404,
-      "deleted": 931
+      "added": 5707,
+      "deleted": 995
     },
     {
       "name": "TD-Idle-bot",
@@ -66,6 +66,11 @@
       "deleted": 6
     },
     {
+      "name": "BetterRTP",
+      "added": 1654,
+      "deleted": 72
+    },
+    {
       "name": "Pyper",
       "added": 1654,
       "deleted": 0
@@ -93,11 +98,6 @@
     {
       "name": "Relics",
       "added": 1138,
-      "deleted": 0
-    },
-    {
-      "name": "BetterRTP",
-      "added": 1073,
       "deleted": 0
     },
     {
@@ -144,7 +144,7 @@
   "languages": [
     {
       "name": "Java",
-      "bytes": 611863
+      "bytes": 634613
     },
     {
       "name": "Lua",
@@ -152,7 +152,7 @@
     },
     {
       "name": "JavaScript",
-      "bytes": 105599
+      "bytes": 175799
     },
     {
       "name": "C++",
@@ -160,23 +160,23 @@
     },
     {
       "name": "HTML",
-      "bytes": 85064
+      "bytes": 84513
     },
     {
       "name": "CSS",
-      "bytes": 55411
+      "bytes": 73804
     },
     {
       "name": "Jupyter Notebook",
       "bytes": 46270
     },
     {
-      "name": "C#",
-      "bytes": 25772
+      "name": "Python",
+      "bytes": 26198
     },
     {
-      "name": "Python",
-      "bytes": 25603
+      "name": "C#",
+      "bytes": 25772
     },
     {
       "name": "PowerShell",
