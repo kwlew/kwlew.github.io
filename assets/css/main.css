@@ -185,25 +185,11 @@ a {
   border-color: rgba(var(--c-accent-rgb), 0.5);
 }
 
-/* ===== HEADER (sub-pages) ===== */
-header {
-  text-align: center;
-  padding: 112px 20px 48px;
-}
-
 /* Staggered entrance on first paint */
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
-header > * {
-  animation: rise-in 0.7s var(--ease-out) both;
-}
-
-header h1       { animation-delay: 0.05s; }
-header .subtitle { animation-delay: 0.13s; }
-header .tagline  { animation-delay: 0.21s; }
 
 /* ===== HEADINGS ===== */
 h1, h2, h3 {
@@ -222,36 +208,7 @@ h1 {
   color: var(--c-text);
 }
 
-/* Emoji in page titles read as template filler next to the display face. */
-header h1 .emoji {
-  display: none;
-}
-
-.subtitle {
-  margin-top: 18px;
-  color: var(--c-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.tagline {
-  margin: 14px auto 0;
-  max-width: 520px;
-  font-size: 1.05rem;
-  color: var(--c-text-secondary);
-}
-
-/* ===== CONTAINER ===== */
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ===== CARD ===== */
+/* ===== CARD (achievement cards) ===== */
 .card {
   margin-top: 16px;
   padding: 26px 28px;
@@ -264,69 +221,6 @@ header h1 .emoji {
 .card:hover {
   border-color: var(--c-border);
 }
-
-.card h2,
-.card h3 {
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: var(--c-text-secondary);
-}
-
-/* ===== CARD LISTS ===== */
-.card ul {
-  text-align: left;
-  margin-top: 12px;
-  line-height: 1.9;
-  color: var(--c-text-secondary);
-  list-style: none;
-  padding: 0;
-}
-
-/* ===== SUB-PAGE SECTION HEADINGS ===== */
-main.container > h2,
-.card h2 {
-  font-size: 1.45rem;
-  font-weight: 700;
-  font-stretch: 110%;
-}
-
-/* ===== TECH TAGS ===== */
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: flex-end;
-}
-
-/* One recipe, one line per colour. Defaults to green so a bare .tag still
-   works exactly as before. */
-.tag {
-  --tag-rgb: var(--label-green-rgb);
-  --tag-fg: var(--label-green);
-  padding: 3px 8px;
-  border-radius: 3px;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 500;
-  background: rgba(var(--tag-rgb), var(--label-fill));
-  border: 1px solid rgba(var(--tag-rgb), var(--label-stroke));
-  color: var(--tag-fg);
-  white-space: nowrap;
-}
-
-.tag.red    { --tag-rgb: var(--label-red-rgb);    --tag-fg: var(--label-red); }
-.tag.orange { --tag-rgb: var(--label-orange-rgb); --tag-fg: var(--label-orange); }
-.tag.gold   { --tag-rgb: var(--label-gold-rgb);   --tag-fg: var(--label-gold); }
-.tag.green  { --tag-rgb: var(--label-green-rgb);  --tag-fg: var(--label-green); }
-.tag.cyan   { --tag-rgb: var(--label-cyan-rgb);   --tag-fg: var(--label-cyan); }
-.tag.blue   { --tag-rgb: var(--label-blue-rgb);   --tag-fg: var(--label-blue); }
-.tag.purple { --tag-rgb: var(--label-purple-rgb); --tag-fg: var(--label-purple); }
-.tag.pink   { --tag-rgb: var(--label-pink-rgb);   --tag-fg: var(--label-pink); }
-.tag.white  { --tag-rgb: var(--label-white-rgb);  --tag-fg: var(--label-white); }
-.tag.gray   { --tag-rgb: var(--label-gray-rgb);   --tag-fg: var(--label-gray); }
-.tag.brand  { --tag-rgb: var(--c-accent-rgb);     --tag-fg: var(--c-accent-soft); }
 
 /* ===== BUTTONS ===== */
 .btn {
@@ -362,26 +256,18 @@ main.container > h2,
 }
 
 /* Outline variants: secondary actions and repo links. */
-.btn.secondary,
-.btn.github,
-.btn.discord {
+.btn.secondary {
   background: transparent;
   border-color: var(--c-border);
   color: var(--c-text);
 }
 
-.btn.secondary:hover,
-.btn.github:hover {
+.btn.secondary:hover {
   background: rgba(var(--c-accent-rgb), 0.06);
   border-color: var(--c-accent);
   color: var(--c-accent);
 }
 
-.btn.discord:hover {
-  background: rgba(88, 101, 242, 0.1);
-  border-color: #5865f2;
-  color: #8b93f8;
-}
 
 .btn svg {
   transition: transform var(--t-fast) var(--ease-out);
@@ -397,50 +283,11 @@ main.container > h2,
   flex-shrink: 0;
 }
 
-/* ===== ACTION BAR (centered button group) ===== */
-.action-bar {
-  text-align: center;
-  padding: 0 20px 16px;
-}
-
-/* ===== SOCIAL BUTTONS ===== */
-.social-btn {
-  --brand: var(--c-accent);
-  display: inline-flex;
-  vertical-align: middle;
-  align-items: center;
-  gap: 10px;
-  margin: 6px;
-  padding: 11px 18px;
-  border-radius: var(--radius-btn);
-  background: var(--c-surface);
-  border: 1px solid var(--c-border);
-  color: var(--c-text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color var(--t-fast) var(--ease-smooth),
-              border-color var(--t-fast) var(--ease-smooth);
-}
-
-.social-btn:hover {
-  color: var(--brand);
-  border-color: var(--brand);
-}
-
+/* ===== BRAND ICONS (contact links) ===== */
 .social-icon {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-}
-
-.instagram-btn { --brand: #f06da8; }
-.modrinth-btn  { --brand: #1bd96a; }
-
-/* ===== SOCIALS CONTAINER (sub-pages) ===== */
-.socials {
-  text-align: center;
-  margin-top: 32px;
 }
 
 /* ===== DOC TABLES (plugin docs) ===== */
@@ -504,30 +351,6 @@ main.container > h2,
   color: var(--label-orange);
 }
 
-.section-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.section-nav a {
-  padding: 5px 11px;
-  border-radius: 3px;
-  background: var(--c-surface-sunken);
-  border: 1px solid var(--c-border-dark);
-  color: var(--c-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  text-decoration: none;
-  transition: color var(--t-fast), border-color var(--t-fast);
-}
-
-.section-nav a:hover {
-  color: var(--c-text);
-  border-color: rgba(var(--c-accent-rgb), 0.5);
-}
-
 /* ===== INLINE CODE ===== */
 code {
   padding: 1px 5px;
@@ -551,30 +374,6 @@ pre {
   font-size: 0.85rem;
   line-height: 1.7;
   overflow-x: auto;
-}
-
-/* ===== REPO STATS ===== */
-.repo-stats {
-  margin-bottom: 32px;
-  text-align: center;
-  color: var(--c-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-}
-
-.repo-stats span,
-.repo-stats a {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-.repo-stats a {
-  color: var(--c-accent-soft);
-  text-decoration: none;
-}
-
-.repo-stats a:hover {
-  text-decoration: underline;
 }
 
 /* ===== MEDAL SUMMARY ===== */
@@ -806,7 +605,7 @@ pre {
   font-size: 0.8rem;
 }
 
-/* Same recipe as .tag, so a "Gold" badge and a "Java" tag carry equal weight. */
+/* Same recipe as .perm-default, so every label carries equal weight. */
 .medal-badge {
   --badge-rgb: var(--label-gray-rgb);
   --badge-fg: var(--label-gray);
@@ -838,57 +637,6 @@ pre {
 }
 
 /* ===== STARSOWN LIVE STATS (games/starsown.html) ===== */
-.starsown-stats-panel {
-  margin-top: 20px;
-  padding: 26px 28px;
-  border-radius: var(--radius-card);
-  background: var(--c-surface);
-  border: 1px solid var(--c-border-hair);
-}
-
-.starsown-stats-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.starsown-stats-kicker {
-  display: block;
-  color: var(--c-accent);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.starsown-stats-head h2 {
-  margin-top: 4px;
-  font-size: 1.45rem;
-  font-stretch: 110%;
-}
-
-.starsown-stats-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--c-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  white-space: nowrap;
-}
-
-.starsown-live-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--c-accent);
-  flex-shrink: 0;
-  animation: dot-pulse 1.5s ease-in-out infinite;
-}
-
 @keyframes dot-pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.3; }
@@ -897,9 +645,8 @@ pre {
 .starsown-stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 24px;
-  list-style: none;
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border-hair);
 }
 
 .starsown-stats-grid[aria-busy="true"] .starsown-stat dt {
@@ -907,43 +654,43 @@ pre {
 }
 
 .starsown-stat {
-  --stat-rgb: var(--c-accent-rgb);
   --stat-fg: var(--c-accent);
-  padding: 18px 14px;
-  border-radius: var(--radius-btn);
-  background: var(--c-surface-sunken);
-  border: 1px solid var(--c-border-hair);
-  text-align: center;
-  transition: border-color var(--t-fast) var(--ease-smooth);
+  padding: 24px 24px 22px;
+  min-width: 0;
 }
 
-.starsown-stat:hover {
-  border-color: rgba(var(--stat-rgb), 0.4);
+.starsown-stat:first-child {
+  padding-left: 0;
+}
+
+.starsown-stat + .starsown-stat {
+  border-left: 1px solid var(--c-border-hair);
 }
 
 .starsown-stat dt {
   color: var(--stat-fg);
   font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 800;
-  font-stretch: 115%;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 850;
+  font-stretch: 125%;
   font-variant-numeric: tabular-nums;
-  line-height: 1.1;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .starsown-stat dd {
-  margin-top: 6px;
-  color: var(--c-text-muted);
+  margin-top: 12px;
+  color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.starsown-stat.online  { --stat-rgb: var(--c-accent-rgb);     --stat-fg: var(--c-accent); }
-.starsown-stat.stars   { --stat-rgb: var(--label-silver-rgb); --stat-fg: var(--label-silver); }
-.starsown-stat.golden  { --stat-rgb: var(--label-gold-rgb);   --stat-fg: var(--label-gold); }
-.starsown-stat.rainbow { --stat-rgb: var(--label-pink-rgb);   --stat-fg: var(--label-pink); }
+.starsown-stat.online  { --stat-fg: var(--c-accent); }
+.starsown-stat.stars   { --stat-fg: var(--label-silver); }
+.starsown-stat.golden  { --stat-fg: var(--label-gold); }
+.starsown-stat.rainbow { --stat-fg: var(--label-pink); }
 
 /* Animated rainbow: a multicolour gradient clipped to the glyphs, with its
    hues cycled by hue-rotate. Used for the rainbow star and for the maze
@@ -1013,19 +760,6 @@ pre {
   border-color: var(--c-accent);
 }
 
-/* ===== FOOTER (sub-pages) ===== */
-footer {
-  margin-top: 64px;
-  padding: 36px 20px;
-  border-top: 1px solid var(--c-border-hair);
-  color: var(--c-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 /* ===== PAGE TRANSITIONS =====
    Cross-document view transitions (Chromium and Safari; other browsers just
    navigate normally). The page eases out and in, and elements that exist on
@@ -1086,12 +820,8 @@ footer {
   width: fit-content;
 }
 
-header h1[class*="vt-"] {
+.page-title[class*="vt-"] {
   width: fit-content;
-  margin-inline: auto;
-  /* It arrives in place, so it skips the header rise-in that would
-     otherwise hide it at the start of the transition. */
-  animation: none;
 }
 
 /* ===== ACCESSIBILITY ===== */
@@ -1773,6 +1503,18 @@ html.js .reveal.is-in {
 
 .feature-body .btn {
   margin: 28px 0 0;
+}
+
+.feature-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 28px;
+}
+
+.feature-body .feature-actions .btn {
+  margin: 0;
 }
 
 .scoreboard {
@@ -3261,8 +3003,513 @@ html.js .reveal.is-in {
   color: var(--c-accent);
 }
 
+/* =====================================================================
+   SUB-PAGES
+   Every sub-page is built from the landing components (kicker, hero-lead,
+   figures, ch-head, spec, record-card) plus the page-* pieces below.
+   ===================================================================== */
+
+.page {
+  padding-top: 104px;
+}
+
+.page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.page-title {
+  width: fit-content;
+  margin-top: 24px;
+  font-size: clamp(2.4rem, 5.2vw, 4.8rem);
+  font-weight: 850;
+  font-stretch: 125%;
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.page-shot {
+  margin: 0;
+  border-radius: var(--radius-card);
+  background: var(--c-surface-sunken);
+  border: 1px solid var(--c-border-hair);
+}
+
+.page-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+}
+
+.page-shot figcaption {
+  padding: 10px 14px;
+  border-top: 1px solid var(--c-border-hair);
+  color: var(--c-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.page-shot--hero {
+  animation: rise-in 0.8s var(--ease-out) 0.3s both;
+}
+
+.page .spec {
+  margin-top: 0;
+}
+
+.page-more {
+  margin-top: 28px;
+}
+
+.page-note {
+  max-width: 62ch;
+  margin-top: 20px;
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+}
+
+.page-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.page-col {
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-hair);
+}
+
+.page-col-idx {
+  color: var(--c-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+}
+
+.page-col h3 {
+  margin-top: 14px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-stretch: 115%;
+}
+
+.page-col p {
+  margin-top: 10px;
+  color: var(--c-text-secondary);
+  font-size: 0.95rem;
+}
+
+.page .page-cols + .spec {
+  margin-top: 32px;
+}
+
+/* Product names keep their casing (kMoney, not KMONEY). */
+.page-title--name {
+  text-transform: none;
+}
+
+/* Heroes without a photo or readout: one reading column. */
+.page-hero--solo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.page-hero--solo .hero-sub {
+  max-width: 62ch;
+}
+
+/* 404: the hero fills the viewport so the footer sits at the bottom. */
+.page--center {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 140px);
+  padding-bottom: 40px;
+}
+
+/* Live project readouts beside a hero, filled by repo-stats.js. */
+.page-readout {
+  grid-column: auto;
+  animation: rise-in 0.8s var(--ease-out) 0.3s both;
+}
+
+.page-readout .score-row b a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-readout .score-row b a[href]:hover {
+  color: var(--c-accent);
+}
+
+.page-readout [data-state="error"] b {
+  color: var(--c-text-faint);
+}
+
+/* A flat surface for tables. Scrolls sideways on narrow screens rather than
+   dropping columns. */
+.panel {
+  padding: 6px 28px 10px;
+  overflow-x: auto;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-hair);
+}
+
+.panel .cmd-table {
+  margin-top: 0;
+}
+
+/* Lists: a small accent square, or a zero-padded step number. */
+.page-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  color: var(--c-text-secondary);
+}
+
+.page-col .page-list {
+  margin-top: 14px;
+  font-size: 0.95rem;
+}
+
+.page-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.page-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.68em;
+  width: 5px;
+  height: 5px;
+  background: var(--c-accent);
+}
+
+ol.page-list {
+  counter-reset: step;
+}
+
+ol.page-list li {
+  padding-left: 36px;
+  counter-increment: step;
+}
+
+ol.page-list li::before {
+  content: counter(step, decimal-leading-zero);
+  top: 0.2em;
+  width: auto;
+  height: auto;
+  background: none;
+  color: var(--c-accent);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+}
+
+/* ===== DOCS ===== */
+.doc {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+  margin-top: 88px;
+}
+
+.doc-nav {
+  position: sticky;
+  top: 80px;
+}
+
+.doc-nav-title {
+  display: block;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-border);
+  color: var(--c-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.doc-nav ol {
+  list-style: none;
+}
+
+.doc-nav a {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--c-border-hair);
+  color: var(--c-text-secondary);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.doc-nav a span {
+  color: var(--c-text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 2;
+  transition: color var(--t-fast);
+}
+
+.doc-nav a:hover,
+.doc-nav a:hover span {
+  color: var(--c-accent);
+}
+
+.doc-section + .doc-section {
+  margin-top: 72px;
+}
+
+.doc-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.doc-head h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  font-weight: 800;
+  font-stretch: 115%;
+}
+
+.doc-body > * + * {
+  margin-top: 16px;
+}
+
+.doc-body p {
+  max-width: 72ch;
+  color: var(--c-text-secondary);
+}
+
+.doc-body pre {
+  margin-top: 16px;
+}
+
+/* ===== ACHIEVEMENTS ===== */
+.ach-section {
+  padding-top: 64px;
+}
+
+.ach-section .ach-tabs {
+  margin-top: 0;
+}
+
+.rb-boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.rb-boards .record-card {
+  grid-column: auto;
+}
+
+.rb-team {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.rb-roster {
+  grid-column: auto;
+}
+
+.rb-roster ul {
+  list-style: none;
+}
+
+.rb-roster li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--c-border-hair);
+  color: var(--c-text);
+}
+
+.rb-roster small {
+  color: var(--c-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rb-roster .me small {
+  color: var(--c-accent);
+}
+
+.rb-roster-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 20px;
+}
+
+.rb-press {
+  display: grid;
+  gap: 12px;
+  padding: 32px 36px;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-hair);
+  color: var(--c-text);
+  text-decoration: none;
+  transition: border-color var(--t-fast) var(--ease-smooth);
+}
+
+.rb-press:hover {
+  border-color: rgba(var(--c-accent-rgb), 0.35);
+}
+
+.rb-press-src {
+  color: var(--c-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rb-press-title {
+  max-width: 34ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  font-stretch: 112%;
+  line-height: 1.1;
+}
+
+.rb-press-en {
+  max-width: 62ch;
+  color: var(--c-text-secondary);
+}
+
+.rb-press-cta {
+  margin-top: 8px;
+  color: var(--c-accent-soft);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color var(--t-fast);
+}
+
+.rb-press:hover .rb-press-cta {
+  color: var(--c-accent);
+}
+
+.rb-press-list {
+  margin-top: 8px;
+  list-style: none;
+  border-top: 1px solid var(--c-border);
+}
+
+.rb-press-list a {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: baseline;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--c-border-hair);
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+.rb-press-date {
+  color: var(--c-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rb-press-body {
+  display: grid;
+  gap: 6px;
+}
+
+.rb-press-head {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-stretch: 108%;
+  line-height: 1.2;
+  transition: color var(--t-fast);
+}
+
+.rb-press-gloss {
+  color: var(--c-text-muted);
+  font-size: 0.9rem;
+}
+
+.rb-press-arr {
+  color: var(--c-text-muted);
+  transition: color var(--t-fast);
+}
+
+.rb-press-list a:hover .rb-press-head,
+.rb-press-list a:hover .rb-press-arr {
+  color: var(--c-accent);
+}
+
 /* ===== TABLET ===== */
 @media (max-width: 1024px) {
+  .page-hero,
+  .rb-team,
+  .doc {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .rb-team {
+    gap: 16px;
+  }
+
+  .doc {
+    margin-top: 56px;
+  }
+
+  .doc-nav {
+    position: static;
+  }
+
+  .doc-nav ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 20px;
+  }
+
+  .doc-nav a {
+    border-bottom: none;
+  }
+
+  .starsown-stat:nth-child(3) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .starsown-stat:nth-child(n+3) {
+    border-top: 1px solid var(--c-border-hair);
+  }
+
   :root { --section-gap: 112px; }
 
   .hero-grid {
@@ -3348,8 +3595,6 @@ html.js .reveal.is-in {
     --section-gap: 88px;
     --gutter: 16px;
   }
-
-  header { padding: 88px 16px 40px; }
 
   .card { padding: 20px 18px; }
 
@@ -3528,20 +3773,26 @@ html.js .reveal.is-in {
     flex-direction: column;
   }
 
-  .starsown-stats-panel {
-    padding: 20px 18px;
-  }
-
-  .starsown-stats-grid {
-    gap: 10px;
-  }
-
   .starsown-stat {
-    padding: 14px 8px;
+    padding: 18px 12px 16px 16px;
   }
 
-  .starsown-stat dt {
-    font-size: 1.4rem;
+  .starsown-stat:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .panel {
+    padding: 4px 16px 8px;
+  }
+
+  /* Three-column tables scroll sideways instead of crushing the middle
+     column; commands may wrap at their spaces. */
+  .panel .cmd-table:has(th:nth-child(3)) {
+    min-width: 560px;
+  }
+
+  .cmd-table td:first-child {
+    white-space: normal;
   }
 
   .achievements-grid,
@@ -3549,14 +3800,38 @@ html.js .reveal.is-in {
     grid-template-columns: 1fr;
   }
 
-  .tags {
-    justify-content: flex-start;
-    margin-top: 8px;
+  .page {
+    padding-top: 76px;
   }
 
-  .cmd-table th:nth-child(3),
-  .cmd-table td:nth-child(3) {
-    display: none;
+  .page-title {
+    font-size: clamp(1.8rem, 8.4vw, 2.4rem);
+  }
+
+  .rb-boards,
+  .page-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .record-card {
+    padding: 20px 18px;
+  }
+
+  .page-col {
+    padding: 22px 18px;
+  }
+
+  .rb-press {
+    padding: 24px 20px;
+  }
+
+  .rb-press-list a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 16px;
+  }
+
+  .rb-press-date {
+    grid-column: 1 / -1;
   }
 }
 

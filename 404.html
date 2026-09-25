@@ -9,34 +9,51 @@
   <meta property="og:title"       content="404 &bull; kwlew.dev" />
   <meta property="og:description" content="Page not found on kwlew.dev" />
   <meta property="og:image"       content="https://kwlew.dev/assets/images/og-image.png?v=2" />
+  <meta name="theme-color" content="#0e0d0b" />
   <title>404 &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=22">
+  <link rel="stylesheet" href="/assets/css/main.css?v=26">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <canvas id="particles-bg" aria-hidden="true"></canvas>
   <a href="/" class="home-btn vt-brand" title="Home"><span aria-hidden="true">&larr;</span> kwlew.dev</a>
 
-  <header>
-    <h1>404 <span class="emoji">🔍</span></h1>
-    <p class="subtitle">Page not found</p>
-    <p class="tagline">The page you're looking for doesn't exist or has been moved.</p>
-  </header>
-
-  <main class="container" style="padding-bottom: 20px; text-align: center;">
-    <div class="card" style="max-width: 480px; margin: 0 auto;">
-      <h2>Lost?</h2>
-      <p style="margin-bottom: 20px;">Head back to the homepage and find what you're looking for.</p>
-      <a href="/" class="btn">Go Home</a>
-    </div>
+  <main class="wrap page page--center" id="main">
+    <section class="page-hero page-hero--solo" aria-label="Page not found">
+      <div>
+        <p class="kicker">Error 404 / Page not found</p>
+        <h1 class="page-title">404</h1>
+        <p class="hero-lead">This tile is a <em>black hole.</em></p>
+        <p class="hero-sub">
+          The page you are looking for does not exist or has moved. Like the robot on a
+          black tile, the only way out is back.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="/">
+            <span>Back to the home page</span>
+            <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+          <a class="btn secondary" href="/robotics.html"><span>Robotics</span></a>
+          <a class="btn secondary" href="/achievements.html"><span>Record</span></a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 kwlew.dev</p>
+  <footer class="site-footer">
+    <div class="site-footer-left">
+      <span>&copy; 2026 kwlew.dev</span>
+      <span>Fortaleza, BR</span>
+    </div>
+    <div class="site-footer-left">
+      <span><a href="/">Home</a></span>
+      <span><a href="https://github.com/kwlew/kwlew.github.io" target="_blank" rel="noopener noreferrer">Source &#8599;</a></span>
+    </div>
   </footer>
 
   <script src="/assets/js/particles.js?v=4"></script>

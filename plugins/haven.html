@@ -20,112 +20,155 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=22">
+  <link rel="stylesheet" href="/assets/css/main.css?v=26">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <canvas id="particles-bg" aria-hidden="true"></canvas>
   <a href="/" class="home-btn vt-brand" title="Home"><span aria-hidden="true">&larr;</span> kwlew.dev</a>
 
-  <header>
-    <h1 class="vt-haven">Haven</h1>
-    <p class="subtitle">A homes plugin for Paper</p>
-    <p class="tagline">Named homes, per-rank limits, and a teleport warmup that cancels when a player moves or takes damage.</p>
-  </header>
+  <main class="wrap page" id="main">
 
-  <div class="action-bar">
-    <a class="btn github" href="https://github.com/kwlew/Haven" target="_blank" rel="noopener noreferrer">
-      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-      Source code
-    </a>
-    <a class="btn secondary" href="/docs/haven.html">Documentation</a>
-  </div>
+    <!-- ===== HERO ===== -->
+    <section class="page-hero" aria-label="Introduction">
+      <div>
+        <p class="kicker">Minecraft plugin / Paper 1.18.2 to 26.3</p>
+        <h1 class="page-title page-title--name vt-haven">Haven</h1>
+        <p class="hero-lead">A homes plugin with a warmup that <em>cancels when you move.</em></p>
+        <p class="hero-sub">
+          Named homes, per-rank limits, and a teleport warmup that stops the moment a player
+          moves or takes damage. Every player's homes are saved to their own file, written
+          so that a crash can never cut one short.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="/docs/haven.html">
+            <span>Documentation</span>
+            <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+          <a class="btn secondary" href="https://github.com/kwlew/Haven" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            <span>Source</span>
+          </a>
+        </div>
+      </div>
+      <aside class="record-card page-readout ticks" data-repo="kwlew/Haven" aria-label="Project readouts">
+        <div class="scoreboard-head"><span>Live</span><span>GitHub</span></div>
+        <div class="score-row award" data-stat-row><span>Latest release</span><b><a data-stat="release" target="_blank" rel="noopener noreferrer">--</a></b></div>
+        <div class="score-row" data-stat-row><span>Last push</span><b data-stat="pushed">--</b></div>
+        <div class="score-row" data-stat-row><span>GitHub stars</span><b data-stat="stars">--</b></div>
+        <div class="score-row"><span>Runs on</span><b>Paper 1.18.2+</b></div>
+      </aside>
+    </section>
 
-  <div class="repo-stats">
-    <span id="stars">Stars: loading</span>
-    <span id="version">Release: loading</span>
-    <a id="release" href="" target="_blank" rel="noopener noreferrer" hidden></a>
-  </div>
+    <!-- ===== FEATURES ===== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.01</span>
+        <h2 class="ch-title" id="features-title">Features</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">8 in the box</span>
+      </div>
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>Named homes</dt>
+          <dd>Saved with <code>/sethome [name]</code> and listed by world with <code>/homes</code>.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Per-rank limits</dt>
+          <dd>Set through <code>haven.homes.&lt;n&gt;</code>; the highest granted value wins.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Warmup</dt>
+          <dd>A teleport warmup that cancels if the player moves or takes damage.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Cooldown</dt>
+          <dd>A cooldown between successful teleports; a cancelled warmup costs nothing.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Overwrites</dt>
+          <dd>Replacing a home asks for confirmation, so one is never overwritten by accident.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Messages and sounds</dt>
+          <dd>Every message in MiniMessage format, every sound configurable.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Placeholders</dt>
+          <dd>PlaceholderAPI placeholders for home counts and names.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Storage</dt>
+          <dd>One YAML file per player, written atomically on a background thread.</dd>
+        </div>
+      </dl>
+    </section>
 
-  <main class="container" style="padding-bottom: 20px;">
+    <!-- ===== COMPATIBILITY ===== -->
+    <section class="section" id="compatibility" aria-labelledby="compatibility-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.02</span>
+        <h2 class="ch-title" id="compatibility-title">Compatibility</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">PlaceholderAPI optional</span>
+      </div>
+      <div class="panel">
+        <table class="cmd-table">
+          <thead>
+            <tr><th>Paper</th><th>Java</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1.18.2 to 1.19</td><td>17</td></tr>
+            <tr><td>1.20 to 1.21.11</td><td>21</td></tr>
+            <tr><td>26.1 to 26.3</td><td>25</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-    <div class="card">
-      <h2>Features</h2>
-      <ul>
-        <li>Named homes, saved with <code>/sethome [name]</code> and listed by world with <code>/homes</code></li>
-        <li>Per-rank home limits through <code>haven.homes.&lt;n&gt;</code>, highest granted value wins</li>
-        <li>Teleport warmup that cancels if the player moves or takes damage</li>
-        <li>Cooldown between successful teleports; a cancelled warmup costs nothing</li>
-        <li>Overwrite confirmation, so a home is never replaced by accident</li>
-        <li>Every message in MiniMessage format, every sound configurable</li>
-        <li>PlaceholderAPI placeholders for home counts and names</li>
-        <li>One YAML file per player, written atomically on a background thread</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Compatibility</h2>
-      <table class="cmd-table">
-        <thead>
-          <tr><th>Paper</th><th>Java</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1.18.2 to 1.19</td><td>17</td></tr>
-          <tr><td>1.20 to 1.21.11</td><td>21</td></tr>
-          <tr><td>26.1 to 26.3</td><td>25</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top: 14px;">PlaceholderAPI is optional.</p>
-    </div>
-
-    <div class="card">
-      <h2>Commands</h2>
-      <table class="cmd-table">
-        <thead>
-          <tr><th>Command</th><th>Description</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>/sethome [name]</td><td>Save a home at your location. Defaults to <code>home</code>.</td></tr>
-          <tr><td>/home [name]</td><td>Teleport to a home.</td></tr>
-          <tr><td>/delhome &lt;name&gt;</td><td>Delete a home and show its coordinates.</td></tr>
-          <tr><td>/homes</td><td>List your homes, grouped by world. Click a name to teleport.</td></tr>
-          <tr><td>/haven reload</td><td>Reload <code>config.yml</code> and <code>messages.yml</code>.</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top: 14px;">Permissions, configuration and placeholders are in the <a href="/docs/haven.html">documentation</a>.</p>
-    </div>
+    <!-- ===== COMMANDS ===== -->
+    <section class="section" id="commands" aria-labelledby="commands-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.03</span>
+        <h2 class="ch-title" id="commands-title">Commands</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">5 commands</span>
+      </div>
+      <div class="panel">
+        <table class="cmd-table">
+          <thead>
+            <tr><th>Command</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>/sethome [name]</td><td>Save a home at your location. Defaults to <code>home</code>.</td></tr>
+            <tr><td>/home [name]</td><td>Teleport to a home.</td></tr>
+            <tr><td>/delhome &lt;name&gt;</td><td>Delete a home and show its coordinates.</td></tr>
+            <tr><td>/homes</td><td>List your homes, grouped by world. Click a name to teleport.</td></tr>
+            <tr><td>/haven reload</td><td>Reload <code>config.yml</code> and <code>messages.yml</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <a class="text-link page-more" href="/docs/haven.html">
+        <span>Permissions, configuration and placeholders</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </a>
+    </section>
 
   </main>
 
-  <footer>
-    <p>&copy; 2026 kwlew.dev</p>
+  <footer class="site-footer">
+    <div class="site-footer-left">
+      <span>&copy; 2026 kwlew.dev</span>
+      <span>Fortaleza, BR</span>
+    </div>
+    <div class="site-footer-left">
+      <span><a href="/">Home</a></span>
+      <span><a href="/achievements.html">Record</a></span>
+      <span><a href="https://github.com/kwlew/kwlew.github.io" target="_blank" rel="noopener noreferrer">Source &#8599;</a></span>
+    </div>
   </footer>
 
-  <script>
-    const repo = "kwlew/Haven";
-
-    fetch(`https://api.github.com/repos/${repo}`)
-      .then(res => res.ok ? res.json() : Promise.reject())
-      .then(data => {
-        document.getElementById("stars").textContent = `Stars: ${data.stargazers_count.toLocaleString()}`;
-      })
-      .catch(() => {
-        document.getElementById("stars").textContent = "Stars: n/a";
-      });
-
-    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
-      .then(data => {
-        document.getElementById("version").textContent = `Release: ${data.tag_name ?? "none"}`;
-        const release = document.getElementById("release");
-        release.textContent = data.name || "Latest release";
-        release.href = data.html_url;
-        release.hidden = false;
-      })
-      .catch(() => {
-        document.getElementById("version").textContent = "Release: none yet";
-      });
-  </script>
-
   <script src="/assets/js/particles.js?v=4"></script>
+  <script src="/assets/js/repo-stats.js?v=1"></script>
 </body>
 </html>

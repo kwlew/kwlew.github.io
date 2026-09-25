@@ -13,190 +13,196 @@
   <meta name="twitter:title"           content="kMoney • kwlew.dev" />
   <meta name="twitter:description"     content="kMoney: a modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, and more." />
   <meta name="twitter:image"           content="https://kwlew.dev/assets/images/og-image.png?v=2" />
+  <meta name="theme-color" content="#0e0d0b" />
   <title>kMoney &bull; kwlew.dev</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/favicon-64.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=22">
-  <style>
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 3px;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      font-weight: 500;
-      background: var(--c-surface-sunken);
-      border: 1px solid var(--c-border-dark);
-      color: var(--c-text-secondary);
-    }
-
-    .badge.purple { border-color: rgba(var(--c-accent-rgb),0.3); color: var(--c-accent-soft); background: rgba(var(--c-accent-rgb),0.06); }
-    .badge.violet { border-color: rgba(var(--label-blue-rgb),0.3); color: var(--label-blue); background: rgba(var(--label-blue-rgb),0.06); }
-  </style>
+  <link rel="stylesheet" href="/assets/css/main.css?v=26">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <canvas id="particles-bg" aria-hidden="true"></canvas>
   <a href="/" class="home-btn vt-brand" title="Home"><span aria-hidden="true">&larr;</span> kwlew.dev</a>
 
-  <header>
-    <h1 class="vt-kmoney">kMoney <span class="emoji">💰</span></h1>
-    <p class="subtitle">Economy Plugin for Paper 1.21+</p>
-  </header>
+  <main class="wrap page" id="main">
 
-  <div class="action-bar">
-    <a class="btn" href="https://modrinth.com/plugin/kmoney" target="_blank" rel="noopener noreferrer">
-      <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:16px;height:16px;">
-        <path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/>
-      </svg>
-      Download
-    </a>
-    <a class="btn github" href="https://github.com/kwlew/kMoney" target="_blank" rel="noopener noreferrer">
-      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-      GitHub
-    </a>
-    <a class="btn secondary" href="/docs/kmoney.html">Documentation</a>
-  </div>
-
-  <div class="repo-stats">
-    <span id="stars">⭐ Loading...</span>
-    <span id="version">🏷 Loading...</span>
-    <a id="release" href="" target="_blank" rel="noopener noreferrer" hidden></a>
-  </div>
-
-  <main class="container" style="padding-bottom: 20px;">
-
-    <div class="card">
-      <h2>Features</h2>
-      <div class="badge-row">
-        <span class="badge purple">Vault Compatible</span>
-        <span class="badge purple">PlaceholderAPI</span>
-        <span class="badge violet">Paper 1.21+</span>
-        <span class="badge violet">Async Storage</span>
+    <!-- ===== HERO ===== -->
+    <section class="page-hero" aria-label="Introduction">
+      <div>
+        <p class="kicker">Minecraft plugin / Paper 1.21+</p>
+        <h1 class="page-title page-title--name vt-kmoney">kMoney</h1>
+        <p class="hero-lead">A modern economy for Paper servers, <em>Vault compatible out of the box.</em></p>
+        <p class="hero-sub">
+          Balances, payments, a rich list and physical money checks, with PlaceholderAPI
+          support, configurable sounds and every message in MiniMessage.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="https://modrinth.com/plugin/kmoney" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.252.004a11.78 11.768 0 0 0-8.92 3.73 11 10.999 0 0 0-2.17 3.11 11.37 11.359 0 0 0-1.16 5.169c0 1.42.17 2.5.6 3.77.24.759.77 1.899 1.17 2.529a12.3 12.298 0 0 0 8.85 5.639c.44.05 2.54.07 2.76.02.2-.04.22.1-.26-1.7l-.36-1.37-1.01-.06a8.5 8.489 0 0 1-5.18-1.8 5.34 5.34 0 0 1-1.3-1.26c0-.05.34-.28.74-.5a37.572 37.545 0 0 1 2.88-1.629c.03 0 .5.45 1.06.98l1 .97 2.07-.43 2.06-.43 1.47-1.47c.8-.8 1.48-1.5 1.48-1.52 0-.09-.42-1.63-.46-1.7-.04-.06-.2-.03-1.02.18-.53.13-1.2.3-1.45.4l-.48.15-.53.53-.53.53-.93.1-.93.07-.52-.5a2.7 2.7 0 0 1-.96-1.7l-.13-.6.43-.57c.68-.9.68-.9 1.46-1.1.4-.1.65-.2.83-.33.13-.099.65-.579 1.14-1.069l.9-.9-.7-.7-.7-.7-1.95.54c-1.07.3-1.96.53-1.97.53-.03 0-2.23 2.48-2.63 2.97l-.29.35.28 1.03c.16.56.3 1.16.31 1.34l.03.3-.34.23c-.37.23-2.22 1.3-2.84 1.63-.36.2-.37.2-.44.1-.08-.1-.23-.6-.32-1.03-.18-.86-.17-2.75.02-3.73a8.84 8.839 0 0 1 7.9-6.93c.43-.03.77-.08.78-.1.06-.17.5-2.999.47-3.039-.01-.02-.1-.02-.2-.03Zm3.68.67c-.2 0-.3.1-.37.38-.06.23-.46 2.42-.46 2.52 0 .04.1.11.22.16a8.51 8.499 0 0 1 2.99 2 8.38 8.379 0 0 1 2.16 3.449 6.9 6.9 0 0 1 .4 2.8c0 1.07 0 1.27-.1 1.73a9.37 9.369 0 0 1-1.76 3.769c-.32.4-.98 1.06-1.37 1.38-.38.32-1.54 1.1-1.7 1.14-.1.03-.1.06-.07.26.03.18.64 2.56.7 2.78l.06.06a12.07 12.058 0 0 0 7.27-9.4c.13-.77.13-2.58 0-3.4a11.96 11.948 0 0 0-5.73-8.578c-.7-.42-2.05-1.06-2.25-1.06Z"/></svg>
+            <span>Download on Modrinth</span>
+          </a>
+          <a class="btn secondary" href="/docs/kmoney.html"><span>Documentation</span></a>
+          <a class="btn secondary" href="https://github.com/kwlew/kMoney" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.56 0-.27-.01-1.16-.02-2.1-3.2.7-3.88-1.54-3.88-1.54-.52-1.32-1.28-1.67-1.28-1.67-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.2-3.07-.12-.3-.52-1.52.12-3.17 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 2.92-.39c.99 0 2 .13 2.92.39 2.22-1.48 3.2-1.17 3.2-1.17.64 1.65.24 2.87.12 3.17.75.8 1.2 1.82 1.2 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.67.79.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            <span>Source</span>
+          </a>
+        </div>
       </div>
-      <ul>
-        <li>💰 Per-player balances stored in YAML with in-memory write-back cache</li>
-        <li>🏦 Physical money checks: withdraw balance into tradeable in-game items</li>
-        <li>🏆 Async leaderboard (<code>/money top</code>) with configurable refresh interval</li>
-        <li>🔔 Admin join notifications with automatic update detection via Modrinth</li>
-        <li>🎵 Fully configurable per-event sounds via <code>sounds.yml</code></li>
-        <li>✏️ All messages in <code>messages.yml</code> using MiniMessage format</li>
-        <li>⚡ Shorthand amount parsing: <code>1k</code>, <code>1m</code>, <code>1b</code>, <code>1t</code>&hellip;</li>
-      </ul>
-    </div>
+      <aside class="record-card page-readout ticks" data-repo="kwlew/kMoney" data-modrinth="kmoney" aria-label="Project readouts">
+        <div class="scoreboard-head"><span>Live</span><span>Modrinth / GitHub</span></div>
+        <div class="score-row award" data-stat-row><span>Downloads</span><b data-stat="downloads">--</b></div>
+        <div class="score-row" data-stat-row><span>Latest release</span><b><a data-stat="release" target="_blank" rel="noopener noreferrer">--</a></b></div>
+        <div class="score-row" data-stat-row><span>GitHub stars</span><b data-stat="stars">--</b></div>
+        <div class="score-row"><span>Runs on</span><b>Paper 1.21+</b></div>
+      </aside>
+    </section>
 
-    <div class="card">
-      <h2>Commands</h2>
-      <table class="cmd-table">
-        <thead>
-          <tr>
-            <th>Command</th>
-            <th>Description</th>
-            <th>Permission</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>/money</td>
-            <td>Show your balance</td>
-            <td><code>kmoney.command.money</code></td>
-          </tr>
-          <tr>
-            <td>/money balance &lt;player&gt;</td>
-            <td>View another player's balance</td>
-            <td><code>kmoney.command.money</code></td>
-          </tr>
-          <tr>
-            <td>/money pay &lt;player&gt; &lt;amount&gt;</td>
-            <td>Send money to a player</td>
-            <td><code>kmoney.command.money.pay</code></td>
-          </tr>
-          <tr>
-            <td>/money top [page]</td>
-            <td>Paginated rich list</td>
-            <td><code>kmoney.command.money.top</code></td>
-          </tr>
-          <tr>
-            <td>/money withdraw &lt;amount&gt; [notes]</td>
-            <td>Convert balance into money checks</td>
-            <td><code>kmoney.command.money.withdraw</code></td>
-          </tr>
-          <tr>
-            <td>/money add/remove/set &lt;player&gt;</td>
-            <td>Admin balance management</td>
-            <td><code>kmoney.admin</code></td>
-          </tr>
-          <tr>
-            <td>/money reload</td>
-            <td>Reload all config files live</td>
-            <td><code>kmoney.command.money.reload</code></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- ===== FEATURES ===== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.01</span>
+        <h2 class="ch-title" id="features-title">Features</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">Vault / PlaceholderAPI</span>
+      </div>
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>Balances</dt>
+          <dd>Per-player balances stored in YAML behind an in-memory write-back cache.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Money checks</dt>
+          <dd>Withdraw balance into physical, tradeable in-game items and claim them with a right-click.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Leaderboard</dt>
+          <dd>An async rich list, <code>/money top</code>, with a configurable refresh interval.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Update checks</dt>
+          <dd>Admins get a join notice when a newer version is out on Modrinth.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Sounds</dt>
+          <dd>Every economy event plays a sound you can change or turn off in <code>sounds.yml</code>.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Messages</dt>
+          <dd>All text in <code>messages.yml</code>, written in MiniMessage.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Amounts</dt>
+          <dd>Shorthand input: <code>1k</code>, <code>1m</code>, <code>1b</code>, <code>1t</code> and on up to 1e72.</dd>
+        </div>
+      </dl>
+    </section>
 
-    <div class="card">
-      <h2>Integrations</h2>
-      <ul>
-        <li>🔗 <strong>Vault</strong>: registers as a Vault Economy provider; any plugin using the Vault API works out of the box</li>
-        <li>📊 <strong>PlaceholderAPI</strong>: <code>%kMoney_balance%</code>, <code>%kMoney_balance_formatted%</code>, <code>%kMoney_symbol%</code></li>
-      </ul>
-    </div>
+    <!-- ===== COMMANDS ===== -->
+    <section class="section" id="commands" aria-labelledby="commands-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.02</span>
+        <h2 class="ch-title" id="commands-title">Commands</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">/money, alias /balance</span>
+      </div>
+      <div class="panel">
+        <table class="cmd-table">
+          <thead>
+            <tr><th>Command</th><th>Description</th><th>Permission</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>/money</td><td>Show your balance</td><td><code>kmoney.command.money</code></td></tr>
+            <tr><td>/money balance &lt;player&gt;</td><td>View another player's balance</td><td><code>kmoney.command.money</code></td></tr>
+            <tr><td>/money pay &lt;player&gt; &lt;amount&gt;</td><td>Send money to a player</td><td><code>kmoney.command.money.pay</code></td></tr>
+            <tr><td>/money top [page]</td><td>Paginated rich list</td><td><code>kmoney.command.money.top</code></td></tr>
+            <tr><td>/money withdraw &lt;amount&gt; [notes]</td><td>Convert balance into money checks</td><td><code>kmoney.command.money.withdraw</code></td></tr>
+            <tr><td>/money add/remove/set &lt;player&gt;</td><td>Admin balance management</td><td><code>kmoney.admin</code></td></tr>
+            <tr><td>/money reload</td><td>Reload all config files live</td><td><code>kmoney.command.money.reload</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <a class="text-link page-more" href="/docs/kmoney.html#commands">
+        <span>Every command and permission</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </a>
+    </section>
 
-    <div class="card">
-      <h2>Architecture</h2>
-      <ul>
-        <li>YAML files per player under <code>plugins/kMoney/players/&lt;uuid&gt;.yml</code></li>
-        <li>In-memory write-back cache: reads are instant, dirty entries flushed every 30 s</li>
-        <li>All leaderboard work runs asynchronously, with no main thread blocking</li>
-        <li>Money checks protected against duplication via hoppers, villager trades &amp; piglin bartering</li>
-        <li>Three config files: <code>config.yml</code>, <code>messages.yml</code>, <code>sounds.yml</code></li>
-      </ul>
-    </div>
+    <!-- ===== INTEGRATIONS ===== -->
+    <section class="section" id="integrations" aria-labelledby="integrations-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.03</span>
+        <h2 class="ch-title" id="integrations-title">Integrations</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">Works with</span>
+      </div>
+      <div class="page-cols">
+        <article class="page-col ticks">
+          <span class="page-col-idx">01</span>
+          <h3>Vault</h3>
+          <p>Registers as a Vault Economy provider, so any plugin that uses the Vault API works with kMoney balances out of the box.</p>
+        </article>
+        <article class="page-col ticks">
+          <span class="page-col-idx">02</span>
+          <h3>PlaceholderAPI</h3>
+          <p><code>%kMoney_balance%</code>, <code>%kMoney_balance_formatted%</code> and <code>%kMoney_symbol%</code> for scoreboards, tab lists and chat.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== UNDER THE HOOD ===== -->
+    <section class="section" id="architecture" aria-labelledby="architecture-title">
+      <div class="ch-head">
+        <span class="ch-num">CH.04</span>
+        <h2 class="ch-title" id="architecture-title">Under the hood</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">Java / Paper</span>
+      </div>
+      <dl class="spec">
+        <div class="spec-row">
+          <dt>Storage</dt>
+          <dd>One YAML file per player under <code>plugins/kMoney/players/&lt;uuid&gt;.yml</code>.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Cache</dt>
+          <dd>Reads are instant from memory; changed entries are flushed to disk every 30 seconds.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Threads</dt>
+          <dd>All leaderboard work runs asynchronously, so the main thread is never blocked.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Duplication</dt>
+          <dd>Money checks are protected against duplication through hoppers, villager trades and piglin bartering.</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Config</dt>
+          <dd>Three files, <code>config.yml</code>, <code>messages.yml</code> and <code>sounds.yml</code>, all reloaded live.</dd>
+        </div>
+      </dl>
+      <a class="text-link page-more" href="/docs/kmoney.html">
+        <span>Read the full documentation</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </a>
+    </section>
 
   </main>
 
-  <footer>
-    <p>&copy; 2026 kwlew.dev</p>
+  <footer class="site-footer">
+    <div class="site-footer-left">
+      <span>&copy; 2026 kwlew.dev</span>
+      <span>Fortaleza, BR</span>
+    </div>
+    <div class="site-footer-left">
+      <span><a href="/">Home</a></span>
+      <span><a href="/achievements.html">Record</a></span>
+      <span><a href="https://github.com/kwlew/kwlew.github.io" target="_blank" rel="noopener noreferrer">Source &#8599;</a></span>
+    </div>
   </footer>
 
-  <script>
-    const repo = "kwlew/kMoney";
-
-    fetch(`https://api.github.com/repos/${repo}`)
-      .then(res => res.ok ? res.json() : Promise.reject())
-      .then(data => {
-        document.getElementById("stars").textContent = `⭐ ${data.stargazers_count.toLocaleString()}`;
-      })
-      .catch(() => {
-        document.getElementById("stars").textContent = "⭐ N/A";
-      });
-
-    fetch(`https://api.github.com/repos/${repo}/releases/latest`)
-      .then(res => { if (!res.ok) throw new Error(); return res.json(); })
-      .then(data => {
-        document.getElementById("version").textContent = `🏷 ${data.tag_name ?? "No version"}`;
-        const release = document.getElementById("release");
-        release.textContent = `📦 ${data.name || "Latest Release"}`;
-        release.href = data.html_url;
-        release.hidden = false;
-      })
-      .catch(() => {
-        document.getElementById("version").textContent = "🏷 No releases yet";
-      });
-  </script>
-
   <script src="/assets/js/particles.js?v=4"></script>
+  <script src="/assets/js/repo-stats.js?v=1"></script>
 </body>
 </html>
