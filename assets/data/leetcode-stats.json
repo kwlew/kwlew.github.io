@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-09-26T09:00:22.354Z",
+  "generatedAt": "2026-09-26T16:44:30.635Z",
   "user": "kwlew",
   "solved": {
-    "all": 24,
-    "easy": 19,
+    "all": 25,
+    "easy": 20,
     "medium": 4,
     "hard": 1
   },
   "total": {
-    "all": 4060,
-    "easy": 966,
-    "medium": 2117,
-    "hard": 977
+    "all": 4064,
+    "easy": 967,
+    "medium": 2119,
+    "hard": 978
   },
-  "ranking": null,
+  "ranking": 4035446,
   "activeDays": 2,
   "languages": [
     {
       "name": "C++",
-      "solved": 22
+      "solved": 23
     },
     {
       "name": "JavaScript",
@@ -27,6 +27,20 @@
   ],
   "contest": null,
   "recent": [
+    {
+      "title": "Ugly Number",
+      "slug": "ugly-number",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T09:20:21.000Z"
+    },
+    {
+      "title": "Palindrome Number",
+      "slug": "palindrome-number",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T09:03:57.000Z"
+    },
     {
       "title": "Find the Pivot Integer",
       "slug": "find-the-pivot-integer",
@@ -68,20 +82,6 @@
       "difficulty": "Medium",
       "lang": "cpp",
       "solvedAt": "2026-09-26T08:28:48.000Z"
-    },
-    {
-      "title": "Final Prices With a Special Discount in a Shop",
-      "slug": "final-prices-with-a-special-discount-in-a-shop",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:24:27.000Z"
-    },
-    {
-      "title": "Exclusive Time of Functions",
-      "slug": "exclusive-time-of-functions",
-      "difficulty": "Medium",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:15:25.000Z"
     }
   ]
 }
