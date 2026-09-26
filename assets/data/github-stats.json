@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-25T11:53:43.044Z",
+  "generatedAt": "2026-09-26T11:26:52.654Z",
   "user": "kwlew",
   "repoCount": 27,
-  "linesAdded": 137779,
-  "linesDeleted": 64844,
+  "linesAdded": 138459,
+  "linesDeleted": 64972,
   "repos": [
     {
       "name": "Starsown",
@@ -12,8 +12,8 @@
     },
     {
       "name": "kwlew.github.io",
-      "added": 17879,
-      "deleted": 8540
+      "added": 18559,
+      "deleted": 8668
     },
     {
       "name": "kMoney",
@@ -152,11 +152,11 @@
     },
     {
       "name": "JavaScript",
-      "bytes": 178518
+      "bytes": 186792
     },
     {
       "name": "HTML",
-      "bytes": 105368
+      "bytes": 108163
     },
     {
       "name": "C++",
@@ -164,7 +164,7 @@
     },
     {
       "name": "CSS",
-      "bytes": 77194
+      "bytes": 80280
     },
     {
       "name": "Jupyter Notebook",
