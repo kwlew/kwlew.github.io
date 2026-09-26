@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-09-26T09:00:22.354Z",
+  "user": "kwlew",
+  "solved": {
+    "all": 24,
+    "easy": 19,
+    "medium": 4,
+    "hard": 1
+  },
+  "total": {
+    "all": 4060,
+    "easy": 966,
+    "medium": 2117,
+    "hard": 977
+  },
+  "ranking": null,
+  "activeDays": 2,
+  "languages": [
+    {
+      "name": "C++",
+      "solved": 22
+    },
+    {
+      "name": "JavaScript",
+      "solved": 2
+    }
+  ],
+  "contest": null,
+  "recent": [
+    {
+      "title": "Find the Pivot Integer",
+      "slug": "find-the-pivot-integer",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:59:26.000Z"
+    },
+    {
+      "title": "Can Make Arithmetic Progression From Sequence",
+      "slug": "can-make-arithmetic-progression-from-sequence",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:55:22.000Z"
+    },
+    {
+      "title": "Valid Mountain Array",
+      "slug": "valid-mountain-array",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:52:31.000Z"
+    },
+    {
+      "title": "Plus One",
+      "slug": "plus-one",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:38:16.000Z"
+    },
+    {
+      "title": "Largest Rectangle in Histogram",
+      "slug": "largest-rectangle-in-histogram",
+      "difficulty": "Hard",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:35:12.000Z"
+    },
+    {
+      "title": "Daily Temperatures",
+      "slug": "daily-temperatures",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:28:48.000Z"
+    },
+    {
+      "title": "Final Prices With a Special Discount in a Shop",
+      "slug": "final-prices-with-a-special-discount-in-a-shop",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:24:27.000Z"
+    },
+    {
+      "title": "Exclusive Time of Functions",
+      "slug": "exclusive-time-of-functions",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-09-26T08:15:25.000Z"
+    }
+  ]
+}

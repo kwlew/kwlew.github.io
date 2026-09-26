@@ -998,6 +998,17 @@ pre {
   align-items: center;
   gap: 8px;
   color: var(--c-text-secondary);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.availability:hover {
+  color: var(--c-accent);
+}
+
+/* Clock plus availability outgrows the bar's right column below this. */
+@media (max-width: 900px) {
+  .clock { display: none; }
 }
 
 .scroll-progress {
@@ -1098,6 +1109,23 @@ pre {
   gap: 10px;
   margin-top: 32px;
   animation: rise-in 0.8s var(--ease-out) 0.7s both;
+}
+
+.hero-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 22px;
+  color: var(--c-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  animation: rise-in 0.8s var(--ease-out) 0.8s both;
+}
+
+.hero-status .led {
+  flex: none;
+  margin-top: 0.5em;
 }
 
 .hero-actions .btn {
@@ -1633,6 +1661,18 @@ html.js .reveal.is-in {
   font-size: 0.92rem;
 }
 
+.project-desc a {
+  color: var(--c-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--c-accent-rgb), 0.5);
+  text-underline-offset: 3px;
+  transition: color var(--t-fast);
+}
+
+.project-desc a:hover {
+  color: var(--c-accent);
+}
+
 .project-meta {
   display: flex;
   flex-direction: column;
@@ -1699,7 +1739,8 @@ html.js .reveal.is-in {
 .ch--starsown { grid-column: span 7; }
 .ch--modrinth { grid-column: span 5; }
 .ch--cf       { grid-column: span 4; }
-.ch--api      { grid-column: span 8; }
+.ch--lc       { grid-column: span 8; }
+.ch--api      { grid-column: span 12; }
 
 .ch-bar {
   display: flex;
@@ -2371,6 +2412,126 @@ html.js .reveal.is-in {
 .cf-foot a:hover {
   color: var(--c-accent);
 }
+
+/* LeetCode channel */
+.ch--lc {
+  --lc-easy: var(--label-cyan);
+  --lc-medium: var(--label-gold);
+  --lc-hard: var(--label-red);
+}
+
+.lc-grid {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 36px;
+}
+
+.lc-solved {
+  display: flex;
+  flex-direction: column;
+}
+
+.lc-bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin-top: 22px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(var(--c-text-rgb), 0.04);
+}
+
+.lc-bar span {
+  flex-grow: var(--w);
+  flex-basis: 0;
+  transform-origin: left;
+}
+
+.lc-bar.cascade span {
+  animation: bar-in 0.9s var(--ease-out) both;
+  animation-delay: calc(var(--k) * 80ms);
+}
+
+.lc-bar .easy,
+.lc-diff .easy i       { background: var(--lc-easy); }
+.lc-bar .medium,
+.lc-diff .medium i     { background: var(--lc-medium); }
+.lc-bar .hard,
+.lc-diff .hard i       { background: var(--lc-hard); }
+
+.lc-diff {
+  margin: 14px 0 18px;
+  list-style: none;
+  color: var(--c-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.lc-diff li {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto 64px;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--c-border-hair);
+}
+
+.lc-diff li:last-child {
+  border-bottom: 0;
+}
+
+.lc-diff i {
+  width: 8px;
+  height: 8px;
+  border-radius: 1px;
+}
+
+.lc-diff b {
+  color: var(--c-text);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.lc-diff li > span {
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.lc-contest {
+  margin-top: 12px;
+  color: var(--c-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.lc-contest b {
+  color: var(--c-text);
+  font-weight: 500;
+}
+
+.lc-recent .feed-head {
+  margin-top: 0;
+}
+
+.lc-feed a {
+  grid-template-columns: minmax(0, 1fr) 56px 64px;
+}
+
+.lc-feed .title {
+  overflow: hidden;
+  color: var(--c-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lc-feed .diff {
+  color: var(--c-text-muted);
+}
+
+.lc-feed .diff.easy   { color: var(--lc-easy); }
+.lc-feed .diff.medium { color: var(--lc-medium); }
+.lc-feed .diff.hard   { color: var(--lc-hard); }
 
 /* API console */
 .api-tabs {
@@ -3556,11 +3717,13 @@ ol.page-list li::before {
   .ch--starsown,
   .ch--modrinth,
   .ch--cf,
+  .ch--lc,
   .ch--api {
     grid-column: span 12;
   }
 
-  .gh-grid {
+  .gh-grid,
+  .lc-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
@@ -3725,6 +3888,10 @@ ol.page-list li::before {
 
   .feed .branch {
     display: none;
+  }
+
+  .lc-feed a {
+    grid-template-columns: minmax(0, 1fr) 52px 56px;
   }
 
   .api-body {

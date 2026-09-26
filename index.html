@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=26">
+  <link rel="stylesheet" href="/assets/css/main.css?v=28">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -33,15 +33,15 @@
 
       <div class="nav">
         <a href="#work" class="nav-item">Work</a>
-        <a href="#live" class="nav-item">Live</a>
         <a href="#record" class="nav-item">Record</a>
         <a href="#stack" class="nav-item">Stack</a>
+        <a href="#live" class="nav-item">Live</a>
         <a href="#contact" class="nav-item">Contact</a>
       </div>
 
       <div class="topbar-meta">
         <span class="clock">Brazil <b id="clock">--:--:--</b> BRT</span>
-        <span class="availability"><span class="led ok" aria-hidden="true"></span>Available</span>
+        <a class="availability" href="#contact"><span class="led ok" aria-hidden="true"></span>Available</a>
       </div>
     </div>
     <span class="scroll-progress" id="scroll-progress" aria-hidden="true"></span>
@@ -64,9 +64,9 @@
           <p class="hero-lead">I write the code that gets the robot <em>out of the maze.</em></p>
 
           <p class="hero-sub">
-            Backend developer and robotics programmer from Fortaleza, Brazil. Server-side
-            Java plugin systems deployed in production, and autonomous navigation that
-            placed 6th in the world at RoboCup 2026.
+            Final-year high school student at Col&eacute;gio Farias Brito in Fortaleza, Brazil.
+            I build server-side Java plugin systems that run in production, and autonomous
+            navigation that placed 6th in the world at RoboCup 2026.
           </p>
 
           <div class="hero-actions">
@@ -78,6 +78,8 @@
               <span>The robotics story</span>
             </a>
           </div>
+
+          <p class="hero-status"><span class="led ok" aria-hidden="true"></span>Available for internships, freelance work and collaborations</p>
         </div>
 
         <figure class="sim">
@@ -197,7 +199,7 @@
           <span class="project-idx">01</span>
           <div>
             <h3 class="project-name vt-kmoney">kMoney</h3>
-            <p class="project-desc">A modern economy plugin for Paper 1.21+. Vault compatible, PlaceholderAPI support, money checks, async leaderboard and multi-currency support.</p>
+            <p class="project-desc">An economy plugin for Paper 1.21+, compatible with Vault and PlaceholderAPI. Balances sit in a write-back cache flushed to disk off the main thread, the leaderboard rebuilds asynchronously, and money checks are guarded against duplication through hoppers, trades and bartering.</p>
           </div>
           <div class="project-meta">
             <span>Java / Paper / Open source</span>
@@ -214,7 +216,7 @@
           <span class="project-idx">02</span>
           <div>
             <h3 class="project-name vt-haven">Haven</h3>
-            <p class="project-desc">A homes plugin for Paper 1.18.2 to 26.3. Named homes, per-rank limits, a teleport warmup that cancels on movement or damage, and crash-safe per-player storage.</p>
+            <p class="project-desc">A homes plugin for Paper 1.18.2 to 26.3, a range spanning Java 17 to 25. Named homes, per-rank limits and a teleport warmup that cancels on movement or damage. Each player's file is written atomically on a background thread, so a crash never leaves one half-written.</p>
           </div>
           <div class="project-meta">
             <span>Java / Paper / Open source</span>
@@ -231,7 +233,7 @@
           <span class="project-idx">03</span>
           <div>
             <h3 class="project-name vt-starsown">Starsown</h3>
-            <p class="project-desc">A 2D top-down survival game, still a work in progress, built with L&Ouml;VE2D. Its stats run through my own API, live in the next section.</p>
+            <p class="project-desc">A 2D top-down survival game, still a work in progress, built with L&Ouml;VE2D. Running copies report heartbeats and star counts to an API I run, which serves the live numbers in the <a href="#live">Live</a> section.</p>
           </div>
           <div class="project-meta">
             <span>Lua / L&Ouml;VE2D / Open source</span>
@@ -245,13 +247,107 @@
       </ol>
     </section>
 
+    <!-- ===== RECORD ===== -->
+    <section class="section wrap" id="record" aria-labelledby="record-title">
+      <div class="ch-head reveal">
+        <span class="ch-num">CH.02</span>
+        <h2 class="ch-title vt-achievements" id="record-title">Record</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">Competing since 2021</span>
+      </div>
+      <p class="section-lead reveal">Robotics, informatics, maths and science olympiads, at home and internationally.</p>
+
+      <div class="record-grid">
+        <div class="record-side reveal">
+          <ul class="tally" id="tally">
+            <li class="national"><b>01</b><span>National win</span></li>
+            <li class="gold"><b>04</b><span>Gold</span></li>
+            <li class="silver"><b>06</b><span>Silver</span></li>
+            <li class="bronze"><b>01</b><span>Bronze</span></li>
+          </ul>
+          <a class="text-link" href="/achievements.html">
+            <span>Full record</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          </a>
+        </div>
+
+        <div class="timeline reveal" id="timeline" style="--i:1">
+          <div class="tl-head"><span>Results per year</span><span id="tl-total"></span></div>
+          <div class="tl-cols" id="tl-cols"></div>
+          <div class="tl-years" id="tl-years" aria-hidden="true"></div>
+          <p class="tl-readout" id="tl-readout" aria-live="polite">Hover or focus a square for the result.</p>
+          <div class="tl-legend" aria-hidden="true">
+            <span><i class="tl-sq world"></i>International</span>
+            <span><i class="tl-sq national"></i>National win</span>
+            <span><i class="tl-sq gold"></i>Gold</span>
+            <span><i class="tl-sq silver"></i>Silver</span>
+            <span><i class="tl-sq bronze"></i>Bronze</span>
+            <span><i class="tl-sq phase"></i>Placement / phase</span>
+            <span><i class="tl-sq lost"></i>Forfeit</span>
+            <span><i class="tl-sq participant"></i>Took part</span>
+          </div>
+        </div>
+
+        <article class="record-card ticks reveal">
+          <div class="scoreboard-head"><span>CBR 2025 &middot; Vit&oacute;ria, ES</span><span>Clean sweep</span></div>
+          <div class="score-row award"><span>Overall</span><b>1st</b></div>
+          <div class="score-row"><span>Super Teams</span><b>1st</b></div>
+          <div class="score-row"><span>Technical Challenge</span><b>1st</b></div>
+          <div class="score-row"><span>Team Description Paper</span><b>1st</b></div>
+          <div class="score-row"><span>Video</span><b>1st</b></div>
+          <div class="next-up">
+            <span>Next: CBR 2026, Jo&atilde;o Pessoa, Nov 25 to 29</span>
+            <b id="cbr-countdown"></b>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== STACK ===== -->
+    <section class="section wrap" id="stack" aria-labelledby="stack-title">
+      <div class="ch-head reveal">
+        <span class="ch-num">CH.03</span>
+        <h2 class="ch-title" id="stack-title">Stack</h2>
+        <span class="ch-rule" aria-hidden="true"></span>
+        <span class="ch-meta">What I work in</span>
+      </div>
+
+      <div class="reveal" id="languages" hidden>
+        <div class="langbar-head">
+          <span class="readout-label">Language share by bytes, public repos</span>
+          <span class="readout-label" id="lang-total"></span>
+        </div>
+        <div class="langbar" id="langbar" role="img"></div>
+        <ul class="lang-legend" id="lang-legend"></ul>
+      </div>
+
+      <dl class="spec">
+        <div class="spec-row reveal">
+          <dt>Languages</dt>
+          <dd><span>Java</span><span>Kotlin</span><span>C++</span><span>C</span><span>C#</span><span>Python</span><span>JavaScript</span><span>Lua</span><span>SQL</span><span>HTML</span><span>CSS</span></dd>
+        </div>
+        <div class="spec-row reveal">
+          <dt>Backend and cloud</dt>
+          <dd><span>Spring</span><span>Node.js</span><span>Paper</span><span>Cloudflare Workers</span><span>FastAPI</span><span>Supabase</span></dd>
+        </div>
+        <div class="spec-row reveal">
+          <dt>Embedded and systems</dt>
+          <dd><span>MicroPython</span><span>RTOS</span><span>Linux</span><span>OpenGL</span><span>LWJGL</span><span>L&Ouml;VE2D</span><span>raylib</span></dd>
+        </div>
+        <div class="spec-row reveal">
+          <dt>Tooling</dt>
+          <dd><span>Docker</span><span>Git</span><span>Gradle</span><span>Maven</span><span>WSL</span><span>discord.js</span><span>GitHub Actions</span></dd>
+        </div>
+      </dl>
+    </section>
+
     <!-- ===== LIVE ===== -->
     <section class="section wrap" id="live" aria-labelledby="live-title">
       <div class="ch-head reveal">
-        <span class="ch-num">CH.02</span>
+        <span class="ch-num">CH.04</span>
         <h2 class="ch-title" id="live-title">Live</h2>
         <span class="ch-rule" aria-hidden="true"></span>
-        <span class="ch-meta">5 sources, fetched in your browser</span>
+        <span class="ch-meta">6 sources, fetched in your browser</span>
       </div>
       <p class="section-lead reveal">
         Every number in this section is pulled from a public API as you read it,
@@ -423,6 +519,43 @@
           <div class="ch-error"><span>No signal</span><button type="button" data-retry="codeforces">Retry</button></div>
         </article>
 
+        <article class="ch ch--lc reveal" id="live-lc" data-channel="leetcode" data-state="loading" style="--i:1">
+          <div class="ch-bar">
+            <span class="led" aria-hidden="true"></span>
+            <span class="ch-name">LeetCode</span>
+            <span class="ch-src">leetcode.com/graphql, synced every 6h</span>
+            <span class="ch-age" data-age>connecting</span>
+          </div>
+          <div class="ch-body lc-grid">
+            <div class="lc-solved">
+              <span class="readout-label">Solved</span>
+              <span class="readout-value lg" data-bind="lc.solved" data-odo>--</span>
+              <span class="readout-note">of <span data-bind="lc.total">--</span> problems</span>
+              <div class="lc-bar" id="lc-bar" role="img" aria-label="Solved problems by difficulty"></div>
+              <ul class="lc-diff">
+                <li class="easy"><i aria-hidden="true"></i>Easy<b data-bind="lc.easy">--</b><span>/ <span data-bind="lc.totalEasy">--</span></span></li>
+                <li class="medium"><i aria-hidden="true"></i>Medium<b data-bind="lc.medium">--</b><span>/ <span data-bind="lc.totalMedium">--</span></span></li>
+                <li class="hard"><i aria-hidden="true"></i>Hard<b data-bind="lc.hard">--</b><span>/ <span data-bind="lc.totalHard">--</span></span></li>
+              </ul>
+              <p class="lc-contest" id="lc-contest" hidden>
+                Contest rating <b data-bind="lc.rating">--</b>, top <span data-bind="lc.top">--</span>
+              </p>
+              <div class="cf-foot">
+                <span data-bind="lc.languages">--</span>
+                <a href="https://leetcode.com/u/kwlew/" target="_blank" rel="noopener noreferrer">@kwlew &#8599;</a>
+              </div>
+            </div>
+            <div class="lc-recent">
+              <div class="feed-head">
+                <span class="readout-label">Recent accepted</span>
+                <span class="readout-label">newest first</span>
+              </div>
+              <ol class="feed lc-feed" id="lc-feed"></ol>
+            </div>
+          </div>
+          <div class="ch-error"><span>No signal</span><button type="button" data-retry="leetcode">Retry</button></div>
+        </article>
+
         <article class="ch ch--api reveal" id="live-api" data-channel="api" data-state="loading" style="--i:1">
           <div class="ch-bar">
             <span class="led" aria-hidden="true"></span>
@@ -448,100 +581,6 @@
       </div>
     </section>
 
-    <!-- ===== RECORD ===== -->
-    <section class="section wrap" id="record" aria-labelledby="record-title">
-      <div class="ch-head reveal">
-        <span class="ch-num">CH.03</span>
-        <h2 class="ch-title vt-achievements" id="record-title">Record</h2>
-        <span class="ch-rule" aria-hidden="true"></span>
-        <span class="ch-meta">Competing since 2021</span>
-      </div>
-      <p class="section-lead reveal">Robotics, informatics, maths and science olympiads, at home and internationally.</p>
-
-      <div class="record-grid">
-        <div class="record-side reveal">
-          <ul class="tally" id="tally">
-            <li class="national"><b>01</b><span>National win</span></li>
-            <li class="gold"><b>04</b><span>Gold</span></li>
-            <li class="silver"><b>06</b><span>Silver</span></li>
-            <li class="bronze"><b>01</b><span>Bronze</span></li>
-          </ul>
-          <a class="text-link" href="/achievements.html">
-            <span>Full record</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
-          </a>
-        </div>
-
-        <div class="timeline reveal" id="timeline" style="--i:1">
-          <div class="tl-head"><span>Results per year</span><span id="tl-total"></span></div>
-          <div class="tl-cols" id="tl-cols"></div>
-          <div class="tl-years" id="tl-years" aria-hidden="true"></div>
-          <p class="tl-readout" id="tl-readout" aria-live="polite">Hover or focus a square for the result.</p>
-          <div class="tl-legend" aria-hidden="true">
-            <span><i class="tl-sq world"></i>International</span>
-            <span><i class="tl-sq national"></i>National win</span>
-            <span><i class="tl-sq gold"></i>Gold</span>
-            <span><i class="tl-sq silver"></i>Silver</span>
-            <span><i class="tl-sq bronze"></i>Bronze</span>
-            <span><i class="tl-sq phase"></i>Placement / phase</span>
-            <span><i class="tl-sq lost"></i>Forfeit</span>
-            <span><i class="tl-sq participant"></i>Took part</span>
-          </div>
-        </div>
-
-        <article class="record-card ticks reveal">
-          <div class="scoreboard-head"><span>CBR 2025 &middot; Vit&oacute;ria, ES</span><span>Clean sweep</span></div>
-          <div class="score-row award"><span>Overall</span><b>1st</b></div>
-          <div class="score-row"><span>Super Teams</span><b>1st</b></div>
-          <div class="score-row"><span>Technical Challenge</span><b>1st</b></div>
-          <div class="score-row"><span>Team Description Paper</span><b>1st</b></div>
-          <div class="score-row"><span>Video</span><b>1st</b></div>
-          <div class="next-up">
-            <span>Next: CBR 2026, Jo&atilde;o Pessoa, Nov 25 to 29</span>
-            <b id="cbr-countdown"></b>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== STACK ===== -->
-    <section class="section wrap" id="stack" aria-labelledby="stack-title">
-      <div class="ch-head reveal">
-        <span class="ch-num">CH.04</span>
-        <h2 class="ch-title" id="stack-title">Stack</h2>
-        <span class="ch-rule" aria-hidden="true"></span>
-        <span class="ch-meta">What I work in</span>
-      </div>
-
-      <div class="reveal" id="languages" hidden>
-        <div class="langbar-head">
-          <span class="readout-label">Language share by bytes, public repos</span>
-          <span class="readout-label" id="lang-total"></span>
-        </div>
-        <div class="langbar" id="langbar" role="img"></div>
-        <ul class="lang-legend" id="lang-legend"></ul>
-      </div>
-
-      <dl class="spec">
-        <div class="spec-row reveal">
-          <dt>Languages</dt>
-          <dd><span>Java</span><span>Kotlin</span><span>C++</span><span>C</span><span>C#</span><span>Python</span><span>JavaScript</span><span>Lua</span><span>SQL</span><span>HTML</span><span>CSS</span></dd>
-        </div>
-        <div class="spec-row reveal">
-          <dt>Backend and cloud</dt>
-          <dd><span>Spring</span><span>Node.js</span><span>Paper</span><span>Cloudflare Workers</span><span>FastAPI</span><span>Supabase</span></dd>
-        </div>
-        <div class="spec-row reveal">
-          <dt>Embedded and systems</dt>
-          <dd><span>MicroPython</span><span>RTOS</span><span>Linux</span><span>OpenGL</span><span>LWJGL</span><span>L&Ouml;VE2D</span><span>raylib</span></dd>
-        </div>
-        <div class="spec-row reveal">
-          <dt>Tooling</dt>
-          <dd><span>Docker</span><span>Git</span><span>Gradle</span><span>Maven</span><span>WSL</span><span>discord.js</span><span>GitHub Actions</span></dd>
-        </div>
-      </dl>
-    </section>
-
     <!-- ===== CONTACT ===== -->
     <section class="section wrap" id="contact" aria-labelledby="contact-title">
       <div class="ch-head reveal">
@@ -554,7 +593,7 @@
       <div class="contact">
         <div class="reveal">
           <p class="contact-title">Let&rsquo;s build <em>something.</em></p>
-          <p class="contact-lead">Open to collaboration on plugins, robotics and anything embedded. Email is the fastest way to reach me.</p>
+          <p class="contact-lead">Available for internships, freelance work and collaborations: plugins, backend, robotics, embedded, anything really. Email is the fastest way to reach me.</p>
 
           <div class="email-row">
             <a class="email" href="mailto:kwlew.dev@gmail.com?subject=Project%20inquiry">kwlew.dev@gmail.com</a>
@@ -626,7 +665,7 @@
 
   <script src="/assets/js/particles.js?v=4"></script>
   <script src="/assets/js/achievements-data.js?v=1"></script>
-  <script src="/assets/js/telemetry.js?v=2"></script>
+  <script src="/assets/js/telemetry.js?v=3"></script>
   <script src="/assets/js/modrinth-stats.js?v=2"></script>
   <script src="/assets/js/maze-sim.js?v=3"></script>
   <script>

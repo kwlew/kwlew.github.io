@@ -14,6 +14,7 @@
   const EVENTS_URL = "https://api.github.com/users/kwlew/events/public?per_page=100";
   const CODEFORCES_URL = "https://codeforces.com/api/user.info?handles=kwlew";
   const GITHUB_STATS_URL = "/assets/data/github-stats.json";
+  const LEETCODE_STATS_URL = "/assets/data/leetcode-stats.json";
   const HOUR = 60 * 60 * 1000;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -684,6 +685,94 @@
     }
   }
 
+  // ===== LEETCODE (snapshot from the leetcode-stats workflow) =====
+  // LeetCode's GraphQL API sends no CORS headers, so the workflow queries it
+  // every 6 hours and the page reads the committed JSON.
+  const DIFFICULTIES = ["easy", "medium", "hard"];
+
+  function renderLeetcodeBar(solved) {
+    const bar = document.getElementById("lc-bar");
+    if (!bar) return;
+    const parts = DIFFICULTIES.filter(level => solved[level] > 0);
+    bar.replaceChildren(...parts.map((level, index) => {
+      const segment = document.createElement("span");
+      segment.className = level;
+      segment.style.setProperty("--w", String(solved[level]));
+      segment.style.setProperty("--k", String(index));
+      return segment;
+    }));
+    bar.setAttribute("aria-label", DIFFICULTIES.map(level => `${solved[level] || 0} ${level}`).join(", "));
+    if (!reduceMotion) onVisible(bar, () => bar.classList.add("cascade"));
+  }
+
+  function renderLeetcodeFeed(recent) {
+    const feed = document.getElementById("lc-feed");
+    if (!feed) return;
+    if (!recent.length) {
+      feed.replaceChildren(feedMessage("No accepted submissions yet."));
+      return;
+    }
+    feed.replaceChildren(...recent.slice(0, 6).map(problem => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = `https://leetcode.com/problems/${encodeURIComponent(problem.slug)}/`;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      const title = document.createElement("span");
+      title.className = "title";
+      title.textContent = problem.title;
+
+      const level = String(problem.difficulty || "").toLowerCase();
+      const difficulty = document.createElement("span");
+      difficulty.className = `diff ${DIFFICULTIES.includes(level) ? level : ""}`;
+      difficulty.textContent = level || "?";
+
+      const age = document.createElement("span");
+      age.className = "age";
+      age.dataset.rel = "";
+      age.dataset.ts = String(Date.parse(problem.solvedAt));
+
+      link.append(title, difficulty, age);
+      item.append(link);
+      return item;
+    }));
+    tickAges();
+  }
+
+  async function loadLeetcode() {
+    try {
+      const { data } = await fetchJSON(LEETCODE_STATS_URL);
+      const solved = data.solved || {};
+      const total = data.total || {};
+      if (typeof solved.all !== "number") throw new TypeError("Unexpected LeetCode snapshot");
+
+      setValue("lc.solved", solved.all);
+      setValue("lc.total", Number(total.all) || 0);
+      for (const level of DIFFICULTIES) {
+        const name = level[0].toUpperCase() + level.slice(1);
+        setValue(`lc.${level}`, Number(solved[level]) || 0);
+        setValue(`lc.total${name}`, Number(total[level]) || 0);
+      }
+      setValue("lc.languages", (data.languages || []).slice(0, 3)
+        .map(language => `${language.name} ${language.solved}`).join(", ") || "--");
+
+      const contest = document.getElementById("lc-contest");
+      if (contest && data.contest) {
+        setValue("lc.rating", Number(data.contest.rating) || 0);
+        const top = Number(data.contest.topPercentage);
+        setValue("lc.top", Number.isFinite(top) && top > 0 ? `${top.toFixed(1)}%` : "--");
+        contest.hidden = false;
+      }
+
+      renderLeetcodeBar(solved);
+      renderLeetcodeFeed(Array.isArray(data.recent) ? data.recent : []);
+      setState("leetcode", "live", Date.parse(data.generatedAt) || Date.now());
+    } catch (_) {
+      setState("leetcode", "error");
+    }
+  }
+
   // ===== MODRINTH (rendered by modrinth-stats.js, mirrored here) =====
   window.addEventListener("kw:modrinth", event => {
     if (!event.detail) {
@@ -1084,6 +1173,7 @@
     starsown: loadStarsown,
     github: loadGithub,
     codeforces: loadCodeforces,
+    leetcode: loadLeetcode,
     api: () => apiConsole.retry()
   };
 
@@ -1111,6 +1201,7 @@
   loadGithub();
   loadGithubStats();
   loadCodeforces();
+  loadLeetcode();
 
   // Pause polling in background tabs and refresh immediately on return.
   document.addEventListener("visibilitychange", () => {
