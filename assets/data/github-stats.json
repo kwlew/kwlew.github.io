@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-01T13:17:49.556Z",
+  "generatedAt": "2026-10-02T12:36:37.362Z",
   "user": "kwlew",
-  "repoCount": 27,
-  "linesAdded": 154088,
-  "linesDeleted": 80328,
+  "repoCount": 15,
+  "linesAdded": 130428,
+  "linesDeleted": 78312,
   "repos": [
     {
       "name": "Starsown",
@@ -12,18 +12,13 @@
     },
     {
       "name": "kwlew.github.io",
-      "added": 18654,
-      "deleted": 8763
+      "added": 18661,
+      "deleted": 8770
     },
     {
       "name": "kMoney",
       "added": 11936,
       "deleted": 5065
-    },
-    {
-      "name": "Parkaim",
-      "added": 8717,
-      "deleted": 75
     },
     {
       "name": "Haven",
@@ -36,34 +31,14 @@
       "deleted": 978
     },
     {
-      "name": "BlockGame-LJWGL",
-      "added": 3906,
-      "deleted": 995
-    },
-    {
       "name": "PIDEasy-Improved",
       "added": 3742,
       "deleted": 1260
     },
     {
-      "name": "TDLove",
-      "added": 2076,
-      "deleted": 201
-    },
-    {
-      "name": "Game",
-      "added": 2062,
-      "deleted": 709
-    },
-    {
       "name": "kCombatLog",
       "added": 2060,
       "deleted": 30
-    },
-    {
-      "name": "MintyArmor",
-      "added": 1703,
-      "deleted": 6
     },
     {
       "name": "BetterRTP",
@@ -86,31 +61,6 @@
       "deleted": 122
     },
     {
-      "name": "BeaconsPlus",
-      "added": 1344,
-      "deleted": 6
-    },
-    {
-      "name": "learningML",
-      "added": 1194,
-      "deleted": 0
-    },
-    {
-      "name": "Relics",
-      "added": 1138,
-      "deleted": 0
-    },
-    {
-      "name": "uidacbot",
-      "added": 816,
-      "deleted": 3
-    },
-    {
-      "name": "PlayerSkills",
-      "added": 553,
-      "deleted": 28
-    },
-    {
       "name": "kwlew",
       "added": 275,
       "deleted": 122
@@ -126,16 +76,6 @@
       "deleted": 55
     },
     {
-      "name": "Competitive-Programming",
-      "added": 104,
-      "deleted": 0
-    },
-    {
-      "name": "LearningRust",
-      "added": 54,
-      "deleted": 0
-    },
-    {
       "name": "conduit",
       "added": 0,
       "deleted": 0
@@ -144,47 +84,35 @@
   "languages": [
     {
       "name": "Java",
-      "bytes": 654962
+      "bytes": 457693
     },
     {
       "name": "Lua",
-      "bytes": 494263
+      "bytes": 445707
     },
     {
       "name": "JavaScript",
       "bytes": 186792
     },
     {
-      "name": "C++",
-      "bytes": 129340
-    },
-    {
       "name": "HTML",
       "bytes": 108163
+    },
+    {
+      "name": "C++",
+      "bytes": 90270
     },
     {
       "name": "CSS",
       "bytes": 80280
     },
     {
-      "name": "Jupyter Notebook",
-      "bytes": 46270
-    },
-    {
       "name": "Python",
       "bytes": 26402
     },
     {
-      "name": "C#",
-      "bytes": 25772
-    },
-    {
       "name": "PowerShell",
       "bytes": 17518
-    },
-    {
-      "name": "Wolfram Language",
-      "bytes": 15479
     },
     {
       "name": "Shell",
@@ -192,19 +120,11 @@
     },
     {
       "name": "CMake",
-      "bytes": 3763
-    },
-    {
-      "name": "GLSL",
-      "bytes": 1458
+      "bytes": 1847
     },
     {
       "name": "C",
       "bytes": 1209
-    },
-    {
-      "name": "Rust",
-      "bytes": 67
     }
   ]
 }
