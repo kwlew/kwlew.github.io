@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-09T13:46:46.500Z",
+  "generatedAt": "2026-10-10T06:21:27.576Z",
   "user": "kwlew",
   "solved": {
-    "all": 25,
-    "easy": 20,
-    "medium": 4,
-    "hard": 1
+    "all": 31,
+    "easy": 21,
+    "medium": 8,
+    "hard": 2
   },
   "total": {
     "all": 4073,
@@ -14,11 +14,11 @@
     "hard": 980
   },
   "ranking": 4069691,
-  "activeDays": 2,
+  "activeDays": 3,
   "languages": [
     {
       "name": "C++",
-      "solved": 23
+      "solved": 29
     },
     {
       "name": "JavaScript",
@@ -27,6 +27,48 @@
   ],
   "contest": null,
   "recent": [
+    {
+      "title": "Longest Common Prefix",
+      "slug": "longest-common-prefix",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:51:48.000Z"
+    },
+    {
+      "title": "Reverse Integer",
+      "slug": "reverse-integer",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:40:52.000Z"
+    },
+    {
+      "title": "Longest Palindromic Substring",
+      "slug": "longest-palindromic-substring",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:36:39.000Z"
+    },
+    {
+      "title": "Median of Two Sorted Arrays",
+      "slug": "median-of-two-sorted-arrays",
+      "difficulty": "Hard",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:32:32.000Z"
+    },
+    {
+      "title": "Longest Substring Without Repeating Characters",
+      "slug": "longest-substring-without-repeating-characters",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:23:00.000Z"
+    },
+    {
+      "title": "Add Two Numbers",
+      "slug": "add-two-numbers",
+      "difficulty": "Medium",
+      "lang": "cpp",
+      "solvedAt": "2026-10-10T03:13:28.000Z"
+    },
     {
       "title": "Ugly Number",
       "slug": "ugly-number",
@@ -40,48 +82,6 @@
       "difficulty": "Easy",
       "lang": "cpp",
       "solvedAt": "2026-09-26T09:03:57.000Z"
-    },
-    {
-      "title": "Find the Pivot Integer",
-      "slug": "find-the-pivot-integer",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:59:26.000Z"
-    },
-    {
-      "title": "Can Make Arithmetic Progression From Sequence",
-      "slug": "can-make-arithmetic-progression-from-sequence",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:55:22.000Z"
-    },
-    {
-      "title": "Valid Mountain Array",
-      "slug": "valid-mountain-array",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:52:31.000Z"
-    },
-    {
-      "title": "Plus One",
-      "slug": "plus-one",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:38:16.000Z"
-    },
-    {
-      "title": "Largest Rectangle in Histogram",
-      "slug": "largest-rectangle-in-histogram",
-      "difficulty": "Hard",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:35:12.000Z"
-    },
-    {
-      "title": "Daily Temperatures",
-      "slug": "daily-temperatures",
-      "difficulty": "Medium",
-      "lang": "cpp",
-      "solvedAt": "2026-09-26T08:28:48.000Z"
     }
   ]
 }
