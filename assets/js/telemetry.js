@@ -671,6 +671,28 @@
   }
 
   // ===== CODEFORCES =====
+  // Tier slug from the rating, matching codeforces.com's colour bands.
+  function cfTier(rating) {
+    const value = Number(rating);
+    if (!value) return null;
+    if (value < 1200) return "newbie";
+    if (value < 1400) return "pupil";
+    if (value < 1600) return "specialist";
+    if (value < 1900) return "expert";
+    if (value < 2100) return "cm";
+    if (value < 2400) return "master";
+    if (value < 3000) return "gm";
+    return "lgm";
+  }
+
+  function setCfTier(selector, rating) {
+    const tier = cfTier(rating);
+    document.querySelectorAll(`#live-cf ${selector}`).forEach(element => {
+      if (tier) element.dataset.cfTier = tier;
+      else delete element.dataset.cfTier;
+    });
+  }
+
   async function loadCodeforces() {
     try {
       const { data, savedAt } = await cachedJSON(CODEFORCES_URL, "kw:codeforces", 6 * HOUR,
@@ -679,6 +701,9 @@
       setValue("cf.rating", Number(user.rating) || 0);
       setValue("cf.maxRating", Number(user.maxRating) || 0);
       setValue("cf.rank", user.rank || "unrated");
+      setCfTier('[data-bind="cf.rating"]', user.rating);
+      setCfTier('[data-bind="cf.rank"]', user.rating);
+      setCfTier('[data-bind="cf.maxRating"]', user.maxRating);
       setState("codeforces", "live", savedAt);
     } catch (_) {
       setState("codeforces", "error");

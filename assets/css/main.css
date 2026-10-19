@@ -15,7 +15,7 @@
   --c-text-rgb: 236, 230, 218;
   --c-text-secondary: #bfb8aa;
   --c-text-muted: #8a8478;
-  --c-text-faint: #5c574e;
+  --c-text-faint: #837e72;
 
   /* Status accent, reserved for the "available" dot only. */
   --c-green: #2cea25;
@@ -35,6 +35,14 @@
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', "JetBrains Mono", Consolas, monospace;
 
+  /* Type scale. 0.75rem is the floor: nothing on the site is smaller. */
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+
   /* Label palette, tuned for the dark background.
      Each entry is an RGB triplet (for the translucent fill/border) plus a
      solid foreground. Fully-saturated values like #00ffff or #ff0000 vibrate
@@ -52,6 +60,16 @@
   --label-bronze-rgb: 224, 144, 79;    --label-bronze: #e0904f;
   --label-white-rgb: 230, 237, 243;    --label-white: #e6edf3;
   --label-gray-rgb: 139, 148, 158;     --label-gray: #8b949e;
+
+  /* Codeforces rank tiers, lifted for the dark surface (all >= 4.5:1 on
+     --c-surface). Legendary grandmaster reuses the grandmaster red. */
+  --cf-newbie: #a8a8a8;
+  --cf-pupil: #4cc94c;
+  --cf-specialist: #2fc2b4;
+  --cf-expert: #7b93ff;
+  --cf-cm: #d77ad7;
+  --cf-master: #ffa12e;
+  --cf-gm: #ff5c5c;
 
   /* Shared fill/border strengths so every label reads at one weight */
   --label-fill: 0.10;
@@ -91,7 +109,7 @@ html {
 body {
   min-height: 100%;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: var(--fs-md);
   line-height: 1.6;
   color: var(--c-text);
   overflow-x: hidden;
@@ -155,36 +173,6 @@ a {
   --tick-c: var(--c-accent);
 }
 
-/* ===== HOME BUTTON (sub-pages) ===== */
-.home-btn {
-  position: fixed;
-  top: 16px;
-  left: 16px;
-  z-index: 1000;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--radius-btn);
-  background: var(--c-surface-nav);
-  border: 1px solid var(--c-border);
-  color: var(--c-text-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  line-height: 1;
-  transition: color var(--t-fast) var(--ease-smooth),
-              border-color var(--t-fast) var(--ease-smooth);
-}
-
-.home-btn:hover {
-  color: var(--c-accent);
-  border-color: rgba(var(--c-accent-rgb), 0.5);
-}
-
 /* Staggered entrance on first paint */
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(18px); }
@@ -235,7 +223,7 @@ h1 {
   border: 1px solid var(--c-accent);
   color: var(--c-accent-ink);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
@@ -295,7 +283,7 @@ h1 {
   width: 100%;
   border-collapse: collapse;
   margin-top: 14px;
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   text-align: left;
 }
 
@@ -304,7 +292,7 @@ h1 {
   border-bottom: 1px solid var(--c-border);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -322,7 +310,7 @@ h1 {
   padding-right: 20px;
   color: var(--c-text);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: var(--fs-xs);
   white-space: nowrap;
 }
 
@@ -335,7 +323,7 @@ h1 {
   padding: 2px 7px;
   border-radius: 3px;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
 }
 
@@ -371,7 +359,7 @@ pre {
   border: 1px solid var(--c-border-hair);
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   line-height: 1.7;
   overflow-x: auto;
 }
@@ -408,7 +396,7 @@ pre {
 .medal-summary-label {
   color: var(--sum-fg);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.85;
@@ -439,7 +427,7 @@ pre {
   background: transparent;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -541,7 +529,7 @@ pre {
 .achievement-fullname {
   margin-top: 3px;
   color: var(--c-text-secondary);
-  font-size: 0.76rem;
+  font-size: var(--fs-2xs);
   line-height: 1.35;
 }
 
@@ -549,7 +537,7 @@ pre {
   margin-top: 4px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -557,7 +545,7 @@ pre {
 .achievement-note {
   margin-top: 6px;
   color: var(--label-orange);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   opacity: 0.85;
 }
 
@@ -582,7 +570,7 @@ pre {
   border-bottom: 1px solid var(--c-border-hair);
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -602,7 +590,7 @@ pre {
   min-width: 40px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
 }
 
 /* Same recipe as .perm-default, so every label carries equal weight. */
@@ -615,7 +603,7 @@ pre {
   border: 1px solid rgba(var(--badge-rgb), var(--label-stroke));
   color: var(--badge-fg);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -633,7 +621,7 @@ pre {
   flex: 1;
   min-width: 0;
   color: var(--c-text-muted);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
 }
 
 /* ===== STARSOWN LIVE STATS (games/starsown.html) ===== */
@@ -682,7 +670,7 @@ pre {
   margin-top: 12px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -734,7 +722,7 @@ pre {
   background: var(--c-surface-sunken);
   border: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
-  font-size: 0.82rem;
+  font-size: var(--fs-xs);
 }
 
 .starsown-stats-error button,
@@ -746,7 +734,7 @@ pre {
   border: 1px solid var(--c-border);
   color: var(--c-text);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
@@ -917,7 +905,7 @@ pre {
   justify-self: start;
   color: var(--c-text);
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 800;
   font-stretch: 125%;
   letter-spacing: 0.01em;
@@ -942,7 +930,7 @@ pre {
   padding: 8px 10px 8px 18px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -965,13 +953,26 @@ pre {
   color: var(--c-text);
 }
 
-.nav-item.active {
+.nav-item.active,
+.nav-item[aria-current="page"] {
   color: var(--c-accent);
 }
 
-.nav-item.active::before {
+.nav-item.active::before,
+.nav-item[aria-current="page"]::before {
   opacity: 1;
   transform: none;
+}
+
+/* The current page (sub-pages) also carries a 1px underline. */
+.nav-item[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 10px;
+  bottom: 3px;
+  height: 1px;
+  background: var(--c-accent);
 }
 
 .topbar-meta {
@@ -981,7 +982,7 @@ pre {
   gap: 18px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1040,7 +1041,7 @@ pre {
   gap: 12px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1118,7 +1119,7 @@ pre {
   margin-top: 22px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.04em;
   animation: rise-in 0.8s var(--ease-out) 0.8s both;
 }
@@ -1148,7 +1149,7 @@ pre {
   padding: 10px 14px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1178,7 +1179,7 @@ pre {
   border-top: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1223,7 +1224,7 @@ pre {
   background: none;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   font-variant-numeric: tabular-nums;
   cursor: pointer;
   transition: color var(--t-fast), background-color var(--t-fast);
@@ -1260,7 +1261,7 @@ pre {
 .sim-readouts dt {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1269,7 +1270,7 @@ pre {
   margin-top: 2px;
   color: var(--c-text);
   font-family: var(--font-mono);
-  font-size: 0.86rem;
+  font-size: var(--fs-sm);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -1338,7 +1339,7 @@ pre {
   margin-top: 12px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1347,7 +1348,7 @@ pre {
   display: block;
   margin-top: 3px;
   color: var(--c-text-muted);
-  font-size: 0.82rem;
+  font-size: var(--fs-xs);
 }
 
 /* ===== LIVE TICKER ===== */
@@ -1366,7 +1367,7 @@ pre {
   padding: 13px 0;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.04em;
   text-decoration: none;
   transition: color var(--t-fast);
@@ -1379,7 +1380,7 @@ pre {
 
 .tick b {
   color: var(--c-text);
-  font-size: 0.86rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
@@ -1433,7 +1434,7 @@ pre {
 .ch-num {
   color: var(--c-accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.12em;
 }
@@ -1456,7 +1457,7 @@ pre {
 .ch-meta {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1498,7 +1499,7 @@ html.js .reveal.is-in {
 .feature-meta {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1521,7 +1522,7 @@ html.js .reveal.is-in {
   margin-top: 22px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: var(--fs-2xs);
 }
 
 .stackline span + span::before {
@@ -1559,7 +1560,7 @@ html.js .reveal.is-in {
   border-bottom: 1px solid var(--c-border);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1579,13 +1580,13 @@ html.js .reveal.is-in {
 
 .score-row span {
   color: var(--c-text-secondary);
-  font-size: 0.92rem;
+  font-size: var(--fs-md);
 }
 
 .score-row b {
   color: var(--c-text);
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: var(--fs-xl);
   font-weight: 800;
   font-stretch: 118%;
   font-variant-numeric: tabular-nums;
@@ -1633,7 +1634,7 @@ html.js .reveal.is-in {
 .project-idx {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   transition: color var(--t-fast);
 }
 
@@ -1658,7 +1659,7 @@ html.js .reveal.is-in {
   max-width: 48ch;
   margin-top: 10px;
   color: var(--c-text-secondary);
-  font-size: 0.92rem;
+  font-size: var(--fs-md);
 }
 
 .project-desc a {
@@ -1680,7 +1681,7 @@ html.js .reveal.is-in {
   min-width: 0;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
 }
 
 .project-stat {
@@ -1701,7 +1702,7 @@ html.js .reveal.is-in {
   justify-content: flex-end;
   gap: 6px 18px;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1751,7 +1752,7 @@ html.js .reveal.is-in {
   border-bottom: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.04em;
 }
 
@@ -1782,7 +1783,7 @@ html.js .reveal.is-in {
 }
 
 .ch[data-state="error"] .ch-body {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .ch-error {
@@ -1794,7 +1795,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border-hair);
   color: var(--label-red);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1819,7 +1820,7 @@ html.js .reveal.is-in {
   display: block;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1847,7 +1848,7 @@ html.js .reveal.is-in {
   margin-top: 8px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .chip {
@@ -1857,7 +1858,7 @@ html.js .reveal.is-in {
   border: 1px solid var(--c-border);
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   font-weight: 500;
   letter-spacing: 0.04em;
 }
@@ -1945,7 +1946,7 @@ html.js .reveal.is-in {
   align-items: center;
   gap: 8px;
   color: var(--c-text-secondary);
-  font-size: 0.86rem;
+  font-size: var(--fs-sm);
 }
 
 .counter-label i {
@@ -1957,7 +1958,7 @@ html.js .reveal.is-in {
 
 .counter .readout-value {
   margin: 0;
-  font-size: 1.45rem;
+  font-size: var(--fs-xl);
 }
 
 .counter.golden  { --glyph: var(--label-gold); }
@@ -1967,7 +1968,7 @@ html.js .reveal.is-in {
   margin-top: 14px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   line-height: 1.8;
 }
 
@@ -2007,7 +2008,7 @@ html.js .reveal.is-in {
 .milestone-target {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .milestone-target b {
@@ -2036,7 +2037,7 @@ html.js .reveal.is-in {
   margin-top: 8px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2071,7 +2072,7 @@ html.js .reveal.is-in {
 .modrinth-rank {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
 }
 
 .modrinth-project-icon {
@@ -2088,7 +2089,7 @@ html.js .reveal.is-in {
   color: #1bd96a;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 .modrinth-project-icon img {
@@ -2111,7 +2112,7 @@ html.js .reveal.is-in {
 
 .modrinth-project-copy strong {
   overflow: hidden;
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2122,7 +2123,7 @@ html.js .reveal.is-in {
 .modrinth-project-downloads small {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--fs-2xs);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -2131,7 +2132,7 @@ html.js .reveal.is-in {
 .modrinth-project-downloads {
   color: var(--c-text);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   text-align: right;
@@ -2190,14 +2191,14 @@ html.js .reveal.is-in {
   gap: 16px;
   min-height: 56px;
   color: var(--c-text-muted);
-  font-size: 0.82rem;
+  font-size: var(--fs-xs);
 }
 
 .modrinth-status {
   margin-top: 14px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: var(--fs-2xs);
 }
 
 /* GitHub channel */
@@ -2222,7 +2223,7 @@ html.js .reveal.is-in {
   height: 16px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.04em;
 }
 
@@ -2270,7 +2271,7 @@ html.js .reveal.is-in {
   margin-top: 10px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--fs-2xs);
 }
 
 .hm-legend .hm {
@@ -2299,7 +2300,7 @@ html.js .reveal.is-in {
   margin-top: 8px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
 }
 
 .loc-details summary {
@@ -2354,7 +2355,7 @@ html.js .reveal.is-in {
   border-bottom: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   text-decoration: none;
   transition: background-color var(--t-fast);
 }
@@ -2388,7 +2389,7 @@ html.js .reveal.is-in {
   margin-top: 10px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: var(--fs-2xs);
   text-transform: capitalize;
 }
 
@@ -2401,7 +2402,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .cf-foot a {
@@ -2411,6 +2412,28 @@ html.js .reveal.is-in {
 
 .cf-foot a:hover {
   color: var(--c-accent);
+}
+
+/* Rank tier colours, set from the rating in telemetry.js. */
+[data-cf-tier="newbie"] { color: var(--cf-newbie); }
+[data-cf-tier="pupil"] { color: var(--cf-pupil); }
+[data-cf-tier="specialist"] { color: var(--cf-specialist); }
+[data-cf-tier="expert"] { color: var(--cf-expert); }
+[data-cf-tier="cm"] { color: var(--cf-cm); }
+[data-cf-tier="master"] { color: var(--cf-master); }
+[data-cf-tier="gm"],
+[data-cf-tier="lgm"] { color: var(--cf-gm); }
+
+/* Legendary grandmaster: first letter in the base text colour. The odometer
+   wraps digits in inline-flex, which ::first-letter cannot reach, so the
+   first digit column is targeted as well. */
+.cf-foot b[data-cf-tier] {
+  display: inline-block; /* lets ::first-letter apply to the max rating */
+}
+
+[data-cf-tier="lgm"]::first-letter,
+[data-cf-tier="lgm"] .odo-d:first-child {
+  color: var(--c-text);
 }
 
 /* LeetCode channel */
@@ -2464,7 +2487,7 @@ html.js .reveal.is-in {
   list-style: none;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
 }
 
 .lc-diff li {
@@ -2502,7 +2525,7 @@ html.js .reveal.is-in {
   margin-top: 12px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .lc-contest b {
@@ -2548,7 +2571,7 @@ html.js .reveal.is-in {
   background: none;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   white-space: nowrap;
   cursor: pointer;
   transition: color var(--t-fast), border-color var(--t-fast);
@@ -2568,7 +2591,7 @@ html.js .reveal.is-in {
   padding: 16px 22px 0;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2595,7 +2618,7 @@ html.js .reveal.is-in {
   padding: 4px 22px 0;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .api-status .ok  { color: var(--label-green); }
@@ -2610,7 +2633,7 @@ html.js .reveal.is-in {
   border: 1px solid var(--c-border-hair);
   color: var(--c-text-faint);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   line-height: 1.7;
   white-space: pre;
   overflow: auto;
@@ -2644,7 +2667,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
 }
 
 .api-endpoints dt {
@@ -2687,7 +2710,7 @@ html.js .reveal.is-in {
 .tally span {
   color: var(--t-fg);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -2712,7 +2735,7 @@ html.js .reveal.is-in {
   gap: 12px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -2745,7 +2768,7 @@ html.js .reveal.is-in {
 .tl-count {
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   font-variant-numeric: tabular-nums;
 }
 
@@ -2795,7 +2818,7 @@ html.js .reveal.is-in {
   margin-top: 8px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   text-align: center;
 }
 
@@ -2804,7 +2827,7 @@ html.js .reveal.is-in {
   margin-top: 14px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
 }
 
 .tl-legend {
@@ -2814,7 +2837,7 @@ html.js .reveal.is-in {
   margin-top: 10px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: var(--fs-2xs);
 }
 
 .tl-legend span {
@@ -2850,7 +2873,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border);
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
 }
 
 .next-up b {
@@ -2875,7 +2898,7 @@ html.js .reveal.is-in {
   gap: 8px;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
@@ -2936,7 +2959,7 @@ html.js .reveal.is-in {
   list-style: none;
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
 }
 
 .lang-legend li {
@@ -2974,14 +2997,14 @@ html.js .reveal.is-in {
   padding-top: 3px;
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .spec-row dd {
   color: var(--c-text);
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
 }
 
 .spec-row dd span + span::before {
@@ -3050,7 +3073,7 @@ html.js .reveal.is-in {
   border: 1px solid var(--c-border);
   color: var(--c-text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
@@ -3097,7 +3120,7 @@ html.js .reveal.is-in {
 .links small {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
 }
 
 .links .arr {
@@ -3116,7 +3139,12 @@ html.js .reveal.is-in {
 }
 
 .links .soon {
-  opacity: 0.45;
+  color: var(--c-text-faint);
+}
+
+.links .soon .social-icon,
+.links .soon small {
+  color: inherit;
 }
 
 .links .link-modrinth   { --brand: #1bd96a; }
@@ -3137,7 +3165,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-align: left;
   text-transform: uppercase;
@@ -3171,7 +3199,7 @@ html.js .reveal.is-in {
    ===================================================================== */
 
 .page {
-  padding-top: 104px;
+  padding-top: 72px;
 }
 
 .page-hero {
@@ -3211,7 +3239,7 @@ html.js .reveal.is-in {
   border-top: 1px solid var(--c-border-hair);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.06em;
 }
 
@@ -3231,7 +3259,7 @@ html.js .reveal.is-in {
   max-width: 62ch;
   margin-top: 20px;
   color: var(--c-text-muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
 }
 
 .page-cols {
@@ -3250,13 +3278,13 @@ html.js .reveal.is-in {
 .page-col-idx {
   color: var(--c-accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
 }
 
 .page-col h3 {
   margin-top: 14px;
-  font-size: 1.35rem;
+  font-size: var(--fs-xl);
   font-weight: 800;
   font-stretch: 115%;
 }
@@ -3264,7 +3292,7 @@ html.js .reveal.is-in {
 .page-col p {
   margin-top: 10px;
   color: var(--c-text-secondary);
-  font-size: 0.95rem;
+  font-size: var(--fs-md);
 }
 
 .page .page-cols + .spec {
@@ -3336,7 +3364,7 @@ html.js .reveal.is-in {
 
 .page-col .page-list {
   margin-top: 14px;
-  font-size: 0.95rem;
+  font-size: var(--fs-md);
 }
 
 .page-list li {
@@ -3371,7 +3399,7 @@ ol.page-list li::before {
   background: none;
   color: var(--c-accent);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
 }
 
 /* ===== DOCS ===== */
@@ -3394,7 +3422,7 @@ ol.page-list li::before {
   border-bottom: 1px solid var(--c-border);
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -3409,7 +3437,7 @@ ol.page-list li::before {
   padding: 8px 0;
   border-bottom: 1px solid var(--c-border-hair);
   color: var(--c-text-secondary);
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
   text-decoration: none;
   transition: color var(--t-fast);
 }
@@ -3417,7 +3445,7 @@ ol.page-list li::before {
 .doc-nav a span {
   color: var(--c-text-faint);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: var(--fs-2xs);
   line-height: 2;
   transition: color var(--t-fast);
 }
@@ -3507,7 +3535,7 @@ ol.page-list li::before {
 .rb-roster small {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -3543,7 +3571,7 @@ ol.page-list li::before {
 .rb-press-src {
   color: var(--c-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -3566,7 +3594,7 @@ ol.page-list li::before {
   margin-top: 8px;
   color: var(--c-accent-soft);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition: color var(--t-fast);
@@ -3596,7 +3624,7 @@ ol.page-list li::before {
 .rb-press-date {
   color: var(--c-accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: var(--fs-2xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -3609,7 +3637,7 @@ ol.page-list li::before {
 
 .rb-press-head {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   font-stretch: 108%;
   line-height: 1.2;
@@ -3618,7 +3646,7 @@ ol.page-list li::before {
 
 .rb-press-gloss {
   color: var(--c-text-muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-md);
 }
 
 .rb-press-arr {
@@ -3780,6 +3808,16 @@ ol.page-list li::before {
     display: none;
   }
 
+  .nav-item {
+    padding: 8px 6px 8px 16px;
+    letter-spacing: 0.06em;
+  }
+
+  .nav-item[aria-current="page"]::after {
+    left: 16px;
+    right: 6px;
+  }
+
   .clock {
     display: none;
   }
@@ -3878,7 +3916,7 @@ ol.page-list li::before {
   }
 
   .stat-list .readout-value {
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
   }
 
   .feed a {
@@ -3968,7 +4006,7 @@ ol.page-list li::before {
   }
 
   .page {
-    padding-top: 76px;
+    padding-top: 40px;
   }
 
   .page-title {
