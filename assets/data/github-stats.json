@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-19T13:17:15.832Z",
+  "generatedAt": "2026-10-20T11:38:21.189Z",
   "user": "kwlew",
   "repoCount": 17,
-  "linesAdded": 238002,
-  "linesDeleted": 88561,
+  "linesAdded": 242244,
+  "linesDeleted": 89574,
   "repos": [
     {
       "name": "LOVE2D-Studio",
@@ -17,8 +17,8 @@
     },
     {
       "name": "kwlew.github.io",
-      "added": 18928,
-      "deleted": 9099
+      "added": 23230,
+      "deleted": 9934
     },
     {
       "name": "kMoney",
@@ -42,8 +42,8 @@
     },
     {
       "name": "Raylib-GAME",
-      "added": 2590,
-      "deleted": 726
+      "added": 2530,
+      "deleted": 904
     },
     {
       "name": "kCombatLog",
@@ -101,24 +101,24 @@
       "bytes": 457693
     },
     {
+      "name": "JavaScript",
+      "bytes": 317357
+    },
+    {
       "name": "TypeScript",
       "bytes": 302972
     },
     {
-      "name": "JavaScript",
-      "bytes": 189534
-    },
-    {
       "name": "C++",
-      "bytes": 141964
+      "bytes": 128700
     },
     {
       "name": "HTML",
-      "bytes": 108163
+      "bytes": 112826
     },
     {
       "name": "CSS",
-      "bytes": 80280
+      "bytes": 83232
     },
     {
       "name": "Python",
@@ -134,7 +134,7 @@
     },
     {
       "name": "CMake",
-      "bytes": 4434
+      "bytes": 4430
     },
     {
       "name": "GLSL",
