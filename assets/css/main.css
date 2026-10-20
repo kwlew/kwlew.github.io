@@ -1169,6 +1169,27 @@ pre {
   aspect-ratio: 1 / 1;
 }
 
+/* Both views share one square; the 3D canvas is laid over the 2D one. The 2D
+   canvas stays in the layout (just see-through) so the stage keeps its size. */
+.sim-stage {
+  position: relative;
+}
+
+.sim-stage .sim-canvas-3d {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.sim-stage .sim-canvas-3d[hidden] {
+  display: none;
+}
+
+.sim-stage[data-view="3d"] #sim-canvas {
+  opacity: 0;
+}
+
 .sim-bar {
   display: flex;
   flex-wrap: wrap;
@@ -1206,7 +1227,17 @@ pre {
 .sim-key .k-victim { border-radius: 50%; border: 1.5px solid var(--label-cyan); background: rgba(var(--label-cyan-rgb), 0.25); }
 .sim-key .k-blue   { background: rgba(var(--label-blue-rgb), 0.45); }
 .sim-key .k-black  { background: #000; box-shadow: inset 0 0 0 1px rgba(var(--c-text-rgb), 0.3); }
+.sim-key .k-ramp   { width: 6px; height: 6px; margin: 0 1.5px; border-top: 1.5px solid rgba(var(--c-text-rgb), 0.7); border-right: 1.5px solid rgba(var(--c-text-rgb), 0.7); transform: rotate(45deg); }
+.sim-key .k-debris { background: radial-gradient(circle, rgba(var(--c-text-rgb), 0.6) 1px, transparent 1.5px) 0 0 / 4.5px 4.5px; }
 
+.sim-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.sim-view,
 .sim-speed {
   display: inline-flex;
   overflow: hidden;
@@ -1214,10 +1245,12 @@ pre {
   border: 1px solid var(--c-border);
 }
 
+.sim-view[hidden],
 .sim-speed[hidden] {
   display: none;
 }
 
+.sim-view button,
 .sim-speed button {
   padding: 4px 9px;
   border: 0;
@@ -1230,14 +1263,17 @@ pre {
   transition: color var(--t-fast), background-color var(--t-fast);
 }
 
+.sim-view button + button,
 .sim-speed button + button {
   border-left: 1px solid var(--c-border);
 }
 
+.sim-view button:hover,
 .sim-speed button:hover {
   color: var(--c-text);
 }
 
+.sim-view button[aria-pressed="true"],
 .sim-speed button[aria-pressed="true"] {
   background: var(--c-accent);
   color: var(--c-accent-ink);
@@ -1245,7 +1281,7 @@ pre {
 
 .sim-readouts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--c-border-hair);
 }
 
@@ -1256,6 +1292,21 @@ pre {
 
 .sim-readouts > div + div {
   border-left: 1px solid var(--c-border-hair);
+}
+
+/* Seven readouts on a three-column grid: three, three, then the state across
+   the full width. Each row after the first gets a top rule; the first cell of
+   a row has no left rule. */
+.sim-readouts > div:nth-child(3n+1) {
+  border-left: none;
+}
+
+.sim-readouts > div:nth-child(n+4) {
+  border-top: 1px solid var(--c-border-hair);
+}
+
+.sim-readouts > div:nth-child(7) {
+  grid-column: 1 / -1;
 }
 
 .sim-readouts dt {
@@ -3834,18 +3885,6 @@ ol.page-list li::before {
   .hero-actions .btn {
     flex: 1 1 auto;
     justify-content: center;
-  }
-
-  .sim-readouts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .sim-readouts > div:nth-child(3) {
-    border-left: none;
-  }
-
-  .sim-readouts > div:nth-child(n+3) {
-    border-top: 1px solid var(--c-border-hair);
   }
 
   .figures {

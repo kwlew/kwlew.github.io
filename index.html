@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=30">
+  <link rel="stylesheet" href="/assets/css/main.css?v=34">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -87,25 +87,39 @@
             <span><b>SIM</b> / rescue_maze</span>
             <span>seed <b id="sim-seed">----</b> &middot; run <b id="sim-run">1</b></span>
           </div>
-          <canvas class="sim-canvas" id="sim-canvas" role="img" aria-label="Animated simulation: a robot explores an unknown maze, mapping walls, finding victims, stopping on blue tiles and backing away from black holes, then returns to the start"></canvas>
+          <div class="sim-stage" id="sim-stage">
+            <canvas class="sim-canvas" id="sim-canvas" role="img" aria-label="Animated simulation: a robot explores an unknown two-level maze with time-of-flight sensors, identifies victims and drops rescue kits, climbs a ramp between levels, avoids holes, waits on blue tiles and slows on debris, then returns to the start"></canvas>
+            <canvas class="sim-canvas sim-canvas-3d" id="sim-canvas-3d" hidden aria-hidden="true"></canvas>
+          </div>
           <div class="sim-bar">
             <div class="sim-key" aria-hidden="true">
               <span><i class="k-robot"></i>Robot</span>
               <span><i class="k-victim"></i>Victim</span>
               <span><i class="k-blue"></i>Blue: stop</span>
               <span><i class="k-black"></i>Black: hole</span>
+              <span><i class="k-ramp"></i>Ramp</span>
+              <span><i class="k-debris"></i>Debris</span>
             </div>
-            <div class="sim-speed" id="sim-speed" role="group" aria-label="Simulation speed">
-              <button type="button" data-speed="1" aria-pressed="true">1&times;</button>
-              <button type="button" data-speed="2" aria-pressed="false">2&times;</button>
-              <button type="button" data-speed="4" aria-pressed="false">4&times;</button>
-              <button type="button" data-speed="8" aria-pressed="false">8&times;</button>
+            <div class="sim-controls">
+              <div class="sim-view" id="sim-view" role="group" aria-label="Sim view" hidden>
+                <button type="button" data-view="3d" aria-pressed="true">3D</button>
+                <button type="button" data-view="2d" aria-pressed="false">2D</button>
+              </div>
+              <div class="sim-speed" id="sim-speed" role="group" aria-label="Simulation speed">
+                <button type="button" data-speed="1" aria-pressed="true">1&times;</button>
+                <button type="button" data-speed="2" aria-pressed="false">2&times;</button>
+                <button type="button" data-speed="4" aria-pressed="false">4&times;</button>
+                <button type="button" data-speed="8" aria-pressed="false">8&times;</button>
+              </div>
             </div>
           </div>
           <dl class="sim-readouts" aria-hidden="true">
-            <div><dt>Mapped</dt><dd id="sim-mapped">0/81</dd></div>
+            <div><dt>Mapped</dt><dd id="sim-mapped">0/130</dd></div>
             <div><dt>Victims</dt><dd id="sim-victims">0/0</dd></div>
+            <div><dt>Score</dt><dd id="sim-score">0</dd></div>
             <div><dt>Run time</dt><dd id="sim-time">00:00.0</dd></div>
+            <div><dt>HDG</dt><dd id="sim-hdg">000.0&deg;</dd></div>
+            <div><dt>Front</dt><dd id="sim-front">--- mm</dd></div>
             <div><dt>State</dt><dd id="sim-state">IDLE</dd></div>
           </dl>
           <figcaption class="sim-note">A simulation of the Rescue Maze task, not a recorded run. New maze every run.</figcaption>
@@ -667,7 +681,7 @@
   <script src="/assets/js/achievements-data.js?v=1"></script>
   <script src="/assets/js/telemetry.js?v=4"></script>
   <script src="/assets/js/modrinth-stats.js?v=2"></script>
-  <script src="/assets/js/maze-sim.js?v=3"></script>
+  <script type="module" src="/assets/js/maze-sim/main.js?v=10"></script>
   <script>
     // Highlight the nav item for whichever section is currently in view.
     // Driven by scroll position rather than IntersectionObserver: the same

@@ -115,6 +115,11 @@
     .og .sim-bar {
       display: none;
     }
+
+    /* Two readout rows of three have to fit the 630 px card beside the copy. */
+    .og .sim-readouts > div {
+      padding: 7px 14px;
+    }
   </style>
 </head>
 <body>
@@ -154,7 +159,7 @@
       </div>
     </div>
 
-    <figure class="sim">
+    <figure class="sim" data-view="2d">
       <div class="sim-head">
         <span><b>SIM</b> / rescue_maze</span>
         <span>seed <b id="sim-seed">----</b> &middot; run <b id="sim-run">1</b></span>
@@ -162,14 +167,16 @@
       <canvas class="sim-canvas" id="sim-canvas"></canvas>
       <div class="sim-bar"><div class="sim-speed" id="sim-speed"></div></div>
       <dl class="sim-readouts">
-        <div><dt>Mapped</dt><dd id="sim-mapped">0/81</dd></div>
+        <div><dt>Mapped</dt><dd id="sim-mapped">0/130</dd></div>
         <div><dt>Victims</dt><dd id="sim-victims">0/0</dd></div>
+        <div><dt>Score</dt><dd id="sim-score">0</dd></div>
         <div><dt>Run time</dt><dd id="sim-time">00:00.0</dd></div>
+        <div><dt>HDG</dt><dd id="sim-hdg">000.0&deg;</dd></div>
         <div><dt>State</dt><dd id="sim-state">IDLE</dd></div>
       </dl>
     </figure>
   </main>
 
-  <script src="/assets/js/maze-sim.js"></script>
+  <script type="module" src="/assets/js/maze-sim/main.js?v=10"></script>
 </body>
 </html>
