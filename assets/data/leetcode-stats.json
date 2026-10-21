@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-21T12:20:43.794Z",
+  "generatedAt": "2026-10-21T17:37:36.753Z",
   "user": "kwlew",
   "solved": {
-    "all": 40,
-    "easy": 28,
+    "all": 41,
+    "easy": 29,
     "medium": 10,
     "hard": 2
   },
@@ -14,11 +14,11 @@
     "hard": 984
   },
   "ranking": 3184556,
-  "activeDays": 4,
+  "activeDays": 5,
   "languages": [
     {
       "name": "C++",
-      "solved": 38
+      "solved": 39
     },
     {
       "name": "JavaScript",
@@ -27,6 +27,13 @@
   ],
   "contest": null,
   "recent": [
+    {
+      "title": "Digit Frequency Score",
+      "slug": "digit-frequency-score",
+      "difficulty": "Easy",
+      "lang": "cpp",
+      "solvedAt": "2026-10-21T17:36:41.000Z"
+    },
     {
       "title": "Partition Array According to Given Pivot",
       "slug": "partition-array-according-to-given-pivot",
@@ -75,13 +82,6 @@
       "difficulty": "Medium",
       "lang": "cpp",
       "solvedAt": "2026-10-15T09:26:38.000Z"
-    },
-    {
-      "title": "Reverse Degree of a String",
-      "slug": "reverse-degree-of-a-string",
-      "difficulty": "Easy",
-      "lang": "cpp",
-      "solvedAt": "2026-10-15T09:22:30.000Z"
     }
   ]
 }
