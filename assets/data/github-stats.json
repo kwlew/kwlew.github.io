@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-25T11:30:35.817Z",
+  "generatedAt": "2026-10-26T13:04:56.609Z",
   "user": "kwlew",
   "repoCount": 17,
-  "linesAdded": 242344,
-  "linesDeleted": 89674,
+  "linesAdded": 249639,
+  "linesDeleted": 89972,
   "repos": [
     {
       "name": "LOVE2D-Studio",
@@ -17,18 +17,18 @@
     },
     {
       "name": "kwlew.github.io",
-      "added": 23330,
-      "deleted": 10034
+      "added": 23337,
+      "deleted": 10041
+    },
+    {
+      "name": "Haven",
+      "added": 12422,
+      "deleted": 1208
     },
     {
       "name": "kMoney",
       "added": 11936,
       "deleted": 5065
-    },
-    {
-      "name": "Haven",
-      "added": 6286,
-      "deleted": 1028
     },
     {
       "name": "TD-Idle-bot",
@@ -41,14 +41,14 @@
       "deleted": 1260
     },
     {
+      "name": "kCombatLog",
+      "added": 3212,
+      "deleted": 141
+    },
+    {
       "name": "Raylib-GAME",
       "added": 2530,
       "deleted": 904
-    },
-    {
-      "name": "kCombatLog",
-      "added": 2060,
-      "deleted": 30
     },
     {
       "name": "BetterRTP",
@@ -93,12 +93,12 @@
   ],
   "languages": [
     {
-      "name": "Lua",
-      "bytes": 536037
+      "name": "Java",
+      "bytes": 693933
     },
     {
-      "name": "Java",
-      "bytes": 457693
+      "name": "Lua",
+      "bytes": 536037
     },
     {
       "name": "JavaScript",
@@ -122,7 +122,7 @@
     },
     {
       "name": "Python",
-      "bytes": 26402
+      "bytes": 26537
     },
     {
       "name": "PowerShell",
