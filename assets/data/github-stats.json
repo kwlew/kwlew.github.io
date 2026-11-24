@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-23T18:10:04.958Z",
+  "generatedAt": "2026-11-24T17:46:15.812Z",
   "user": "kwlew",
   "repoCount": 16,
-  "linesAdded": 167839,
-  "linesDeleted": 27038,
+  "linesAdded": 168073,
+  "linesDeleted": 27144,
   "repos": [
     {
       "name": "LOVE2D-Studio",
@@ -12,8 +12,8 @@
     },
     {
       "name": "kwlew.github.io",
-      "added": 23600,
-      "deleted": 10309
+      "added": 23607,
+      "deleted": 10316
     },
     {
       "name": "Haven",
@@ -32,8 +32,8 @@
     },
     {
       "name": "PIDEasy-Improved",
-      "added": 3742,
-      "deleted": 1260
+      "added": 3969,
+      "deleted": 1359
     },
     {
       "name": "kCombatLog",
@@ -101,7 +101,7 @@
     },
     {
       "name": "C++",
-      "bytes": 128700
+      "bytes": 133831
     },
     {
       "name": "HTML",
